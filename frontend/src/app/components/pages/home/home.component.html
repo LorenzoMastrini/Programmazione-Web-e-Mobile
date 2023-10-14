@@ -1,0 +1,37 @@
+<ul>
+    <li *ngFor="let film of films">
+        <a routerLink="/film/{{film.id}}"
+            [ngStyle]="{
+                'background-image': 'url(' + film.imageUrl + ')',
+                'background-size': 'cover'  }">
+            
+            <!--uso [] per dati dinamici-->
+            <div class="content" >
+                <p class="name">
+                    {{film.name}}
+                </p>
+                <!--
+                <span class="favorite {{film.favorite?'':'not'}}">
+                    ♥
+                </span>
+                -->
+                <button>
+                    OTTIENI
+                </button>
+                <!--
+                <div class="stars">
+                    <star-rating
+                        [value]="film.stars"
+                        [totalstars]="5"
+                        checkedColor="red"
+                        uncheckedcolor="black"
+                        size="22px"
+                        [readonly]="true"
+                    </starrating>
+                </div>
+                -->
+            </div>
+        </a>
+    </li>
+</ul>
+

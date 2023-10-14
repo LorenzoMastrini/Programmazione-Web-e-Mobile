@@ -16,6 +16,7 @@ html, button { /*a volte i bottoni usano altri font*/
 
 body {
     margin: 0;
+    background-color: black;
 }
 
 a {
