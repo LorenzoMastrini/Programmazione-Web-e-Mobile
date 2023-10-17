@@ -1,0 +1,37 @@
+div {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+
+.icon {
+    width: 17px;
+    height: 17px;
+    display: flex;
+    background-color: #322f2f;
+}
+
+input {
+    color: white;
+    border-radius: 10rem 10rem 10rem 10rem;
+    border: none;
+    height: 0.5rem;
+    width: 5rem;
+    background-color: #322f2f;
+    padding: 0.8rem;
+    font-size: 1rem;
+    outline: none;
+}
+
+div button {
+    height: 1.5rem;
+    width: 2rem;
+    border: none;
+    background-color: black;
+    outline: none;
+}
+
+div button:hover {
+    opacity: 1;
+    cursor: pointer;
+}

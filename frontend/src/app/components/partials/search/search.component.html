@@ -1,0 +1,10 @@
+<div>
+    <!--#s è una template reference per avere accesso a s ovunque da dentro il file html-->
+    <input #s type="text"
+        placeholder="Cerca"
+        (keyup.enter)="search(s.value)"
+        [value]="searchTerm"/>
+    <button (click)="search(s.value)">
+        <img class="icon" src="../../../../assets/SearchIcon.jpg"/>
+    </button>
+</div>

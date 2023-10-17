@@ -1,10 +1,11 @@
 import {Film} from "./app/shared/models/Film";
+import { Tag } from "./app/shared/models/Tag";
 
 export const sample_films: Film[] = [
     {
         id:'1',
         name: 'Arancia meccanica',
-        duration: '136 minuti',
+        duration: '136',
         price: 10,
         favorite: true,
         origins: ['Regno Unito'],
@@ -15,7 +16,7 @@ export const sample_films: Film[] = [
       {
         id:'2',
         name: 'Avengers: Endgame',
-        duration: '181 minuti',
+        duration: '181',
         price: 20,
         favorite: false,
         origins: ['Stati Uniti'],
@@ -26,7 +27,7 @@ export const sample_films: Film[] = [
       {
         id:'3',
         name: 'Django Unchained',
-        duration: '165 minuti',
+        duration: '165',
         price: 5,
         favorite: true,
         origins: ['Stati Uniti'],
@@ -37,7 +38,7 @@ export const sample_films: Film[] = [
       {
         id:'4',
         name: 'Il grande Lebowski',
-        duration: '117 minuti',
+        duration: '117',
         price: 2,
         favorite: false,
         origins: ['Stati Uniti'],
@@ -48,7 +49,7 @@ export const sample_films: Film[] = [
       {
         id:'5',
         name: 'Il silenzio degli innocenti',
-        duration: '118 minuti',
+        duration: '118',
         price: 11,
         favorite: true,
         origins: ['Stati Uniti'],
@@ -59,7 +60,7 @@ export const sample_films: Film[] = [
       {
         id:'6',
         name: 'Joker',
-        duration: '122 minuti',
+        duration: '122',
         price: 9,
         favorite: false,
         origins: ['Stati Uniti'],
@@ -67,4 +68,15 @@ export const sample_films: Film[] = [
         imageUrl: 'assets/film-6.jpg',
         tags: ['Crimine', 'Drammatico', 'Thriller'],
       },
+]
+
+export const sample_tags: Tag[] = [
+  { name:'All', count: 6 },
+  { name:'Crimine', count: 4 },
+  { name:'Sci-Fi', count: 2 },
+  { name:'Azione', count: 1 },
+  { name:'Avventura', count: 1 },
+  { name:'Drammatico', count: 4 },
+  { name:'Western', count: 1 },
+  { name:'Thriller', count: 2 },
 ]
