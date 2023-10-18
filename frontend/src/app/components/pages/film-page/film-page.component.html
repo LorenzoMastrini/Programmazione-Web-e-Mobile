@@ -1,4 +1,9 @@
-<div class="container">
+<app-not-found [visible]="!film.id"
+                notFoundMessage="Film not Found"
+                resetLinkText="Back to Homepage">
+</app-not-found>
+
+<div *ngIf="film.id" class="container">
     <img [src]="film.imageUrl" [alt]="film.name"/>
 
     <div class="info">
