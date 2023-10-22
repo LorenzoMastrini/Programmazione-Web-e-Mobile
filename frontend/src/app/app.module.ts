@@ -12,6 +12,7 @@ import { CartPageComponent } from './components/pages/cart-page/cart-page.compon
 import { TitleComponent } from './components/partials/title/title.component';
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
 import { SideBarComponent } from './components/partials/side-bar/side-bar.component';
+import { ListPageComponent } from './components/pages/list-page/list-page.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SideBarComponent } from './components/partials/side-bar/side-bar.compon
     CartPageComponent,
     TitleComponent,
     NotFoundComponent,
-    SideBarComponent
+    SideBarComponent,
+    ListPageComponent
   ],
   imports: [
     BrowserModule,
