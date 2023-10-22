@@ -36,10 +36,30 @@
             </div>
         </div>
         
-        <div class="origins">
-            <span *ngFor="let origin of film.origins">
-                <strong>Paese di produzione: </strong> {{ origin }}
+        <div class="description">
+            <span>
+                {{ film.description }}
             </span>
+        </div>
+
+        <div class="details">
+            <div class="director">
+                <span>
+                    <strong>Regista: </strong>{{ film.director }}
+                </span>
+            </div>
+
+            <div class="year">
+                <span>
+                    <strong>Anno: </strong> {{ film.year }}
+                </span>
+            </div>
+
+            <div class="origins">
+                <span *ngFor="let origin of film.origins">
+                    <strong>Paese di produzione: </strong> {{ origin }}
+                </span>
+            </div>
         </div>
         
         <div class="price">

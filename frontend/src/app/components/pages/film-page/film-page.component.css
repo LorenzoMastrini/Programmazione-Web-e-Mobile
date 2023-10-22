@@ -1,4 +1,6 @@
 .container {
+    position: absolute;
+    left: 15rem; /*ampiezza della barra laterale*/
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -58,15 +60,20 @@ img {
     color: white;
 }
 
-.origins {
-    padding-top: 5rem;
-    display: flex;
-    flex-wrap: wrap;
-    margin: 1rem 0;
+.description {
+    font-size: 18px;
+    padding-top: 1.5rem;
+    color: lightgray;
 }
 
-.origins span{
-    padding: 0.5rem;
+.details {
+    padding-top: 7rem;
+}
+
+.origins, .director, .year {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0.5rem 0;
 }
 
 .price{

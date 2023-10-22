@@ -17,7 +17,7 @@ a:hover {
 .container {
     margin: 0 auto;
     display: flex;
-    justify-content: space-between; /*separa il logo dagli altri elementi*/
+    justify-content: flex-end; /*sposta gli elementi in fondo all'header, verso destra*/
 }
 
 a.logo {

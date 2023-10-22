@@ -11,6 +11,7 @@ import { FilmPageComponent } from './components/pages/film-page/film-page.compon
 import { CartPageComponent } from './components/pages/cart-page/cart-page.component';
 import { TitleComponent } from './components/partials/title/title.component';
 import { NotFoundComponent } from './components/partials/not-found/not-found.component';
+import { SideBarComponent } from './components/partials/side-bar/side-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { NotFoundComponent } from './components/partials/not-found/not-found.com
     FilmPageComponent,
     CartPageComponent,
     TitleComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    SideBarComponent
   ],
   imports: [
     BrowserModule,

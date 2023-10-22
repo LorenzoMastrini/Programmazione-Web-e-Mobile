@@ -6,6 +6,9 @@ export class Film {
     favorite!: boolean;
     stars!: number;
     imageUrl!: string;
+    description!: string;
+    director!: string;
     origins!: string[];
+    year!: number;
     duration!: string;
 }
