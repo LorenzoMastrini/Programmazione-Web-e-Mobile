@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CartService } from 'src/app/services/cart.service';
-import { Cart } from 'src/app/shared/Cart';
+import { Cart } from 'src/app/shared/models/Cart';
 import { CartItem } from 'src/app/shared/models/CartItem';
 
 @Component({
@@ -22,8 +22,7 @@ export class CartPageComponent {
     this.cartService.removeFromCart(cartItem.film.id);
   }
 
-  changeQuantity(cartItem:CartItem, quantityInString:string) {
-    const quantity = parseInt(quantityInString);
-    this.cartService.changeQuantity(cartItem.film.id, quantity);
+  rent(cartItem:CartItem, rent:boolean, days:number) {
+    this.cartService.rent(cartItem.film.id, rent, days);
   }
 }

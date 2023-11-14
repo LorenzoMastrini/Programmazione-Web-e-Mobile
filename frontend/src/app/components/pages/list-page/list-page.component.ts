@@ -17,7 +17,7 @@ export class ListPageComponent {
       if(params.searchTerm) {
         this.films = this.filmService.getAllFilmsBySearchTerm(params.searchTerm);
       } else if(params.tag) {
-        this.films = this.filmService.getAllFilmsByTag(params.tag);
+        this.films = this.filmService.getAllFilmsByGenre(params.tag);
       } else {
         this.films = filmService.getAll(); //se non è stato cercato nulla mostra tutto per default
       }

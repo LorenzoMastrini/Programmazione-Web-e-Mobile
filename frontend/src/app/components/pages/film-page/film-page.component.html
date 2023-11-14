@@ -31,7 +31,7 @@
               {{ film.duration }} min
             </span>
             <div class="tags">
-                <a *ngFor="let tag of film.tags" routerLink="/tag/{{tag}}">
+                <a *ngFor="let tag of film.genres" routerLink="/tag/{{tag}}">
                     {{ tag }}
                 </a>
             </div>

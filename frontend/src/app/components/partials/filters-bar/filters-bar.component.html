@@ -1,0 +1,51 @@
+<div class="container">
+   <nav>
+       <ul>
+           <li class="menu-container">
+               Genere
+               <div class="menu" *ngIf="genres">
+                   <a *ngFor="let genre of genres" routerLink="/tag/{{genre.name}}">
+                       {{ genre.name }}({{ genre.count }})
+                   </a>
+               </div>
+           </li>
+
+           <li class="menu-container">
+               Prezzo
+               <div class="menu">
+                   <mat-slider class="slider" discrete min="0" max="50" [displayWith]="formatLabel">
+                       <input matSliderThumb>
+                   </mat-slider>
+                     
+                   <input type="checkbox" id="free">
+                   <label for="free">Gratuiti</label>
+               </div>
+           </li>
+
+           <li class="menu-container">
+               Compra/Noleggia
+               <div class="menu">
+                   <input type="checkbox" id="buyOnly">
+                   <label for="buyOnly">Solo acquisto</label>
+                   <input type="checkbox" id="rentOnly">
+                   <label for="rentOnly">Solo noleggio</label>
+                   <input type="checkbox" id="both">
+                   <label for="both">Entrambi</label>
+               </div>
+           </li>
+           <li class="menu-container">
+               DVD/Streaming
+               <div class="menu">
+                   <input type="checkbox" id="streamingOnly">
+                   <label for="streamingOnly">Solo streaming</label>
+                   <input type="checkbox" id="physicalOnly">
+                   <label for="physicalOnly">Solo su supporto fisico</label>
+                   <input type="checkbox" id="both">
+                   <label for="both">Entrambi</label>
+               </div>
+           </li>
+           <li>Resetta filtri</li>
+           <li>Ordina per</li>
+       </ul>
+   </nav>
+</div>

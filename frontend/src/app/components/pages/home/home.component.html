@@ -1,9 +1,8 @@
-<app-tags></app-tags>
 <app-side-bar></app-side-bar>
 <app-not-found [visible]="!films || !films.length"
                 resetLinkText="Reset Search">
 </app-not-found>
-
+<div>
 <ul>
     <li *ngFor="let film of films">
         <a routerLink="/film/{{film.id}}"
@@ -40,4 +39,4 @@
         </a>
     </li>
 </ul>
-
+</div>

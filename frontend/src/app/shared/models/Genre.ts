@@ -1,4 +1,4 @@
-export class Tag {
+export class Genre {
     name!: string;
     count!: number;
 }

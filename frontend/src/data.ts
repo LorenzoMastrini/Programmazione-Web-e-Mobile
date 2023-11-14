@@ -1,5 +1,5 @@
 import {Film} from "./app/shared/models/Film";
-import { Tag } from "./app/shared/models/Tag";
+import { Genre } from "./app/shared/models/Genre";
 
 export const sample_films: Film[] = [
     {
@@ -7,6 +7,7 @@ export const sample_films: Film[] = [
         name: 'Arancia meccanica',
         duration: '136',
         price: 10,
+        price_rent: 5,
         favorite: true,
         description: "fdsgfsgfsgfdsgfds",
         director: "Stanley Kubrick",
@@ -14,13 +15,16 @@ export const sample_films: Film[] = [
         origins: ['Regno Unito'],
         stars: 4.5,
         imageUrl: 'assets/film-1.jpg',
-        tags: ['Crimine', 'Sci-Fi'],
+        genres: ['Crimine', 'Sci-Fi'],
+        purchaseMethod: 'buy or rent',
+        fruitionMethod: 'streaming or physical'
       },
       {
         id:'2',
         name: 'Avengers: Endgame',
         duration: '181',
         price: 20,
+        price_rent: 10,
         favorite: false,
         description: "fdsgfsggfsgfsgfsgfsbtrsshtrwstrfsgfdsgfds",
         director: "Anthony Russo, Joe Russo",
@@ -28,13 +32,16 @@ export const sample_films: Film[] = [
         origins: ['Stati Uniti'],
         stars: 4.0,
         imageUrl: 'assets/film-2.jpg',
-        tags: ['Azione', 'Avventura', 'Drammatico', 'Sci-Fi'],
+        genres: ['Azione', 'Avventura', 'Drammatico', 'Sci-Fi'],
+        purchaseMethod: 'buy only',
+        fruitionMethod: 'streaming only'
       },
       {
         id:'3',
         name: 'Django Unchained',
         duration: '165',
         price: 5,
+        price_rent: 2.5,
         favorite: true,
         description: "gfscdasruhtj",
         director: "Quentin Tarantino",
@@ -42,13 +49,16 @@ export const sample_films: Film[] = [
         origins: ['Stati Uniti'],
         stars: 4.0,
         imageUrl: 'assets/film-3.jpg',
-        tags: ['Drammatico', 'Western'],
+        genres: ['Drammatico', 'Western'],
+        purchaseMethod: 'rent only',
+        fruitionMethod: 'physical only'
       },
       {
         id:'4',
         name: 'Il grande Lebowski',
         duration: '117',
         price: 2,
+        price_rent: 1,
         favorite: false,
         description: "jhkkkli",
         director: "Ethan Coen, Joel Coen",
@@ -56,13 +66,16 @@ export const sample_films: Film[] = [
         origins: ['Stati Uniti'],
         stars: 3.3,
         imageUrl: 'assets/film-4.jpg',
-        tags: ['Commedia', 'Crimine'],
+        genres: ['Commedia', 'Crimine'],
+        purchaseMethod: 'buy or rent',
+        fruitionMethod: 'streaming only'
       },
       {
         id:'5',
         name: 'Il silenzio degli innocenti',
         duration: '118',
         price: 11,
+        price_rent: 5.5,
         favorite: true,
         description: "fdsdsfdsafssssssssssssfsgfsgfdsgfds",
         director: "Jonathan Demme",
@@ -70,13 +83,16 @@ export const sample_films: Film[] = [
         origins: ['Stati Uniti'],
         stars: 3.0,
         imageUrl: 'assets/film-5.jpg',
-        tags: ['Crimine', 'Drammatico', 'Thriller'],
+        genres: ['Crimine', 'Drammatico', 'Thriller'],
+        purchaseMethod: 'buy or rent',
+        fruitionMethod: 'physical only'
       },
       {
         id:'6',
         name: 'Joker',
         duration: '122',
         price: 9,
+        price_rent: 4.5,
         favorite: false,
         description: "ccccccccccccccccccccccccccccccccccc",
         director: "Todd Phillips",
@@ -84,11 +100,13 @@ export const sample_films: Film[] = [
         origins: ['Stati Uniti'],
         stars: 4.0,
         imageUrl: 'assets/film-6.jpg',
-        tags: ['Crimine', 'Drammatico', 'Thriller'],
+        genres: ['Crimine', 'Drammatico', 'Thriller'],
+        purchaseMethod: 'buy only',
+        fruitionMethod: 'streaming only'
       },
 ]
 
-export const sample_tags: Tag[] = [
+export const sample_genres: Genre[] = [
   { name:'Tutti', count: 6 },
   { name:'Crimine', count: 4 },
   { name:'Sci-Fi', count: 2 },

@@ -2,7 +2,8 @@ export class Film {
     id!: string;
     name!: string;
     price!: number;
-    tags?: string[];
+    price_rent!: number;
+    genres?: string[];
     favorite!: boolean;
     stars!: number;
     imageUrl!: string;
@@ -11,4 +12,6 @@ export class Film {
     origins!: string[];
     year!: number;
     duration!: string;
+    purchaseMethod!: string;
+    fruitionMethod!: string;
 }

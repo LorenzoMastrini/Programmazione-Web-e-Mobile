@@ -14,5 +14,6 @@ export class HeaderComponent {
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
     });
+
   }
 }

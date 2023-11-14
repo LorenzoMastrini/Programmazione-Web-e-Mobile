@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Cart } from '../shared/Cart';
+import { Cart } from '../shared/models/Cart';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Film } from '../shared/models/Film';
 import { CartItem } from '../shared/models/CartItem';
@@ -17,7 +17,7 @@ export class CartService {
   addToCart(film:Film): void {
     let cartItem = this.cart.items.find(item => item.film.id === film.id);
   
-    if(cartItem) {
+    if(cartItem) { //se il film era già nel carrello non lo aggiunge
       return;
     }
     
@@ -32,15 +32,15 @@ export class CartService {
     this.setCartToLocalStorage();
   }
 
-  changeQuantity(filmId:string, quantity:number) {
-    let cartItem = this.cart.items.find(itme => itme.film.id === filmId);
+  rent(filmId:string, rent:boolean, days:number) {
+    let cartItem = this.cart.items.find(item => item.film.id === filmId);
 
     if(!cartItem) {
       return;
     }
 
-    cartItem.quantity = quantity;
-    cartItem.price = quantity * cartItem.film.price;
+    cartItem.rent = rent;
+    cartItem.price = days * cartItem.film.price_rent;
   
     this.setCartToLocalStorage();
   }
@@ -59,16 +59,16 @@ export class CartService {
   //usiamo localStorage per impedire che le informazioni vadano perse ad ogni refresh della pagina
   private setCartToLocalStorage(): void {
     this.cart.totalPrice = this.cart.items.reduce((prevSum, currentItem) => prevSum + currentItem.price, 0); //0 è il valore di default di prevSum all'inizio
-    this.cart.totalCount = this.cart.items.reduce((prevSum, currentItem) => prevSum + currentItem.quantity, 0); //0 è il valore di default di prevSum all'inizio
-    const cartJson = JSON.stringify(this.cart);
+    this.cart.totalCount = this.cart.items.reduce((prevSum, currentItem) => prevSum + 1, 0); //0 è il valore di default di prevSum all'inizio
+    const cartJson = JSON.stringify(this.cart); //rappresentazione in stringa json del carrello
 
     localStorage.setItem('Cart', cartJson);
 
-    this.cartSubject.next(this.cart);
+    this.cartSubject.next(this.cart); //notifica tutti quelli che stavano osservando il carrello appena questo cambia
   }
 
   private getCartFromLocalStorage(): Cart {
     const cartJson = localStorage.getItem('Cart');
-    return cartJson ? JSON.parse(cartJson) : new Cart();
+    return cartJson ? JSON.parse(cartJson) : new Cart(); //se non esiste già un carrello, ne ritorna uno nuovo
   }
 }
