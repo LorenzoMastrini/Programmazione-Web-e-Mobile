@@ -1,0 +1,32 @@
+<div>
+    <img [src]="film.imageUrl" [alt]="film.name">
+</div>
+<div>
+    <a routerLink="/film/{{film.id}}">
+        {{ film.name }}
+    </a>
+</div>
+<div>
+    <!--In base al bottone scelto mostriamo informazioni specifiche-->
+    <label class="radio-label" for="buy">Compra</label>
+    <input type="radio" name="buyRent{{film.id}}" value="0" (change)="changeIdentificationType($event)">
+    <label class="radio-label" for="rent">Noleggia</label>
+    <input type="radio" name="buyRent{{film.id}}" value="1" (change)="changeIdentificationType($event)">
+    <div *ngIf="film.rent==1; else registration">
+        <div>positive</div>
+    </div>
+</div>
+
+<ng-template #registration>
+  <div>negative</div>
+</ng-template>
+<!--
+<div>
+    {{ cartItem.price | currency }}
+</div>
+<div>
+    <button class="remove-button" (click)="removeFromCart(cartItem)">
+        Remove
+    </button>
+</div>
+-->

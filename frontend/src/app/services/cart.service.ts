@@ -32,15 +32,14 @@ export class CartService {
     this.setCartToLocalStorage();
   }
 
-  rent(filmId:string, rent:boolean, days:number) {
+  changeQuantity(filmId:string, quantity:number) {
     let cartItem = this.cart.items.find(item => item.film.id === filmId);
 
     if(!cartItem) {
       return;
     }
 
-    cartItem.rent = rent;
-    cartItem.price = days * cartItem.film.price_rent;
+    cartItem.price = quantity * cartItem.film.price_rent;
   
     this.setCartToLocalStorage();
   }

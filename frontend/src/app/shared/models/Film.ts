@@ -12,6 +12,6 @@ export class Film {
     origins!: string[];
     year!: number;
     duration!: string;
-    purchaseMethod!: string;
+    rent!: number; //*ngIf con i booleani non funziona quindi: true=1 e false=0
     fruitionMethod!: string;
 }

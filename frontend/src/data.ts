@@ -16,7 +16,7 @@ export const sample_films: Film[] = [
         stars: 4.5,
         imageUrl: 'assets/film-1.jpg',
         genres: ['Crimine', 'Sci-Fi'],
-        purchaseMethod: 'buy or rent',
+        rent: 1,
         fruitionMethod: 'streaming or physical'
       },
       {
@@ -33,7 +33,7 @@ export const sample_films: Film[] = [
         stars: 4.0,
         imageUrl: 'assets/film-2.jpg',
         genres: ['Azione', 'Avventura', 'Drammatico', 'Sci-Fi'],
-        purchaseMethod: 'buy only',
+        rent: 1,
         fruitionMethod: 'streaming only'
       },
       {
@@ -50,7 +50,7 @@ export const sample_films: Film[] = [
         stars: 4.0,
         imageUrl: 'assets/film-3.jpg',
         genres: ['Drammatico', 'Western'],
-        purchaseMethod: 'rent only',
+        rent: 0,
         fruitionMethod: 'physical only'
       },
       {
@@ -67,7 +67,7 @@ export const sample_films: Film[] = [
         stars: 3.3,
         imageUrl: 'assets/film-4.jpg',
         genres: ['Commedia', 'Crimine'],
-        purchaseMethod: 'buy or rent',
+        rent: 1,
         fruitionMethod: 'streaming only'
       },
       {
@@ -84,7 +84,7 @@ export const sample_films: Film[] = [
         stars: 3.0,
         imageUrl: 'assets/film-5.jpg',
         genres: ['Crimine', 'Drammatico', 'Thriller'],
-        purchaseMethod: 'buy or rent',
+        rent: 1,
         fruitionMethod: 'physical only'
       },
       {
@@ -101,7 +101,7 @@ export const sample_films: Film[] = [
         stars: 4.0,
         imageUrl: 'assets/film-6.jpg',
         genres: ['Crimine', 'Drammatico', 'Thriller'],
-        purchaseMethod: 'buy only',
+        rent: 0,
         fruitionMethod: 'streaming only'
       },
 ]

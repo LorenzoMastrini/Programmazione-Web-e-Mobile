@@ -7,33 +7,24 @@
 <div *ngIf="cart && cart.items.length" class="container">
     <ul>
         <li *ngFor="let cartItem of cart.items">
-            <div>
-                <img [src]="cartItem.film.imageUrl" [alt]="cartItem.film.name">
-            </div>
-            <div>
-                <a routerLink="/film/{{cartItem.film.id}}">
-                    {{ cartItem.film.name }}
-                </a>
-            </div>
-            <!--<div>
-                <select #quantitySelect
-                        [value]="cartItem.rent"
-                        (change)="rent(cartItem, quantitySelect.value, 5)">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                </select>
-            </div>
-            -->
-            <div>
-                {{ cartItem.price | currency }}
-            </div>
-            <div>
-                <button class="remove-button" (click)="removeFromCart(cartItem)">
-                    Remove
-                </button>
+            
+            <app-purchase-menu [film]="cartItem.film"></app-purchase-menu>
+
+            <div *ngIf="cartItem.film.rent" class="rent-menu">
+                <div>
+                    {{ cartItem.film.price_rent | currency }} al giorno
+                </div>
+                <div>
+                    <select #quantitySelect
+                            [value]="cartItem.rent"
+                            (change)="changeQuantity(cartItem, quantitySelect.value)">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                </div>
             </div>
         </li>
     </ul>

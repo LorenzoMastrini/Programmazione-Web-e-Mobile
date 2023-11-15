@@ -22,7 +22,8 @@ export class CartPageComponent {
     this.cartService.removeFromCart(cartItem.film.id);
   }
 
-  rent(cartItem:CartItem, rent:boolean, days:number) {
-    this.cartService.rent(cartItem.film.id, rent, days);
+  changeQuantity(cartItem:CartItem, quantityInString:string) {
+    const quantity = parseInt(quantityInString);
+    this.cartService.changeQuantity(cartItem.film.id, quantity);
   }
 }
