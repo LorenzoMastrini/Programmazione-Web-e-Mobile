@@ -21,9 +21,4 @@ export class CartPageComponent {
   removeFromCart(cartItem:CartItem) {
     this.cartService.removeFromCart(cartItem.film.id);
   }
-
-  changeQuantity(cartItem:CartItem, quantityInString:string) {
-    const quantity = parseInt(quantityInString);
-    this.cartService.changeQuantity(cartItem.film.id, quantity);
-  }
 }

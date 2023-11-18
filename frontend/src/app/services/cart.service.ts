@@ -32,14 +32,19 @@ export class CartService {
     this.setCartToLocalStorage();
   }
 
-  changeQuantity(filmId:string, quantity:number) {
-    let cartItem = this.cart.items.find(item => item.film.id === filmId);
+  //modifica il prezzo del singolo film acquistato in base a se viene comprato o noleggiato (e in questo caso per quanti giorni)
+  changeItemPrice(filmId:string, rentDays:number) {
+    let cartItem = this.cart.items.find(item => item.film.id === filmId); //trova il film in questione dal carrello
 
     if(!cartItem) {
       return;
     }
 
-    cartItem.price = quantity * cartItem.film.price_rent;
+    if(rentDays == 0) { //compra
+      cartItem.price = cartItem.film.price;
+    } else { //noleggia
+      cartItem.price = cartItem.film.price_rent * rentDays; //prezzo del noleggio moltiplicato per i giorni richiesti
+    }
   
     this.setCartToLocalStorage();
   }
@@ -51,7 +56,7 @@ export class CartService {
   }
 
   getCartObservable(): Observable<Cart> {
-    //così ogni cambiamento al carrello avviene solo all'initerno del cartService, mai fuori
+    //così ogni cambiamento al carrello avviene solo all'interno del cartService, mai fuori
     return this.cartSubject.asObservable();
   }
 

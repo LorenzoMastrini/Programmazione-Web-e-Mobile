@@ -8,25 +8,35 @@
 </div>
 <div>
     <!--In base al bottone scelto mostriamo informazioni specifiche-->
-    <label class="radio-label" for="buy">Compra</label>
-    <input type="radio" name="buyRent{{film.id}}" value="0" (change)="changeIdentificationType($event)">
-    <label class="radio-label" for="rent">Noleggia</label>
+    <label class="radio-label">Compra</label>
+    <input type="radio" name="buyRent{{film.id}}" checked value="0" (change)="changeIdentificationType($event)">
+    <label class="radio-label">Noleggia</label>
     <input type="radio" name="buyRent{{film.id}}" value="1" (change)="changeIdentificationType($event)">
-    <div *ngIf="film.rent==1; else registration">
-        <div>positive</div>
+    <!--Noleggia-->
+    <div *ngIf="this.rent==true; else buy">
+        <div>
+            {{ film.price_rent | currency }} al giorno
+        </div>
+        <div>
+            <select #quantitySelect [value]="film.rent" (change)="changeRentDays(film, quantitySelect.value)">
+                <!--Film noleggiabili per una settimana al massimo-->
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+            </select>
+        </div>
+        <div>
+            {{ film.price_rent * getQuantityInt(quantitySelect.value) | currency }}
+        </div>
     </div>
+    <!--Compra-->
+    <ng-template #buy>
+        <div>
+            {{ film.price | currency }}
+        </div>
+    </ng-template>
 </div>
-
-<ng-template #registration>
-  <div>negative</div>
-</ng-template>
-<!--
-<div>
-    {{ cartItem.price | currency }}
-</div>
-<div>
-    <button class="remove-button" (click)="removeFromCart(cartItem)">
-        Remove
-    </button>
-</div>
--->

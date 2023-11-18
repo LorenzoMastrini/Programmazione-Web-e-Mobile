@@ -15,7 +15,6 @@ import { ListPageComponent } from './components/pages/list-page/list-page.compon
 import { DiscoverPageComponent } from './components/pages/discover-page/discover-page.component';
 import { FiltersBarComponent } from './components/partials/filters-bar/filters-bar.component';
 import { MatSliderModule } from '@angular/material/slider';
-import { RentMenuComponent } from './components/partials/rent-menu/rent-menu.component';
 import { PurchaseMenuComponent } from './components/partials/purchase-menu/purchase-menu.component'; 
 
 @NgModule({
@@ -32,7 +31,6 @@ import { PurchaseMenuComponent } from './components/partials/purchase-menu/purch
     ListPageComponent,
     DiscoverPageComponent,
     FiltersBarComponent,
-    RentMenuComponent,
     PurchaseMenuComponent
   ],
   imports: [

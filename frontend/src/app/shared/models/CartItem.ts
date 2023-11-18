@@ -4,6 +4,6 @@ export class CartItem {
     //il modificatore inizializza la proprietà film della classe
     constructor(public film:Film)  { }
 
-    rent: boolean = false;
     price: number = this.film.price;
+    price_rent: number = this.film.price_rent;
 }

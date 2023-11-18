@@ -7,24 +7,12 @@
 <div *ngIf="cart && cart.items.length" class="container">
     <ul>
         <li *ngFor="let cartItem of cart.items">
-            
-            <app-purchase-menu [film]="cartItem.film"></app-purchase-menu>
+            <app-purchase-menu [film]="cartItem.film" [cart]="cart"></app-purchase-menu>
 
-            <div *ngIf="cartItem.film.rent" class="rent-menu">
-                <div>
-                    {{ cartItem.film.price_rent | currency }} al giorno
-                </div>
-                <div>
-                    <select #quantitySelect
-                            [value]="cartItem.rent"
-                            (change)="changeQuantity(cartItem, quantitySelect.value)">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
-                </div>
+            <div>
+                <button class="remove-button" (click)="removeFromCart(cartItem)">
+                    Remove
+                </button>
             </div>
         </li>
     </ul>

@@ -59,7 +59,7 @@ export class FilmService {
       films_list = this.getAll().filter(film => film.rent == 0);
     }
 
-    //filtra in base al metodo fi fruizione (streaming o tramite supporto fisico)
+    //filtra in base al metodo di fruizione (streaming o tramite supporto fisico)
     if(fruitionMethod == 'streaming only') { //solo streaming
       films_list = this.getAll().filter(film => film.fruitionMethod == 'streaming only');
     } else if(purchaseMethod == 'physical only') { //solo fisico
