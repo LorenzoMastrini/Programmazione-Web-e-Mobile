@@ -18,7 +18,7 @@ export class PurchaseMenuComponent {
   cart!: Cart;
 
   rent: boolean = false; //dice se questo film viene comprato o noleggiato, in base al radio button selezionato dall'utente (all'inizio è impostato su "compra" per default)
-
+  
   constructor(activatedRoute:ActivatedRoute, filmService:FilmService, private cartService:CartService) {
     activatedRoute.params.subscribe((params) => {
       if(params.id) {
@@ -46,5 +46,4 @@ export class PurchaseMenuComponent {
   getQuantityInt(quantityInString:string): number {
     return parseInt(quantityInString);
   }
-
 }

@@ -11,7 +11,7 @@ export class NotFoundComponent {
   visible = false;
 
   @Input()
-  notFoundMessage = "Nothing Found!";
+  notFoundMessage = "Spiacenti, non abbimamo trovato niente!";
 
   @Input()
   resetLinkText = "Reset";

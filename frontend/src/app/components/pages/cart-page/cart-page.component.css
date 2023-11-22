@@ -1,16 +1,19 @@
-.container{
+.container {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   margin: 1.5rem;
   margin-top: 0.5rem;
+  flex-direction: column;
+  align-items: center;
 }
 
-ul{
+ul {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  flex:3 0;
-  justify-content: space-evenly;
+  flex: 3 0;
+  justify-content: space-between;
   border: 1px solid #ffbbbb;
   border-radius: 1rem;
   list-style: none;
@@ -18,43 +21,27 @@ ul{
   padding: 0;
 }
 
-ul li{
+ul li {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  border-bottom: 1px solid #e4e4e4;
+  border-bottom: 1px solid #ffbbbb;
 }
 
-ul li:last-child{
+ul li:last-child {
   border: none;
 }
 
-li img{
-  width: 5rem;
-  height: 5rem;
-  border-radius: 100rem;
-  object-fit: cover;
-}
-
-li div{
+li div {
   padding: 1rem;
 }
 
-li div:not(:first-child){
+li div:not(:first-child) {
   flex-basis: 18%;
 }
 
-li select{
-  width: 3rem;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid lightgrey;
-  font-size: 1.1rem;
-  font-weight: 100;
-}
-
-li .remove-button{
+li .remove-button {
   border-radius: 1rem;
   border: none;
   padding: 0.5rem;
@@ -63,13 +50,14 @@ li .remove-button{
   outline: none;
 }
 
-li .remove-button:hover{
+li .remove-button:hover {
   opacity: 1;
   cursor: pointer;
 }
 
-.checkout{
+.checkout {
   display: flex;
+  width: 70%;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
@@ -78,10 +66,10 @@ li .remove-button:hover{
   border: 1px solid #ffbbbb;
   border-radius: 1rem;
   padding: 0.5rem;
-  margin: 0.5rem;
+  margin-top: 1.5rem;
 }
 
-.checkout>div{
+.checkout>div {
   font-size: 1.4rem;
   margin: 1rem;
   flex: 3;
@@ -91,24 +79,25 @@ li .remove-button:hover{
   align-items: flex-start;
 }
 
-.foods-count{
+.films-count {
   margin-bottom: 1.5rem;
 }
 
-.foods-count::before{
-  content:"Count: ";
+.films-count::before {
+  content:"Articoli: ";
   color: grey;
 }
 
-.total-price::before{
-  content: 'Price: ';
+.total-price::before {
+  content: 'Prezzo totale: ';
   color: grey;
 }
 
-.checkout a{
+.checkout a {
   padding: 1rem;
-  color: white;
-  background:#e72929;
+  font-size: 1.4rem;
+  color: black;
+  background:white;
   display: block;
   width: 99%;
   border-radius: 1rem;
@@ -117,7 +106,7 @@ li .remove-button:hover{
   justify-self: center;
 }
 
-.checkout a:hover{
+.checkout a:hover {
   opacity: 1;
   cursor: pointer;
 }

@@ -17,12 +17,13 @@ a:hover {
 .container {
     margin: 0 auto;
     display: flex;
-    justify-content: flex-end; /*sposta gli elementi in fondo all'header, verso destra*/
+    justify-content: space-between; /*il logo rimane a sinistra mentre gli altri elementi in fondo a destra*/
 }
 
-a.logo {
-    font-weight: bold;
-    padding: 1rem;
+.logo {
+    display: flex;
+    padding: 10px 35px;
+    font-size: 25px;
 }
 
 ul {

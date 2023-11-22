@@ -1,42 +1,50 @@
-<div>
-    <img [src]="film.imageUrl" [alt]="film.name">
-</div>
-<div>
-    <a routerLink="/film/{{film.id}}">
-        {{ film.name }}
-    </a>
-</div>
-<div>
-    <!--In base al bottone scelto mostriamo informazioni specifiche-->
-    <label class="radio-label">Compra</label>
-    <input type="radio" name="buyRent{{film.id}}" checked value="0" (change)="changeIdentificationType($event)">
-    <label class="radio-label">Noleggia</label>
-    <input type="radio" name="buyRent{{film.id}}" value="1" (change)="changeIdentificationType($event)">
-    <!--Noleggia-->
-    <div *ngIf="this.rent==true; else buy">
-        <div>
-            {{ film.price_rent | currency }} al giorno
-        </div>
-        <div>
-            <select #quantitySelect [value]="film.rent" (change)="changeRentDays(film, quantitySelect.value)">
-                <!--Film noleggiabili per una settimana al massimo-->
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-            </select>
-        </div>
-        <div>
-            {{ film.price_rent * getQuantityInt(quantitySelect.value) | currency }}
-        </div>
+<div class="container">
+    <div>
+        <img [src]="film.imageUrl" [alt]="film.name">
     </div>
-    <!--Compra-->
-    <ng-template #buy>
-        <div>
-            {{ film.price | currency }}
+    <div>
+        <a routerLink="/film/{{film.id}}">
+            {{ film.name }}
+        </a>
+    </div>
+    <!--In base al bottone scelto mostriamo informazioni specifiche-->
+    <div>
+        <label class="radio-label">
+            <input  class="radio" id="buy" type="radio" name="buyRent{{film.id}}" checked value="0" (change)="changeIdentificationType($event)">
+            Compra
+        </label>
+        <label class="radio-label">
+            <input class="radio" id="rent" type="radio" name="buyRent{{film.id}}" value="1" (change)="changeIdentificationType($event)">
+            Noleggia
+        </label>
+    </div>
+    <div class="purchase-menu">
+        <!--Noleggia-->
+        <div class="rent-menu" *ngIf="this.rent==true; else buy">
+            <div>
+                {{ film.price_rent | currency }} al giorno
+            </div>
+            <div class="select">
+                <select #quantitySelect (change)="changeRentDays(film, quantitySelect.value)">
+                    <!--Film noleggiabili per una settimana al massimo-->
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                </select>
+            </div>
+            <div class="price">
+                {{ film.price_rent * getQuantityInt(quantitySelect.value) | currency }}
+            </div>
         </div>
-    </ng-template>
+        <!--Compra-->
+        <ng-template #buy class="buy">
+            <div class="price">
+                {{ film.price | currency }}
+            </div>
+        </ng-template>
+    </div>
 </div>
