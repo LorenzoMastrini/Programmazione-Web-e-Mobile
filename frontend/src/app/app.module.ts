@@ -16,7 +16,7 @@ import { DiscoverPageComponent } from './components/pages/discover-page/discover
 import { FiltersBarComponent } from './components/partials/filters-bar/filters-bar.component';
 import { MatSliderModule } from '@angular/material/slider';
 import { PurchaseMenuComponent } from './components/partials/purchase-menu/purchase-menu.component';
-import { LoginPageComponent } from './componenents/pages/login-page/login-page.component'; 
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 
 @NgModule({
   declarations: [
