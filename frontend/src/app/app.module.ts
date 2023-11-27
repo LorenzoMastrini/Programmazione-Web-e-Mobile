@@ -17,6 +17,7 @@ import { FiltersBarComponent } from './components/partials/filters-bar/filters-b
 import { MatSliderModule } from '@angular/material/slider';
 import { PurchaseMenuComponent } from './components/partials/purchase-menu/purchase-menu.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { LoginPageComponent } from './components/pages/login-page/login-page.com
     AppRoutingModule,
     MatSliderModule,
     //RatingModule
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
