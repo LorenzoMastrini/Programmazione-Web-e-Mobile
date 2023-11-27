@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
 import { FilmService } from 'src/app/services/film.service';
 import { Film } from 'src/app/shared/models/Film';
 
@@ -13,13 +14,22 @@ export class HomeComponent {
   films: Film[] = []; //mantiene i dati che otteniamo da FilmService
 
   constructor(private filmService: FilmService, activatedRoute: ActivatedRoute) {
+    let filmsObservable: Observable<Film[]>; //per ottere gli observable di tutti i metodi chiamati in seguito, poi facendo subscribe per ottere i film
+    //altrimenti dovrei fare subscribe per ognuno dei metodi chiamati separatamente
+    
     //ogni volta che 'params' cambia, chiama la funzione dentro 'subscribe()'
     activatedRoute.params.subscribe((params) => {
       if(params.searchTerm) {
-        this.films = this.filmService.getAllFilmsBySearchTerm(params.searchTerm);
+        filmsObservable = this.filmService.getAllFilmsBySearchTerm(params.searchTerm);
+      } else if(params.genre) {
+        filmsObservable = this.filmService.getAllFilmsByGenre(params.genre);
       } else {
-        this.films = filmService.getAll(); //se non è stato cercato nulla mostra tutto per default
+        filmsObservable = filmService.getAll(); //se non è stato cercato nulla mostra tutto per default
       }
+
+      filmsObservable.subscribe((serverFilms) => {
+        this.films = serverFilms;
+      });
     });
   }
 }

@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Film } from '../shared/models/Film';
 import { sample_films, sample_genres } from 'src/data';
 import { Genre } from '../shared/models/Genre';
+import { HttpClient } from '@angular/common/http';
+import { FILMS_BY_GENRE_URL, FILMS_BY_ID_URL, FILMS_BY_SEARCH_URL, FILMS_GENRES_URL, FILMS_URL } from '../shared/models/constants/urls';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,33 +12,32 @@ import { Genre } from '../shared/models/Genre';
 
 export class FilmService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   //in futuro si connetterà al backend per scaricare i film disponibili
-  getAll(): Film[] {
-    return sample_films;
+  getAll(): Observable<Film[]> {
+    return this.http.get<Film[]>(FILMS_URL);
   }
 
   getAllFilmsBySearchTerm(searchTerm:string) {
-    return this.getAll().filter(film => film.name.toLowerCase().includes(searchTerm.toLowerCase()));
+    return this.http.get<Film[]>(FILMS_BY_SEARCH_URL + searchTerm);
   }
 
-  getAllGenres(): Genre[] {
-    return sample_genres;
+  getAllGenres(): Observable<Genre[]> {
+    return this.http.get<Genre[]>(FILMS_GENRES_URL);
   }
 
-  getAllFilmsByGenre(genre: string): Film[] {
-    if(genre == "Tutti") {
-      return this.getAll();
-    } else {
-      return this.getAll().filter(film => film.genres?.includes(genre));
-    }
+  getAllFilmsByGenre(genre: string): Observable<Film[]> {
+    return genre === "Tutti" ?
+      this.getAll() :
+      this.http.get<Film[]>(FILMS_BY_GENRE_URL + genre);
   }
 
-  getFilmById(filmId: string): Film {
-    return this.getAll().find(film => film.id == filmId) ?? new Film(); //se la prima parte torna undefined, il metodo ritorna un nuovo film
+  getFilmById(filmId: string): Observable<Film> {
+    return this.http.get<Film>(FILMS_BY_ID_URL + filmId);
   }
-
+  
+/*
   getFilmsByFilters(genre:string, price:number,
                     purchaseMethod:string, fruitionMethod:string): Film[] {
     let films_list: Film[] = []; //lista dei film che rispettano tutti i filtri applicati
@@ -68,4 +70,5 @@ export class FilmService {
 
     return films_list;
   }
+*/
 }

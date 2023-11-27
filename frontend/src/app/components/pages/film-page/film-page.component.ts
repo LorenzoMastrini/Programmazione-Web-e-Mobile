@@ -16,7 +16,9 @@ export class FilmPageComponent {
   constructor(activatedRoute:ActivatedRoute, filmService:FilmService, private cartService:CartService, private router:Router) {
     activatedRoute.params.subscribe((params) => {
       if(params.id) {
-        this.film = filmService.getFilmById(params.id);
+        filmService.getFilmById(params.id).subscribe(serverFilm => {
+          this.film = serverFilm;
+        });
       }
     });
   }

@@ -22,7 +22,9 @@ export class PurchaseMenuComponent {
   constructor(activatedRoute:ActivatedRoute, filmService:FilmService, private cartService:CartService) {
     activatedRoute.params.subscribe((params) => {
       if(params.id) {
-        this.film = filmService.getFilmById(params.id);
+        filmService.getFilmById(params.id).subscribe((serverFilm) => {
+          this.film = serverFilm;
+        });
       }
     });
   }

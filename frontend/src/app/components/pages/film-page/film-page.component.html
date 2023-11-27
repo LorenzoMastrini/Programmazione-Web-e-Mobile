@@ -1,10 +1,10 @@
 <app-side-bar></app-side-bar>
-<app-not-found [visible]="!film.id"
+<app-not-found [visible]="!film"
                 notFoundMessage="Film non trovato!"
                 resetLinkText="Torna alla Homepage">
 </app-not-found>
 
-<div *ngIf="film.id" class="container">
+<div *ngIf="film" class="container">
     <img [src]="film.imageUrl" [alt]="film.name"/>
 
     <div class="info">

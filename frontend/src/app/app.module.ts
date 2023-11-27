@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/partials/header/header.component';
@@ -15,7 +15,8 @@ import { ListPageComponent } from './components/pages/list-page/list-page.compon
 import { DiscoverPageComponent } from './components/pages/discover-page/discover-page.component';
 import { FiltersBarComponent } from './components/partials/filters-bar/filters-bar.component';
 import { MatSliderModule } from '@angular/material/slider';
-import { PurchaseMenuComponent } from './components/partials/purchase-menu/purchase-menu.component'; 
+import { PurchaseMenuComponent } from './components/partials/purchase-menu/purchase-menu.component';
+import { LoginPageComponent } from './componenents/pages/login-page/login-page.component'; 
 
 @NgModule({
   declarations: [
@@ -31,13 +32,15 @@ import { PurchaseMenuComponent } from './components/partials/purchase-menu/purch
     ListPageComponent,
     DiscoverPageComponent,
     FiltersBarComponent,
-    PurchaseMenuComponent
+    PurchaseMenuComponent,
+    LoginPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    MatSliderModule
+    MatSliderModule,
     //RatingModule
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

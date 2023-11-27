@@ -13,7 +13,9 @@ export class FiltersBarComponent {
   gridsize: number = 30;
 
   constructor(filmService:FilmService) {
-    this.genres = filmService.getAllGenres();
+    filmService.getAllGenres().subscribe(serverGenres => {
+      this.genres = serverGenres;
+    });
   }
 /*
   prova(event:any) {
