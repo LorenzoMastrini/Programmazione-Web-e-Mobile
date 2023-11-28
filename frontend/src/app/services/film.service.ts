@@ -3,7 +3,7 @@ import { Film } from '../shared/models/Film';
 import { sample_films, sample_genres } from 'src/data';
 import { Genre } from '../shared/models/Genre';
 import { HttpClient } from '@angular/common/http';
-import { FILMS_BY_GENRE_URL, FILMS_BY_ID_URL, FILMS_BY_SEARCH_URL, FILMS_GENRES_URL, FILMS_URL } from '../shared/models/constants/urls';
+import { FILMS_BY_GENRE_URL, FILMS_BY_ID_URL, FILMS_BY_SEARCH_URL, FILMS_GENRES_URL, FILMS_URL } from '../shared/constants/urls';
 import { Observable } from 'rxjs';
 
 @Injectable({

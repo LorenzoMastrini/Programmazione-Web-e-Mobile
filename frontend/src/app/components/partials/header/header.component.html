@@ -8,12 +8,15 @@
                         <app-search></app-search>
                     </a>
                 </li>
-                <li class="menu-container">
-                    <a routerLink="/dashboard">John</a>
+                <li *ngIf="!isAuth">
+                    <a routerLink="/login">Login</a>
+                </li>
+                <li class="menu-container" *ngIf="isAuth">
+                    <a routerLink="/dashboard">{{ user.name }}</a>
                     <div class="menu">
                         <a routerLink="/profile">Profilo</a>
                         <a routerLink="/orders">Ordini</a>
-                        <a>Logout</a>
+                        <a (click)="logout()">Logout</a>
                     </div>
                 </li>
                 <li>
