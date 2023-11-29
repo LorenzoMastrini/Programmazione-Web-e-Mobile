@@ -1,9 +1,10 @@
+//opzioni di configurazione del typescript
 {
     "compilerOptions": {
         "module": "CommonJS",
         "moduleResolution": "node",
         "strict": true,
-        "outDir": "./build", //built javascript sarà memorizzato qua (backend/built)
+        "outDir": "./built", //build del file javascript sarà memorizzato qua (backend/built)
         "experimentalDecorators": true,
         "emitDecoratorMetadata": true,
         "esModuleInterop": true

@@ -10,7 +10,7 @@ export class InputContainerComponent {
   @Input()
   label!: string;
   @Input()
-  bgColor!: 'white';
+  bgColor!: 'black';
 
   constructor() { }
 }

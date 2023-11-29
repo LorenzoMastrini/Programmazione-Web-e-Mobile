@@ -10,18 +10,12 @@ import { Genre } from 'src/app/shared/models/Genre';
 
 export class FiltersBarComponent {
   genres?: Genre[];
-  gridsize: number = 30;
 
   constructor(filmService:FilmService) {
     filmService.getAllGenres().subscribe(serverGenres => {
       this.genres = serverGenres;
     });
   }
-/*
-  prova(event:any) {
-    this.gridsize = event.value;
-    console.log(this.gridsize);
-  }*/
 
   formatLabel(value: number): string {
     if (value >= 1000) {

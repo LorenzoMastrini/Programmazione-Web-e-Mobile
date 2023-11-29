@@ -1,5 +1,8 @@
 .error-list {
-    color: red;
     text-align: center;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+}
+
+.label {
+    color: rgb(200, 0, 0);
 }

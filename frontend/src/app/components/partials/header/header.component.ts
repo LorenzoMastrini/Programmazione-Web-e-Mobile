@@ -18,6 +18,7 @@ export class HeaderComponent {
       this.cartQuantity = newCart.totalCount;
     });
 
+    //ogni volta che viene impostato l'utente nello UserService viene modifcato anche quello nell'header
     userService.userObservable.subscribe((newUser) => {
       this.user = newUser;
     })

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; //per la connessione al backend
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/partials/header/header.component';
@@ -53,14 +53,15 @@ import { DefaultButtonComponent } from './components/partials/default-button/def
     MatSliderModule,
     //RatingModule
     HttpClientModule,
-    ReactiveFormsModule,
+    ReactiveFormsModule, //per usare loginForm dentro l'html
     ToastrModule.forRoot({ //configurazione parametri globali per questo progetto
-      timeOut:3000, //3 secondi
-      positionClass:'toast-bottom-right',
-      newestOnTop:false
+      timeOut:3000, //i messaggi durano 3 secondi
+      positionClass:'toast-bottom-right', //i messaggi compaiono in basso a destra
+      newestOnTop:false //i nuovi messaggi compaiono dal basso e spingono verso l'alto i precedenti
     })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

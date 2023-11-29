@@ -8,10 +8,14 @@
                         <app-search></app-search>
                     </a>
                 </li>
+
+                <!--mostro il pulsante login solo se l'utente non è autenticato-->
                 <li *ngIf="!isAuth">
                     <a routerLink="/login">Login</a>
                 </li>
-                <li class="menu-container" *ngIf="isAuth">
+
+                <!--mostro il menu utente solo se l'utente è autenticato-->
+                <li *ngIf="isAuth" class="menu-container">
                     <a routerLink="/dashboard">{{ user.name }}</a>
                     <div class="menu">
                         <a routerLink="/profile">Profilo</a>
@@ -19,6 +23,7 @@
                         <a (click)="logout()">Logout</a>
                     </div>
                 </li>
+                
                 <li>
                     <a routerLink="/cart-page">
                         Carrello <span *ngIf="cartQuantity">{{ cartQuantity }}</span>

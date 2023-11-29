@@ -12,9 +12,9 @@ export class DefaultButtonComponent {
   @Input()
   text: string = 'Submit';
   @Input()
-  bgColor = '#e72929'
+  bgColor = 'white'
   @Input()
-  color = 'white';
+  color = 'black';
   @Input()
   fontSizeRem = 1.3;
   @Input()

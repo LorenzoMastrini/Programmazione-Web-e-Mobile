@@ -1,3 +1,4 @@
+//dati inizialmente presenti nella cartella frontend
 export const sample_films: any[] = [
     {
         id:'1',

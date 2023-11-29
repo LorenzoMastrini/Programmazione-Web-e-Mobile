@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Film } from '../shared/models/Film';
-import { sample_films, sample_genres } from 'src/data';
 import { Genre } from '../shared/models/Genre';
 import { HttpClient } from '@angular/common/http';
 import { FILMS_BY_GENRE_URL, FILMS_BY_ID_URL, FILMS_BY_SEARCH_URL, FILMS_GENRES_URL, FILMS_URL } from '../shared/constants/urls';
@@ -11,10 +10,10 @@ import { Observable } from 'rxjs';
 })
 
 export class FilmService {
-
   constructor(private http:HttpClient) { }
 
-  //in futuro si connetterà al backend per scaricare i film disponibili
+  //l'HttpClient non invierà i dati raw di tipo 'Film' ma un Observable su cui devo fare subscribe;
+  //dopo che la connessione al backend sarà finita, questo fornirà i dati o tornerà un errore
   getAll(): Observable<Film[]> {
     return this.http.get<Film[]>(FILMS_URL);
   }
