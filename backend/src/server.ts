@@ -4,19 +4,12 @@ import filmRouter from './routers/film.router';
 import userRouter from "./routers/user.router";
 
 
-//const filmRoutes = require('./film/routes');
-
-
 const app = express(); //ora l'app è un'applicazione express, per definire le APIs
 app.use(express.json()); //express non usa il json per default, devo specificarlo manualmente
 app.use(cors({
     credentials:true,
     origin:["http://localhost:4200"] //questo è il client da dove arrivano le richieste
 }));
-
-
-//app.use('/api/v1/films', filmRoutes);
-
 
 app.use("/api/films", filmRouter)
 app.use("/api/users", userRouter);

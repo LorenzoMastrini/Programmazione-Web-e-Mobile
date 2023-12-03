@@ -3,7 +3,7 @@ import { Film } from '../shared/models/Film';
 import { Genre } from '../shared/models/Genre';
 import { HttpClient } from '@angular/common/http';
 import { FILMS_BY_GENRE_URL, FILMS_BY_ID_URL, FILMS_BY_SEARCH_URL, FILMS_GENRES_URL, FILMS_URL } from '../shared/constants/urls';
-import { Observable } from 'rxjs';
+import { Observable, catchError, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +33,24 @@ export class FilmService {
   }
 
   getFilmById(filmId: string): Observable<Film> {
-    return this.http.get<Film>(FILMS_BY_ID_URL + filmId);
+    return this.http.get<Film>(FILMS_BY_ID_URL + filmId).pipe(
+        tap(_ => console.log('fetched film id = ' + filmId)),
+        catchError(this.handleError<Film>('getFilmById id = ' + filmId))
+      );
+  }
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+  
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+  
+      // TODO: better job of transforming error for user consumption
+      console.log(`${operation} failed: ${error.message}`);
+  
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
   }
   
 /*
