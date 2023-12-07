@@ -1,5 +1,4 @@
 import { Router } from 'express';
-import { sample_films, sample_genres } from '../data';
 import { pool } from "../db";
 
 const router = Router();
@@ -24,14 +23,19 @@ router.get("/search/:searchTerm", (req, res) => {
 
 //torna tutti i generi
 router.get("/genres", (req, res) => {
-    res.send(sample_genres);
+    pool.query(queries.getAllGenresQuery, (error:any, results:any) => {
+        if(error) throw error;
+        res.status(200).json(results.rows);
+    });
 });
 
 //torna i film in base al genere
 router.get("/genre/:genreName", (req, res) => {
     const genreName = req.params.genreName;
-    const films = sample_films.filter(film => film.genres?.includes(genreName));
-    res.send(films);
+    pool.query(queries.getAllFilmsByGenreQuery, [genreName], (error:any, results:any) => {
+        if(error) throw error;
+        res.status(200).json(results.rows);
+    });
 });
 
 //torna i film in base all'id, per visualizzare la pagina del singolo film

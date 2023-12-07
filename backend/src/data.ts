@@ -1,4 +1,5 @@
 //dati inizialmente presenti nella cartella frontend
+/*
 export const sample_films: any[] = [
     {
         id:'1',
@@ -131,3 +132,4 @@ export const sample_users: any[] = [
     isAdmin: false
   }
 ]
+*/

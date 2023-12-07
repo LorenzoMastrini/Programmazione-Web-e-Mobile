@@ -6,6 +6,7 @@ import { CartPageComponent } from './components/pages/cart-page/cart-page.compon
 import { ListPageComponent } from './components/pages/list-page/list-page.component';
 import { DiscoverPageComponent } from './components/pages/discover-page/discover-page.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 
 const routes: Routes = [
   { path:"", component: HomeComponent }, //homepage dell'app
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path:"list-page", component:ListPageComponent},
   { path:"discover-page", component:DiscoverPageComponent},
   { path:"tag/:tag", component: DiscoverPageComponent },
-  { path:"login", component: LoginPageComponent }
+  { path:"login", component: LoginPageComponent },
+  { path:"register", component: RegisterPageComponent }
 ];
 
 @NgModule({

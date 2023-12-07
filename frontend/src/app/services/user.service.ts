@@ -3,8 +3,9 @@ import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { User } from '../shared/models/User';
 import { IUserLogin } from '../shared/interfaces/IUserLogin';
 import { HttpClient } from '@angular/common/http';
-import { USER_LOGIN_URL } from '../shared/constants/urls';
+import { USER_LOGIN_URL, USER_REGISTER_URL } from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
+import { IUserRegister } from '../shared/interfaces/IUserRegister';
 
 
 const USER_KEY = 'User'; //chiave per modificare l'utente salvato nel localStorage
@@ -24,7 +25,7 @@ export class UserService {
 
   login(userLogin:IUserLogin): Observable<User> {
     //non posso usare subscribe perché il tipo di ritorno sarebbe Subscription, non Observable
-    //se non voglio cambiare ilvalore del risulato posso usare pipe(tap())
+    //se non voglio cambiare il valore del risulato posso usare pipe(tap())
     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(tap({
         next: (user) => { //risultato positivo
           this.setUserToLocalStorage(user); //salva l'utente dopo il login avvenuto con successo
@@ -36,6 +37,24 @@ export class UserService {
         },
         error: (errorResponse) => { //errore
           this.toastrService.error(errorResponse.error, 'Login fallito');
+        }
+      })
+    );
+  }
+
+  register(userRegister: IUserRegister): Observable<User> {
+    //stesso procedimento della funzione login()
+    return this.http.post<User>(USER_REGISTER_URL, userRegister).pipe(tap({
+        next: (user) => { //risultato positivo
+          this.setUserToLocalStorage(user); //salva l'utente dopo la registrazione
+          this.userSubject.next(user); //notifica tutti gli Observable
+          this.toastrService.success(
+            `Benvenuto/a in Kinetoscope ${user.name}!`,
+            'Registrazione completata'
+          )
+        },
+        error: (errorResponse) => { //errore
+          this.toastrService.error(errorResponse.error, 'Registrazione fallita');
         }
       })
     );
