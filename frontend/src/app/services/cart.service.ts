@@ -22,7 +22,7 @@ export class CartService {
     }
     
     this.cart.items.push(new CartItem(film));
-
+    console.log(film);
     this.setCartToLocalStorage();
   }
 
@@ -60,9 +60,15 @@ export class CartService {
     return this.cartSubject.asObservable();
   }
 
+  //non c'è bisogno di lavorare con gli observable se voglio solo l'ultimo valore
+  getCart(): Cart {
+    return this.cartSubject.value; //ultimo valore del cartSubject
+  }
+
   //usiamo localStorage per impedire che le informazioni vadano perse ad ogni refresh della pagina
   private setCartToLocalStorage(): void {
-    this.cart.totalPrice = this.cart.items.reduce((prevSum, currentItem) => prevSum + currentItem.price, 0); //0 è il valore di default di prevSum all'inizio
+    this.cart.totalPrice = this.cart.items.reduce((prevSum, currentItem) => {return prevSum + currentItem.price}, 0); //0 è il valore di default di prevSum all'inizio
+    console.log(this.cart.totalPrice);
     this.cart.totalCount = this.cart.items.reduce((prevSum, currentItem) => prevSum + 1, 0); //0 è il valore di default di prevSum all'inizio
     const cartJson = JSON.stringify(this.cart); //rappresentazione in stringa json del carrello
 

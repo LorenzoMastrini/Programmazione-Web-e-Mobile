@@ -16,7 +16,6 @@ export class PurchaseMenuComponent {
   film!: Film;
   @Input() //relazione padre-figlio tra componenti, per passare la variabile film dall'html
   cart!: Cart;
-
   rent: boolean = false; //dice se questo film viene comprato o noleggiato, in base al radio button selezionato dall'utente (all'inizio è impostato su "compra" per default)
   
   constructor(activatedRoute:ActivatedRoute, filmService:FilmService, private cartService:CartService) {
