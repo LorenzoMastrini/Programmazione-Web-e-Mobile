@@ -8,6 +8,7 @@ import { DiscoverPageComponent } from './components/pages/discover-page/discover
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
+import { ConfirmPageComponent } from './components/pages/confirm-page/confirm-page.component';
 
 const routes: Routes = [
   { path:"", component: HomeComponent }, //homepage dell'app
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path:"tag/:tag", component: DiscoverPageComponent },
   { path:"login", component: LoginPageComponent },
   { path:"register", component: RegisterPageComponent },
-  { path:"checkout", component: CheckoutPageComponent }
+  { path:"checkout", component: CheckoutPageComponent },
+  { path:"confirm", component: ConfirmPageComponent }
 ];
 
 @NgModule({

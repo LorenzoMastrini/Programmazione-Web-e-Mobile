@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/services/cart.service';
+import { OrderService } from 'src/app/services/order.service';
 import { UserService } from 'src/app/services/user.service';
 import { Order } from 'src/app/shared/models/Order';
 
@@ -18,9 +20,12 @@ export class CheckoutPageComponent implements OnInit {
   constructor(cartService:CartService,
               private formBuilder:FormBuilder,
               private userService:UserService, //per aggiungere nome e indirizzo dell'utente al form
-              private toastrService:ToastrService) {
+              private toastrService:ToastrService,
+              private orderService:OrderService,
+              private router:Router) {
     const cart = cartService.getCart(); //ottengo l'ultimo valore dell'observable
-    this.order.items = cart.items;
+    this.order.orderItems = cart.items;
+
     this.order.totalPrice = cart.totalPrice;
   }
 
@@ -48,7 +53,16 @@ export class CheckoutPageComponent implements OnInit {
     //form valido, quindi imposto i valori dell'oggetto ordine
     this.order.name = this.fc.name.value;
     this.order.address = this.fc.address.value;
+    this.order.userId = parseInt(this.userService.currentUser.id);
 
-    console.log(this.order); //provvisorio
+    this.orderService.create(this.order).subscribe({
+      next: () => {
+        console.log("funge");
+        this.router.navigateByUrl('/confirm');
+      },
+      error:(errorResponse) => {
+        this.toastrService.error(errorResponse.error, 'Carrello');
+      }
+    });
   }
 }

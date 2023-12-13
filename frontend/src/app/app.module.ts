@@ -29,6 +29,7 @@ import { LoadingComponent } from './components/partials/loading/loading.componen
 import { LoadingInterceptor } from './shared/interceptor/loading.interceptor';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
+import { ConfirmPageComponent } from './components/pages/confirm-page/confirm-page.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { OrderItemsListComponent } from './components/partials/order-items-list/
     RegisterPageComponent,
     LoadingComponent,
     CheckoutPageComponent,
-    OrderItemsListComponent
+    OrderItemsListComponent,
+    ConfirmPageComponent
   ],
   imports: [
     BrowserModule,

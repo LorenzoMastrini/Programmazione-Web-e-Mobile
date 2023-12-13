@@ -4,7 +4,7 @@
             <h3>Prodotti:</h3>
         </td>
     </tr>
-    <tr *ngFor="let item of order.items">
+    <tr *ngFor="let item of order.orderItems">
         <td>
             <a routerLink="/film/{{item.film.id}}">
                 <img [src]="item.film.imageUrl"/>
@@ -13,14 +13,6 @@
         <td>
             {{ item.film.name }}
         </td>
-        <td>
-            {{ item.film.price | currency }}
-        </td>
-        <!--
-        <td>
-            {{ item.film.quantity }}
-        </td>
-        -->
         <td>
             {{ item.price | currency }}
         </td>

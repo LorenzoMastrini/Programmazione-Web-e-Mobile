@@ -22,7 +22,6 @@ export class CartService {
     }
     
     this.cart.items.push(new CartItem(film));
-    console.log(film);
     this.setCartToLocalStorage();
   }
 

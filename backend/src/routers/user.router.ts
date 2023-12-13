@@ -6,7 +6,7 @@ import bcrypt from "bcryptjs"; //per cifrare la password e salvarla hashata nel 
 import { User } from "../models/user.model";
 
 const router = Router();
-const queries = require('../film/queries');
+const queries = require('../queries');
 
 //tramite post l'utente invia email e password nel corpo della richiesta per fare il login
 router.post("/login", (req, res) => {
@@ -37,7 +37,7 @@ router.post("/register", (req, res) => {
 
         //fase di registrazione del nuovo utente (arrivo qua solo se la mail non esiste già nel db)
         const encryptedPassword = await bcrypt.hash(password, 10); //critta la password (il secondo parametro è il salt)
-        const newUser:User = {
+        const newUser: User = {
             id: '', //inizializzato dal database in automatico
             name, //se nome della variabile e del campo dell'oggetto sono uguali basta scrivere così
             email,

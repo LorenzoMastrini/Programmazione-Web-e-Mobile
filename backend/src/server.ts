@@ -2,6 +2,7 @@ import express from "express"; //per creare la web application
 import cors from "cors"; //solo per lo sviluppo, perché abbiamo server e client entrambi sul localhost con porte diverse
 import filmRouter from './routers/film.router';
 import userRouter from "./routers/user.router";
+import orderRouter from "./routers/order.router";
 
 
 const app = express(); //ora l'app è un'applicazione express, per definire le APIs
@@ -13,6 +14,8 @@ app.use(cors({
 
 app.use("/api/films", filmRouter)
 app.use("/api/users", userRouter);
+app.use("/api/orders", orderRouter);
+
 
 const port = 5000; //porta su cui il server ascolta
 app.listen(port, () => { //funzione chiamata quando il processo di ascolto termina

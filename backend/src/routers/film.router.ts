@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { pool } from "../db";
 
 const router = Router();
-const queries = require('../film/queries');
+const queries = require('../queries');
 
 //torna tutti i film
 router.get("/", (req, res) => {
