@@ -10,6 +10,6 @@ export const FILMS_BY_ID_URL = FILMS_URL + '/'; //url per ottenere i film in bas
 export const USER_LOGIN_URL = BASE_URL + '/api/users/login'; //url per la pagina di login
 export const USER_REGISTER_URL = BASE_URL + '/api/users/register'; //url per la pagina di registrazione di un nuovo utente
 
-export const ORDERS_URL = BASE_URL + '/api/orders'; //url per visualizzare gli ordini
+export const ORDERS_URL = BASE_URL + '/api/orders/'; //url per visualizzare gli ordini
 export const ORDER_CREATE_URL = ORDERS_URL + '/create'; //url per la creazione di un nuovo ordine
 export const ORDER_NEW_FOR_CURRENT_USER_URL = ORDERS_URL + '/newOrderForCurrentUser'; //url per visualizzare la conferma del nuovo ordine effettuato

@@ -32,17 +32,15 @@ export class CartService {
   }
 
   //modifica il prezzo del singolo film acquistato in base a se viene comprato o noleggiato (e in questo caso per quanti giorni)
-  changeItemPrice(filmId:string, rentDays:number) {
-    let cartItem = this.cart.items.find(item => item.film.id === filmId); //trova il film in questione dal carrello
-
-    if(!cartItem) {
+  changeItemPrice(cartItem:CartItem) {
+    if(!this.cart.items.find(item => item === cartItem)) {
       return;
     }
 
-    if(rentDays == 0) { //compra
-      cartItem.price = cartItem.film.price;
+    if(cartItem.purchaseMethod === 'Acquisto') {
+      this.cart.items.find(item => item === cartItem)!.totalArticlePrice = cartItem.film.price;
     } else { //noleggia
-      cartItem.price = cartItem.film.price_rent * rentDays; //prezzo del noleggio moltiplicato per i giorni richiesti
+      this.cart.items.find(item => item === cartItem)!.totalArticlePrice = cartItem.film.price_rent * cartItem.rentDays; //prezzo del noleggio moltiplicato per i giorni richiesti
     }
   
     this.setCartToLocalStorage();
@@ -66,11 +64,10 @@ export class CartService {
 
   //usiamo localStorage per impedire che le informazioni vadano perse ad ogni refresh della pagina
   private setCartToLocalStorage(): void {
-    this.cart.totalPrice = this.cart.items.reduce((prevSum, currentItem) => {return prevSum + currentItem.price}, 0); //0 è il valore di default di prevSum all'inizio
-    console.log(this.cart.totalPrice);
+    this.cart.totalPrice = this.cart.items.reduce((prevSum, currentItem) => {return prevSum + currentItem.totalArticlePrice}, 0); //0 è il valore di default di prevSum all'inizio
     this.cart.totalCount = this.cart.items.reduce((prevSum, currentItem) => prevSum + 1, 0); //0 è il valore di default di prevSum all'inizio
+    
     const cartJson = JSON.stringify(this.cart); //rappresentazione in stringa json del carrello
-
     localStorage.setItem('Cart', cartJson);
 
     this.cartSubject.next(this.cart); //notifica tutti quelli che stavano osservando il carrello appena questo cambia

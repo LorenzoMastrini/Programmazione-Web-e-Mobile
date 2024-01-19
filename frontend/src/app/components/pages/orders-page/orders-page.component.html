@@ -1,0 +1,39 @@
+<app-not-found [visible]="!orders"
+                notFoundMessage="Non hai ancora effettuato ordini!"
+                resetLinkText="Torna alla Homepage">
+</app-not-found>
+&nbsp;
+<div *ngIf="orders" class="container">
+    <h3>I tuoi ordini:</h3>
+    <table class="orders-list" *ngFor="let order of orders">
+        <tr>
+            <td>
+                <h4>Film</h4>
+            </td>
+            <td>
+                <h4>Acquisto/Noleggio</h4>
+            </td>
+            <td>
+                <h4>Giorni noleggio</h4>
+            </td>
+            <td>
+                <h4>Prezzo dell'articolo</h4>
+            </td>
+        </tr>
+
+        <tr *ngFor="let item of order.orderItems">
+            <td>
+                {{ item.film.name }}
+            </td>
+            <td>
+                {{ item.purchaseMethod }}
+            </td>
+            <td>
+                {{ item.rentDays }} giorni
+            </td>
+
+            <td>
+                {{ item.totalArticlePrice | currency }}
+            </td>
+        </tr>
+    </table>

@@ -16,7 +16,7 @@ router.post("/login", (req, res) => {
     pool.query(queries.loginQuery, [email, password], (error:any, results:any) => {
         const user = results.rows[0]; //rows[0] perché altrimenti torna un array con solo user all'interno (l'email è unica nel db, quindi è inutile tornare un array)
         if(user) { //login andato a buon fine
-            return res.status(200).send(generateTokenResponse(user));
+            return res.status(200).send(user);
         } else {
             res.status(HTTP_BAD_REQUEST).send("Email o password non validi");
         }
@@ -43,7 +43,8 @@ router.post("/register", (req, res) => {
             email,
             password: encryptedPassword,
             address,
-            isAdmin: false
+            isAdmin: false,
+            token: generateTokenResponse(email)
         }
         
         pool.query(queries.createUserQuery, [newUser.name, newUser.email, newUser.password, newUser.address, newUser.isAdmin], (error:any, results:any) => {
@@ -58,7 +59,7 @@ const generateTokenResponse = (user:any) => {
     //il primo parametro è il payload, cioè ciò che voglio codificare
     //il secondo è una chiave privata (per semplicità è la stringa "SomeRandomText")
     //il terzo sono opzioni
-    const token = jwt.sign({email: user.email, isAdmin: user.isAdmin},
+    const token = jwt.sign({email: user.email},
         "SomeRandomText",
         {expiresIn: "30d"} //il token dura 30 giorni
     );

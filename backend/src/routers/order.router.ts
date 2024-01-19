@@ -1,8 +1,9 @@
 import { Router } from 'express';
 import { pool } from "../db";
 import { HTTP_BAD_REQUEST } from '../constants/http_status';
-import { Order } from '../models/order.model';
+import { Order, OrderItem } from '../models/order.model';
 import { OrderStatus } from '../constants/order_status';
+import { User } from '../models/user.model';
 
 const router = Router(); //router express
 const queries = require('../queries');
@@ -10,7 +11,6 @@ const queries = require('../queries');
 //creazione di un nuovo ordine
 router.post("/create", (req, res) => {
     const requestOrder = req.body;
-    const {orderItems, totalPrice, name, address, userId} = req.body;
 
     //se non ci sono oggetti nell'ordine lo rifiuto
     if(requestOrder.orderItems.length <= 0) {
@@ -29,8 +29,40 @@ router.post("/create", (req, res) => {
         createdAt: '',
         updatedAt: ''
     }
-    //console.log(newOrder.order_items);
-    
+/*
+    //imposta tutti gli elementi già nel database con stato 'CONFIRMED'
+    pool.query(queries.updateOrderItemsStatusQuery, (error:any, results:any) => {
+        if(error) throw error;
+    });
+
+    //scorre tutti gli elementi nel nuovo ordine per aggiungerli al database
+    requestOrder.orderItems.forEach((element: any) => {
+        const newOrderItem: OrderItem = {
+            id: '', //inizializzato dal database in automatico
+            filmId: element.film,
+            purchaseMethod: element.purchaseMethod,
+            rentDays: element.rentDays
+        }
+
+        //aggiunge l'elemento al database con stato 'NEW'
+        pool.query(queries.createOrderItemQuery, [newOrderItem.filmId, newOrderItem.purchaseMethod, newOrderItem.rentDays, "NEW"], (error:any, results:any) => {
+            if(error) throw error;
+        });
+
+        //prende tutti gli ordini con stato 'NEW' (ovvero quelli appena aggiunti)
+        pool.query(queries.getNewOrderItemsQuery, (error:any, results:any) => {
+            if(error) throw error;
+            
+            results.rows.forEach((element: any) => {
+                newOrder.orderItems.push(element['id']); //riempie l'array orderItems con la lista degli id degli elementi dell'ordine appena creato
+            });
+
+            console.log(newOrder.orderItems);
+            
+        });
+    });
+*/
+
     pool.query(queries.createOrderQuery, [newOrder.orderItems, newOrder.totalPrice, newOrder.name, newOrder.address, newOrder.status, newOrder.userId], (error:any, results:any) => {
         if(error) throw error;
         res.status(201).send(newOrder);
@@ -55,8 +87,43 @@ router.post("/newOrderForCurrentUser", (req, res) => {
             createdAt: results.rows[0]["created_at"],
             updatedAt: results.rows[0]["updated_at"]
         }
+
         res.status(200).send(newOrder);
     });
+});
+
+//torna tutti gli ordini effettuati da un utente
+router.get("/:userToken", (req, res) => {
+    const token = req.params.userToken;
+    pool.query(queries.getUserQuery, [token], (error:any, results:any) => {
+        if(error) throw error;
+        let user: User = results.rows[0];
+        
+        pool.query(queries.getUserOrdersQuery, [user.id], (error:any, results:any) => {
+            if(error) throw error;
+            let orders: Order[] = [];
+
+            results.rows.forEach((orderDB: any) => {
+                const newOrder: Order = {
+                    id: orderDB["id"],
+                    orderItems: orderDB["order_items"],
+                    totalPrice: orderDB["total_price"],
+                    name: orderDB["name"],
+                    address: orderDB["address"],
+                    status: orderDB["status"],
+                    userId: orderDB["userId"],
+                    createdAt: orderDB["created_at"],
+                    updatedAt: orderDB["updated_at"]
+                }
+
+                orders.push(newOrder);
+            })
+            console.log(orders);
+            res.status(200).json(orders);
+        });
+    });
+
+   
 });
 
 export default router;

@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { UserService } from 'src/app/services/user.service';
+import { CartItem } from 'src/app/shared/models/CartItem';
 import { Order } from 'src/app/shared/models/Order';
 
 @Component({
@@ -17,15 +18,15 @@ export class CheckoutPageComponent implements OnInit {
   order: Order = new Order();
   checkoutForm!: FormGroup;
 
-  constructor(cartService:CartService,
+  constructor(private cartService:CartService,
               private formBuilder:FormBuilder,
               private userService:UserService, //per aggiungere nome e indirizzo dell'utente al form
               private toastrService:ToastrService,
               private orderService:OrderService,
               private router:Router) {
     const cart = cartService.getCart(); //ottengo l'ultimo valore dell'observable
-    this.order.orderItems = cart.items;
 
+    this.order.orderItems = cart.items;
     this.order.totalPrice = cart.totalPrice;
   }
 
@@ -55,9 +56,15 @@ export class CheckoutPageComponent implements OnInit {
     this.order.address = this.fc.address.value;
     this.order.userId = parseInt(this.userService.currentUser.id);
 
-    this.orderService.create(this.order).subscribe({
+    this.orderService.create({
+      orderItems: this.order.orderItems,
+      totalPrice: this.cartService.getCart().totalPrice,
+      userId: parseInt(this.userService.currentUser.id),
+      name: this.fc.name.value,
+      address: this.fc.address.value
+    }).subscribe({
       next: () => {
-        console.log("funge");
+        this.cartService.clearCart();
         this.router.navigateByUrl('/confirm');
       },
       error:(errorResponse) => {

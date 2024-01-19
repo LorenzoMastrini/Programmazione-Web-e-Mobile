@@ -7,7 +7,7 @@
 <div *ngIf="cart && cart.items.length" class="container">
     <ul>
         <li *ngFor="let cartItem of cart.items">
-            <app-purchase-menu [film]="cartItem.film" [cart]="cart"></app-purchase-menu>
+            <app-purchase-menu [cartItem]="cartItem" [cart]="cart"></app-purchase-menu>
             <div>
                 <button class="remove-button" (click)="removeFromCart(cartItem)">
                     Rimuovi

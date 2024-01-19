@@ -9,6 +9,7 @@ import { LoginPageComponent } from './components/pages/login-page/login-page.com
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { ConfirmPageComponent } from './components/pages/confirm-page/confirm-page.component';
+import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
 
 const routes: Routes = [
   { path:"", component: HomeComponent }, //homepage dell'app
@@ -21,7 +22,8 @@ const routes: Routes = [
   { path:"login", component: LoginPageComponent },
   { path:"register", component: RegisterPageComponent },
   { path:"checkout", component: CheckoutPageComponent },
-  { path:"confirm", component: ConfirmPageComponent }
+  { path:"confirm", component: ConfirmPageComponent },
+  { path:"orders/:userToken", component: OrdersPageComponent }
 ];
 
 @NgModule({

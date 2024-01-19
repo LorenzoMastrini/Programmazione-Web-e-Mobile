@@ -25,6 +25,5 @@ export class FilmPageComponent {
 
   addToCart() {
     this.cartService.addToCart(this.film);
-    this.router.navigateByUrl('/cart-page');
   }
 }

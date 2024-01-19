@@ -1,31 +1,31 @@
 <div class="container">
     <div>
-        <img [src]="film.imageUrl" [alt]="film.name">
+        <img [src]="cartItem.film.imageUrl" [alt]="cartItem.film.name">
     </div>
     <div>
-        <a routerLink="/film/{{film.id}}">
-            {{ film.name }}
+        <a routerLink="/film/{{cartItem.film.id}}">
+            {{ cartItem.film.name }}
         </a>
     </div>
     <!--In base al bottone scelto mostriamo informazioni specifiche-->
     <div>
         <label class="radio-label">
-            <input  class="radio" id="buy" type="radio" name="buyRent{{film.id}}" checked value="0" (change)="changeIdentificationType($event)">
+            <input  class="radio" id="buy" type="radio" name="buyRent{{cartItem.film.id}}" checked value="0" (change)="changeIdentificationType()">
             Compra
         </label>
         <label class="radio-label">
-            <input class="radio" id="rent" type="radio" name="buyRent{{film.id}}" value="1" (change)="changeIdentificationType($event)">
+            <input class="radio" id="rent" type="radio" name="buyRent{{cartItem.film.id}}" value="1" (change)="changeIdentificationType()">
             Noleggia
         </label>
     </div>
     <div class="purchase-menu">
         <!--Noleggia-->
-        <div class="rent-menu" *ngIf="this.rent==true; else buy">
+        <div class="rent-menu" *ngIf="this.cartItem.purchaseMethod == 'Noleggio'; else buy">
             <div>
-                {{ film.price_rent | currency }} al giorno
+                {{ cartItem.film.price_rent | currency }} al giorno
             </div>
             <div class="select">
-                <select #quantitySelect (change)="changeRentDays(film, quantitySelect.value)">
+                <select id="quantitySelectId" #quantitySelect (change)="changeRentDays(quantitySelect.value)">
                     <!--Film noleggiabili per una settimana al massimo-->
                     <option>1</option>
                     <option>2</option>
@@ -37,13 +37,13 @@
                 </select>
             </div>
             <div class="price">
-                {{ film.price_rent * getQuantityInt(quantitySelect.value) | currency }}
+                {{ cartItem.film.price_rent * getQuantityInt(quantitySelect.value) | currency }}
             </div>
         </div>
         <!--Compra-->
         <ng-template #buy class="buy">
             <div class="price">
-                {{ film.price | currency }}
+                {{ cartItem.film.price | currency }}
             </div>
         </ng-template>
     </div>

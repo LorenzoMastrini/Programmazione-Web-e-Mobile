@@ -1,15 +1,15 @@
 import { OrderStatus } from "../constants/order_status";
 
 export interface OrderItem {
-    id: number;
-    film_id: number;
-    rent: boolean;
-    rent_days: number;
+    id: string;
+    filmId: number;
+    purchaseMethod: boolean;
+    rentDays: number;
 }
 
 export interface Order {
     id: string;
-    orderItems: OrderItem[];
+    orderItems: string; //lista di id dei singoli elementi in un ordine
     totalPrice: number;
     name: string;
     address: string;

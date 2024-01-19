@@ -19,7 +19,7 @@
                     <a routerLink="/dashboard">{{ user.name }}</a>
                     <div class="menu">
                         <a routerLink="/profile">Profilo</a>
-                        <a routerLink="/orders">Ordini</a>
+                        <a routerLink="/orders/{{user.token}}">Ordini</a>
                         <a (click)="logout()">Logout</a>
                     </div>
                 </li>
