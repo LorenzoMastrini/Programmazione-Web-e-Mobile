@@ -31,6 +31,9 @@ import { CheckoutPageComponent } from './components/pages/checkout-page/checkout
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { ConfirmPageComponent } from './components/pages/confirm-page/confirm-page.component';
 import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
+import { AdminAddFilmComponent } from './components/pages/admin-add-film/admin-add-film.component';
+import { AdminHomeComponent } from './components/pages/admin-home/admin-home.component';
+import { AdminOrdersComponent } from './components/pages/admin-orders/admin-orders.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +60,10 @@ import { OrdersPageComponent } from './components/pages/orders-page/orders-page.
     CheckoutPageComponent,
     OrderItemsListComponent,
     ConfirmPageComponent,
-    OrdersPageComponent
+    OrdersPageComponent,
+    AdminAddFilmComponent,
+    AdminHomeComponent,
+    AdminOrdersComponent
   ],
   imports: [
     BrowserModule,

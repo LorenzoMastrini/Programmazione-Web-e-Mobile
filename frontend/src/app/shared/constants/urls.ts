@@ -13,3 +13,8 @@ export const USER_REGISTER_URL = BASE_URL + '/api/users/register'; //url per la 
 export const ORDERS_URL = BASE_URL + '/api/orders/'; //url per visualizzare gli ordini
 export const ORDER_CREATE_URL = ORDERS_URL + '/create'; //url per la creazione di un nuovo ordine
 export const ORDER_NEW_FOR_CURRENT_USER_URL = ORDERS_URL + '/newOrderForCurrentUser'; //url per visualizzare la conferma del nuovo ordine effettuato
+
+export const ADMIN_URL = BASE_URL + '/api/admin'; //url per le api dell'admin
+export const ADMIN_ADD_FILM = ADMIN_URL + '/films/add'; //url per aggiungere un nuovo film
+export const ADMIN_DELETE_FILM = ADMIN_URL + '/films/delete/'; //url per eliminare un film
+export const ADMIN_GET_ALL_ORDERS = ADMIN_URL + '/orders'; //url per visualizzare tutti gli ordini nel database

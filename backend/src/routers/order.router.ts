@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { pool } from "../db";
 import { HTTP_BAD_REQUEST } from '../constants/http_status';
-import { Order, OrderItem } from '../models/order.model';
+import { Order } from '../models/order.model';
 import { OrderStatus } from '../constants/order_status';
 import { User } from '../models/user.model';
 
@@ -26,44 +26,10 @@ router.post("/create", (req, res) => {
         address: requestOrder.address,
         status: OrderStatus.NEW,
         userId: requestOrder.userId,
-        createdAt: '',
-        updatedAt: ''
+        createdAt: new Date().toISOString()
     }
-/*
-    //imposta tutti gli elementi già nel database con stato 'CONFIRMED'
-    pool.query(queries.updateOrderItemsStatusQuery, (error:any, results:any) => {
-        if(error) throw error;
-    });
 
-    //scorre tutti gli elementi nel nuovo ordine per aggiungerli al database
-    requestOrder.orderItems.forEach((element: any) => {
-        const newOrderItem: OrderItem = {
-            id: '', //inizializzato dal database in automatico
-            filmId: element.film,
-            purchaseMethod: element.purchaseMethod,
-            rentDays: element.rentDays
-        }
-
-        //aggiunge l'elemento al database con stato 'NEW'
-        pool.query(queries.createOrderItemQuery, [newOrderItem.filmId, newOrderItem.purchaseMethod, newOrderItem.rentDays, "NEW"], (error:any, results:any) => {
-            if(error) throw error;
-        });
-
-        //prende tutti gli ordini con stato 'NEW' (ovvero quelli appena aggiunti)
-        pool.query(queries.getNewOrderItemsQuery, (error:any, results:any) => {
-            if(error) throw error;
-            
-            results.rows.forEach((element: any) => {
-                newOrder.orderItems.push(element['id']); //riempie l'array orderItems con la lista degli id degli elementi dell'ordine appena creato
-            });
-
-            console.log(newOrder.orderItems);
-            
-        });
-    });
-*/
-
-    pool.query(queries.createOrderQuery, [newOrder.orderItems, newOrder.totalPrice, newOrder.name, newOrder.address, newOrder.status, newOrder.userId], (error:any, results:any) => {
+    pool.query(queries.createOrderQuery, [newOrder.orderItems, newOrder.totalPrice, newOrder.name, newOrder.address, newOrder.status, newOrder.userId, newOrder.createdAt], (error:any, results:any) => {
         if(error) throw error;
         res.status(201).send(newOrder);
     });
@@ -85,7 +51,6 @@ router.post("/newOrderForCurrentUser", (req, res) => {
             status: results.rows[0]["status"],
             userId: results.rows[0]["userId"],
             createdAt: results.rows[0]["created_at"],
-            updatedAt: results.rows[0]["updated_at"]
         }
 
         res.status(200).send(newOrder);
@@ -113,17 +78,13 @@ router.get("/:userToken", (req, res) => {
                     status: orderDB["status"],
                     userId: orderDB["userId"],
                     createdAt: orderDB["created_at"],
-                    updatedAt: orderDB["updated_at"]
                 }
 
                 orders.push(newOrder);
             })
-            console.log(orders);
             res.status(200).json(orders);
         });
     });
-
-   
 });
 
 export default router;

@@ -1,0 +1,25 @@
+&nbsp;
+<div class="container">
+    <div class="movies-container">
+        <h3>Film:</h3>
+        <div class="films-grid-container">
+            <div class="film" *ngFor="let film of films">
+                <img [src]="film.imageUrl"/>
+
+                <div class="name">
+                    <span>
+                        {{film.name}}
+                    </span>
+                </div>
+                
+                <button (click)="deleteFilm(film.name)" class="delete-film">
+                    Elimina Film
+                </button>
+            </div>
+        </div>
+
+        <div class="buttons-container">
+            <default-button class="add-film-button" routerLink="/admin/add-film" text="Aggiungi film"></default-button>
+        </div>
+    </div>
+</div>

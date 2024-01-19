@@ -9,7 +9,7 @@ const checkEmailExistsQuery = "SELECT * FROM users WHERE email = $1;";
 const createUserQuery = "INSERT INTO users (name, email, password, address, is_admin) VALUES ($1, $2, $3, $4, $5);";
 const getUserQuery = "SELECT * FROM users WHERE token = $1;";//----------------
 
-const createOrderQuery = "INSERT INTO orders (order_items, total_price, name, address, status, user_id) VALUES ($1, $2, $3, $4, $5, $6);";
+const createOrderQuery = "INSERT INTO orders (order_items, total_price, name, address, status, user_id, created_at) VALUES ($1, $2, $3, $4, $5, $6, $7);";
 const getNewOrderQuery = "SELECT * FROM orders WHERE user_id = $1 AND status = 'NEW';"; //torna il nuovo ordine effettuato da un utente (ce n'è solo uno per volta con stato "NEW")
 const confirmOrder = "UPDATE orders SET status = 'CONFIRMED' WHERE user_id = $1;"; //NON FUNZIONA: aggiorna lo status dell'ordine a 'confermato'
 const getUserOrdersQuery = "SELECT * FROM orders WHERE user_id = $1;";

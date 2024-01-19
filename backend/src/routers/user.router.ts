@@ -16,6 +16,7 @@ router.post("/login", (req, res) => {
     pool.query(queries.loginQuery, [email, password], (error:any, results:any) => {
         const user = results.rows[0]; //rows[0] perché altrimenti torna un array con solo user all'interno (l'email è unica nel db, quindi è inutile tornare un array)
         if(user) { //login andato a buon fine
+            user["isAdmin"] = user["is_admin"]; //modifico il campo in camel case così che lo riesca a leggere anche il client
             return res.status(200).send(user);
         } else {
             res.status(HTTP_BAD_REQUEST).send("Email o password non validi");

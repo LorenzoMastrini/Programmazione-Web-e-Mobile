@@ -45,8 +45,14 @@ export class LoginPageComponent implements OnInit {
   
     this.userService.login({email: this.fc.email.value, password: this.fc.password.value}).subscribe(() => {
       console.log(this.userService.currentUser);
-      //torna all'url precedente se il login avviene con successo  
-      this.router.navigateByUrl(this.returnUrl);
+      
+      if(this.userService.currentUser.isAdmin) {
+        //va alla home dell'admin
+        this.router.navigateByUrl('/admin');
+      } else {
+        //torna all'url precedente se il login avviene con successo  
+        this.router.navigateByUrl(this.returnUrl);
+      }
     });
   }
 }

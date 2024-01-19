@@ -1,0 +1,44 @@
+&nbsp;
+<table class="schedules-list">
+    <tr>
+        <td colspan="3">
+            <h3>Lista degli ordini:</h3>
+        </td>
+    </tr>
+
+    <tr>
+        <td colspan="1">
+            <h4>Id Ordine</h4>
+        </td>
+        <td colspan="1">
+            <h4>Id Utente</h4>
+        </td>
+        <td colspan="1">
+            <h4>Nome</h4>
+        </td>
+        <td colspan="1">
+            <h4>Indirizzo</h4>
+        </td>
+        <td colspan="1">
+            <h4>Elementi dell'ordine</h4>
+        </td>
+    </tr>
+
+    <tr *ngFor="let order of orders">
+        <td>
+            {{ order.id }}
+        </td>
+        <td>
+            {{ order.userId }}
+        </td>
+        <td>
+            {{ order.name }}
+        </td>
+        <td>
+            {{ order.address }}
+        </td>
+        <td>
+            {{ order.orderItems }}
+        </td>
+    </tr>
+</table>

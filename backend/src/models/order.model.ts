@@ -16,5 +16,4 @@ export interface Order {
     status: OrderStatus;
     userId: number;
     createdAt: string;
-    updatedAt: string;
 }

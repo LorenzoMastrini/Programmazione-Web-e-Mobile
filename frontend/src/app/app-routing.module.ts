@@ -10,20 +10,26 @@ import { RegisterPageComponent } from './components/pages/register-page/register
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { ConfirmPageComponent } from './components/pages/confirm-page/confirm-page.component';
 import { OrdersPageComponent } from './components/pages/orders-page/orders-page.component';
+import { AdminHomeComponent } from './components/pages/admin-home/admin-home.component';
+import { AdminAddFilmComponent } from './components/pages/admin-add-film/admin-add-film.component';
+import { AdminOrdersComponent } from './components/pages/admin-orders/admin-orders.component';
 
 const routes: Routes = [
   { path:"", component: HomeComponent }, //homepage dell'app
   { path:"search/:searchTerm", component: HomeComponent },
   { path:"film/:id", component: FilmPageComponent },
   { path:"cart-page", component: CartPageComponent },
-  { path:"list-page", component:ListPageComponent},
+  { path:"trend-page", component:ListPageComponent},
   { path:"discover-page", component:DiscoverPageComponent},
   { path:"tag/:tag", component: DiscoverPageComponent },
   { path:"login", component: LoginPageComponent },
   { path:"register", component: RegisterPageComponent },
   { path:"checkout", component: CheckoutPageComponent },
   { path:"confirm", component: ConfirmPageComponent },
-  { path:"orders/:userToken", component: OrdersPageComponent }
+  { path:"orders/:userToken", component: OrdersPageComponent },
+  { path:"admin", component: AdminHomeComponent}, //homepage dell'app per un utente admin
+  { path:"admin/add-film", component: AdminAddFilmComponent},
+  { path:"admin/orders", component: AdminOrdersComponent}
 ];
 
 @NgModule({
