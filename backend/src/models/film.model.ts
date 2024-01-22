@@ -7,7 +7,7 @@ export interface Film {
     favorite: boolean;
     stars: number;
     imageUrl: string;
-    description: string;
+    plot: string;
     director: string;
     origins: string[];
     year: number;

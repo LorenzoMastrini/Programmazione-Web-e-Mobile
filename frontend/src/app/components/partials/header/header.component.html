@@ -1,6 +1,7 @@
 <header>
     <div class="container">
-        <a routerLink="/" class="logo">Kinetoscope</a>
+        <a *ngIf="user.isAdmin" routerLink="/admin" class="logo">Kinetoscope</a>
+        <a *ngIf="!user.isAdmin" routerLink="/" class="logo">Kinetoscope</a>
         <nav>
             <ul>
                 <li>

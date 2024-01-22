@@ -14,7 +14,7 @@ export class AdminService {
   constructor(private http:HttpClient) { }
 
   addFilm(newFilm:IAdminAddFilm): Observable<Film> {
-    return this.http.post<Film>(ADMIN_ADD_FILM, newFilm);
+    return this.http.put<Film>(ADMIN_ADD_FILM, newFilm);
   }
 
   /*getAllUsers(): Observable<User[]> {

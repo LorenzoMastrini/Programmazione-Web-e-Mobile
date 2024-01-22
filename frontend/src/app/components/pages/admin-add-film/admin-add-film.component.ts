@@ -40,24 +40,21 @@ export class AdminAddFilmComponent {
   submit() {
     this.isSubmitted = true;
 
-    console.log("prova fuori");
-
     if(this.addFilmForm.invalid) {
       return; //torna se il form non è valido
     }
 
+    console.log(this.fc.genres.value.split(", "));
     this.adminService.addFilm({
                                 name: this.fc.name.value,
                                 duration: parseInt(this.fc.duration.value),
-                                genres: this.fc.genres.value,
+                                genres: this.fc.genres.value.split(", "),
                                 director: this.fc.director.value,
                                 plot: this.fc.plot.value,
-                                imgUrl: this.fc.imgUrl.value
+                                imageUrl: this.fc.imgUrl.value
     }).subscribe((serverNewFilm) => {
-      //NON LO TORNA NON SO COME MAI (forse non necessario)
       let prova: Film = serverNewFilm;
-      //console.log(prova);
-      console.log("prova dentro");
+      console.log(prova);
     });
 
     this.router.navigateByUrl("/admin"); //torna alla home dell'admin

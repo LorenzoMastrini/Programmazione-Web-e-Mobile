@@ -14,6 +14,9 @@ const getNewOrderQuery = "SELECT * FROM orders WHERE user_id = $1 AND status = '
 const confirmOrder = "UPDATE orders SET status = 'CONFIRMED' WHERE user_id = $1;"; //NON FUNZIONA: aggiorna lo status dell'ordine a 'confermato'
 const getUserOrdersQuery = "SELECT * FROM orders WHERE user_id = $1;";
 
+const deleteFilmQuery = "DELETE FROM films WHERE id = $1;";
+const addFilmQuery = 'INSERT INTO films (name, duration, genres, director, plot, "imageUrl") VALUES ($1, $2, $3, $4, $5, $6);';
+
 module.exports = {
     getAllQuery,
     getFilmByIdQuery,
@@ -26,5 +29,7 @@ module.exports = {
     createOrderQuery,
     getNewOrderQuery,
     getUserQuery,
-    getUserOrdersQuery
+    getUserOrdersQuery,
+    deleteFilmQuery,
+    addFilmQuery
 };

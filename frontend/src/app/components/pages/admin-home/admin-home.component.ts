@@ -30,8 +30,8 @@ export class AdminHomeComponent {
     });
   }
 
-  deleteFilm(filmName:string){
-    this.adminService.deleteFilm(filmName).subscribe(() => {
+  deleteFilm(filmId:string) {
+    this.adminService.deleteFilm(filmId).subscribe(() => {
       window.location.reload(); //refresh della pagina per mostrare le informazioni aggiornate
     });
   }
