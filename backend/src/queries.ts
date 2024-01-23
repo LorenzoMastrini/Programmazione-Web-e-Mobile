@@ -16,6 +16,7 @@ const getUserOrdersQuery = "SELECT * FROM orders WHERE user_id = $1;";
 
 const deleteFilmQuery = "DELETE FROM films WHERE id = $1;";
 const addFilmQuery = 'INSERT INTO films (name, duration, genres, director, plot, "imageUrl") VALUES ($1, $2, $3, $4, $5, $6);';
+const modifyFilmQuery = 'UPDATE films SET name = $2, duration = $3, genres = $4, director = $5, plot = $6, "imageUrl" = $7, price = $8, "priceRent" = $9, favorite = $10, score = $11, origins = $12, year = $13, rentable = $14 WHERE id = $1;';
 
 module.exports = {
     getAllQuery,
@@ -31,5 +32,6 @@ module.exports = {
     getUserQuery,
     getUserOrdersQuery,
     deleteFilmQuery,
-    addFilmQuery
+    addFilmQuery,
+    modifyFilmQuery
 };

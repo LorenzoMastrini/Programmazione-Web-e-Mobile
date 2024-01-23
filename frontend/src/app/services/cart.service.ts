@@ -40,7 +40,7 @@ export class CartService {
     if(cartItem.purchaseMethod === 'Acquisto') {
       this.cart.items.find(item => item === cartItem)!.totalArticlePrice = cartItem.film.price;
     } else { //noleggia
-      this.cart.items.find(item => item === cartItem)!.totalArticlePrice = cartItem.film.price_rent * cartItem.rentDays; //prezzo del noleggio moltiplicato per i giorni richiesti
+      this.cart.items.find(item => item === cartItem)!.totalArticlePrice = cartItem.film.priceRent * cartItem.rentDays; //prezzo del noleggio moltiplicato per i giorni richiesti
     }
   
     this.setCartToLocalStorage();

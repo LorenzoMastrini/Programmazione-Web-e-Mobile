@@ -34,6 +34,7 @@ import { OrdersPageComponent } from './components/pages/orders-page/orders-page.
 import { AdminAddFilmComponent } from './components/pages/admin-add-film/admin-add-film.component';
 import { AdminHomeComponent } from './components/pages/admin-home/admin-home.component';
 import { AdminOrdersComponent } from './components/pages/admin-orders/admin-orders.component';
+import { AdminModifyFilmComponent } from './components/pages/admin-modify-film/admin-modify-film.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { AdminOrdersComponent } from './components/pages/admin-orders/admin-orde
     OrdersPageComponent,
     AdminAddFilmComponent,
     AdminHomeComponent,
-    AdminOrdersComponent
+    AdminOrdersComponent,
+    AdminModifyFilmComponent
   ],
   imports: [
     BrowserModule,

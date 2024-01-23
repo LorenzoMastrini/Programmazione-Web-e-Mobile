@@ -23,7 +23,7 @@ export class LoginPageComponent implements OnInit {
     //tramite formBuilder creo il form group per i vari campi che l'utente dovrà compilare
     this.loginForm = this.formBuilder.group({
       //qui definisco tutti gli input e i loro validators 
-      //il primo valore di entrambi è il valore di default, e il secondo sono i validators
+      //il primo valore è il valore di default, e il secondo sono i validators
       email: ['', [Validators.required, Validators.email]],
       password: ['', Validators.required]
     });
@@ -43,9 +43,7 @@ export class LoginPageComponent implements OnInit {
       return; //torna se il form non è valido
     }
   
-    this.userService.login({email: this.fc.email.value, password: this.fc.password.value}).subscribe(() => {
-      console.log(this.userService.currentUser);
-      
+    this.userService.login({email: this.fc.email.value, password: this.fc.password.value}).subscribe(() => {      
       if(this.userService.currentUser.isAdmin) {
         //va alla home dell'admin
         this.router.navigateByUrl('/admin');

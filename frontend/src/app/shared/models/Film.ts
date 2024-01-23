@@ -2,10 +2,10 @@ export class Film {
     id!: string;
     name!: string;
     price!: number;
-    price_rent!: number;
+    priceRent!: number;
     genres?: string[];
     favorite!: boolean;
-    stars!: number;
+    score!: number;
     imageUrl!: string;
     plot!: string;
     director!: string;

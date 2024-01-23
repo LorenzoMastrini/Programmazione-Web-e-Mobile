@@ -16,5 +16,6 @@ export const ORDER_NEW_FOR_CURRENT_USER_URL = ORDERS_URL + '/newOrderForCurrentU
 
 export const ADMIN_URL = BASE_URL + '/api/admin'; //url per le api dell'admin
 export const ADMIN_ADD_FILM = ADMIN_URL + '/films/add'; //url per aggiungere un nuovo film
+export const ADMIN_MODIFY_FILM = ADMIN_URL + '/films/modify/'; //url per modificare le informazioni di un film esistente
 export const ADMIN_DELETE_FILM = ADMIN_URL + '/films/delete/'; //url per eliminare un film
 export const ADMIN_GET_ALL_ORDERS = ADMIN_URL + '/orders'; //url per visualizzare tutti gli ordini nel database

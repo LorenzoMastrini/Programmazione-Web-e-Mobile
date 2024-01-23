@@ -13,6 +13,7 @@ import { OrdersPageComponent } from './components/pages/orders-page/orders-page.
 import { AdminHomeComponent } from './components/pages/admin-home/admin-home.component';
 import { AdminAddFilmComponent } from './components/pages/admin-add-film/admin-add-film.component';
 import { AdminOrdersComponent } from './components/pages/admin-orders/admin-orders.component';
+import { AdminModifyFilmComponent } from './components/pages/admin-modify-film/admin-modify-film.component';
 
 const routes: Routes = [
   { path:"", component: HomeComponent }, //homepage dell'app
@@ -29,7 +30,8 @@ const routes: Routes = [
   { path:"orders/:userToken", component: OrdersPageComponent },
   { path:"admin", component: AdminHomeComponent}, //homepage dell'app per un utente admin
   { path:"admin/add-film", component: AdminAddFilmComponent},
-  { path:"admin/orders", component: AdminOrdersComponent}
+  { path:"admin/orders", component: AdminOrdersComponent},
+  { path:"admin/films/modify/:id", component: AdminModifyFilmComponent}
 ];
 
 @NgModule({

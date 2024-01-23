@@ -44,7 +44,6 @@ export class AdminAddFilmComponent {
       return; //torna se il form non è valido
     }
 
-    console.log(this.fc.genres.value.split(", "));
     this.adminService.addFilm({
                                 name: this.fc.name.value,
                                 duration: parseInt(this.fc.duration.value),

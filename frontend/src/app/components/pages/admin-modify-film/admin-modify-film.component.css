@@ -1,0 +1,56 @@
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+    margin: 3rem;
+}
+
+.container > * {
+    min-width: 100%;
+    max-width: 100%;
+}
+
+.form {
+    align-items: top;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.name-and-img {
+    display: flex;
+    flex-direction: column;
+}
+
+.name {
+    display: flex;
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+img {
+    display: flex;
+    border-radius: 1.5rem;
+    object-fit: cover;
+    width: 17rem;
+    height: 25rem;
+    margin-bottom: 2rem;
+}
+
+.general-info {
+    display: flex;
+    flex-direction: column;
+}
+
+span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.7rem;
+}
+
+.purchase-info {
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: column;
+}

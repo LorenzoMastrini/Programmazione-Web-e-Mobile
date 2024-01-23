@@ -22,7 +22,7 @@
         <!--Noleggia-->
         <div class="rent-menu" *ngIf="this.cartItem.purchaseMethod == 'Noleggio'; else buy">
             <div>
-                {{ cartItem.film.price_rent | currency }} al giorno
+                {{ cartItem.film.priceRent | currency }} al giorno
             </div>
             <div class="select">
                 <select id="quantitySelectId" #quantitySelect (change)="changeRentDays(quantitySelect.value)">
@@ -37,7 +37,7 @@
                 </select>
             </div>
             <div class="price">
-                {{ cartItem.film.price_rent * getQuantityInt(quantitySelect.value) | currency }}
+                {{ cartItem.film.priceRent * getQuantityInt(quantitySelect.value) | currency }}
             </div>
         </div>
         <!--Compra-->

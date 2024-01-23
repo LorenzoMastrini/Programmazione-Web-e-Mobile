@@ -12,9 +12,14 @@
                     </span>
                 </div>
                 
-                <button (click)="deleteFilm(film.id)" class="delete-film">
-                    Elimina Film
-                </button>
+                <div class="buttons">
+                    <button routerLink="/admin/films/modify/{{film.id}}" class="modify-film">
+                        Modifica
+                    </button>
+                    <button (click)="deleteFilm(film.id)" class="delete-film">
+                        Elimina
+                    </button>
+                </div>
             </div>
         </div>
 

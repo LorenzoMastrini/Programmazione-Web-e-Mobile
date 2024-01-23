@@ -5,8 +5,6 @@ import { Film } from '../models/film.model';
 const router = Router();
 const queries = require('../queries');
 
-
-
 //elimina un film dal database in base all'id passato come parametro nell'URL
 router.delete("/films/delete/:filmId", (req, res) => {
     const id = req.params.filmId;
@@ -17,7 +15,7 @@ router.delete("/films/delete/:filmId", (req, res) => {
 });
 
 //aggiunge un nuovo film al database
-router.put("/films/add", (req, res) => {
+router.post("/films/add", (req, res) => {
     const requestFilm = req.body;
 
     const newFilm: Film = {
@@ -29,16 +27,56 @@ router.put("/films/add", (req, res) => {
         plot: requestFilm.plot,
         imageUrl: requestFilm.imageUrl,
         price: 0,
-        price_rent: 0,
+        priceRent: 0,
         favorite: false,
-        stars: 0,
+        score: 0,
         origins: [],
         year: 0,
-        rent: 0,
-        fruitionMethod: ''
+        rentable: 0
     }
 
     pool.query(queries.addFilmQuery, [newFilm.name, newFilm.duration, newFilm.genres, newFilm.director, newFilm.plot, newFilm.imageUrl], (error:any, results:any) => {
+        if(error) throw error;
+        res.status(200).json(results.rows[0]);
+    });
+});
+
+//aggiunge un nuovo film al database
+router.put("/films/modify/:id", (req, res) => {
+    const id = req.params.id;
+    const requestFilm = req.body;
+
+    const updatedFilm: Film = {
+        id: id, //inizializzato dal database in automatico
+        name: requestFilm.name,
+        duration: requestFilm.duration,
+        genres: requestFilm.genres,
+        director: requestFilm.director,
+        plot: requestFilm.plot,
+        imageUrl: requestFilm.imageUrl,
+        price: requestFilm.price,
+        priceRent: requestFilm.priceRent,
+        favorite: requestFilm.favorite,
+        score: requestFilm.score,
+        origins: requestFilm.origins,
+        year: requestFilm.year,
+        rentable: requestFilm.rentable
+    }
+
+    pool.query(queries.modifyFilmQuery, [updatedFilm.id,
+                                        updatedFilm.name,
+                                        updatedFilm.duration,
+                                        updatedFilm.genres,
+                                        updatedFilm.director,
+                                        updatedFilm.plot,
+                                        updatedFilm.imageUrl,
+                                        updatedFilm.price,
+                                        updatedFilm.priceRent,
+                                        updatedFilm.favorite,
+                                        updatedFilm.score,
+                                        updatedFilm.origins,
+                                        updatedFilm.year,
+                                        updatedFilm.rentable], (error:any, results:any) => {
         if(error) throw error;
         res.status(200).json(results.rows[0]);
     });
