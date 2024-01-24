@@ -7,6 +7,10 @@
     <h3>I tuoi ordini:</h3>
     <table class="orders-list" *ngFor="let order of orders">
         <tr>
+            <span>Ordine del {{ order.createdAt.substring(0, 10) }}</span>
+        </tr>
+
+        <tr>
             <td>
                 <h4>Film</h4>
             </td>
@@ -36,4 +40,10 @@
                 {{ item.totalArticlePrice | currency }}
             </td>
         </tr>
+
+        <tr>
+            <td colspan="3"></td>
+            <span>Prezzo totale: {{ order.totalPrice | currency }}</span>
+        </tr>
     </table>
+</div>

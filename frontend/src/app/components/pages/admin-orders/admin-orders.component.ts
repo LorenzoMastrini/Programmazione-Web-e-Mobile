@@ -20,7 +20,7 @@ export class AdminOrdersComponent {
     
     //ogni volta che 'params' cambia, chiama la funzione dentro 'subscribe()'
     activatedRoute.params.subscribe(() => {
-      ordersObservable = adminService.getAllOrders(); //se non è stato cercato nulla mostra tutto per default
+      ordersObservable = adminService.getAllOrders();
 
       ordersObservable.subscribe((serverOrders) => {
         this.orders = serverOrders;

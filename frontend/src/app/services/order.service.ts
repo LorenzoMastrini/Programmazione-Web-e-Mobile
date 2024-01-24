@@ -21,7 +21,7 @@ export class OrderService {
     return this.http.post<Order>(ORDER_NEW_FOR_CURRENT_USER_URL, currentUser);
   }
 
-  getAllOrders(userToken: string): Observable<Order[]> {
+  getUserOrders(userToken: string): Observable<Order[]> {
     return this.http.get<Order[]>(ORDERS_URL + userToken);
   }
 }

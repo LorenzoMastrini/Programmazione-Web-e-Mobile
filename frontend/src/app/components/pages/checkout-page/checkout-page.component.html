@@ -2,8 +2,31 @@
     <div class="content">
         <app-title title="Ordine" fontSize="1.6rem"></app-title>
         <form [formGroup]="checkoutForm">
-            <text-input [control]="fc.name" label="Nome"></text-input>
-            <text-input [control]="fc.address" label="Indirizzo"></text-input>
+            <text-input
+                [control]="fc.name"
+                [showErrorsWhen]="isSubmitted"
+                label="Nome">
+            </text-input>
+            <text-input
+                [control]="fc.address"
+                [showErrorsWhen]="isSubmitted"
+                label="Indirizzo">
+            </text-input>
+            <text-input
+                [control]="fc.cardNumber"
+                [showErrorsWhen]="isSubmitted"
+                label="Numero Carta">
+            </text-input>
+            <text-input
+                [control]="fc.expireDate"
+                [showErrorsWhen]="isSubmitted"
+                label="Data di Scadenza">
+            </text-input>
+            <text-input
+                [control]="fc.cvv"
+                [showErrorsWhen]="isSubmitted"
+                label="CVV">
+            </text-input>
         </form>
 
         <order-items-list [order]="order"></order-items-list>
@@ -11,7 +34,7 @@
 
     <div class="buttons-container">
         <div class="buttons">
-            <button (click)="createOrder()">Vai al pagamento</button>
+            <button (click)="createOrder()">Acquista</button>
         </div>
     </div>
 </div>

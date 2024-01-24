@@ -3,6 +3,7 @@
     height: 100%;
     background-color: rgb(24, 24, 24);
     position: fixed;
+    z-index: 2;
     top: 0;
     left: 0;
     align-items: left;

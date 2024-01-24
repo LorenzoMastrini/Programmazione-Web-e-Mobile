@@ -25,6 +25,10 @@ export class AdminService {
     return this.http.delete<string>(ADMIN_DELETE_FILM + filmName);
   }
 
+  getAllOrders(): Observable<Order[]> {
+    return this.http.get<Order[]>(ADMIN_GET_ALL_ORDERS);
+  }
+
   /*getAllUsers(): Observable<User[]> {
     return this.http.get<User[]>(ADMIN_GET_ALL_USERS);
   }
@@ -32,8 +36,4 @@ export class AdminService {
   changeAdminStatus(userId: string): Observable<User> {
     return this.http.put<User>(ADMIN_CHANGE_ADMIN_STATUS + userId, []);
   }*/
-
-  getAllOrders(): Observable<Order[]> {
-    return this.http.get<Order[]>(ADMIN_GET_ALL_ORDERS);
-  }
 }

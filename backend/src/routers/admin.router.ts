@@ -82,4 +82,12 @@ router.put("/films/modify/:id", (req, res) => {
     });
 });
 
+//torna tutti gli ordini presenti nel database
+router.get("/orders", (req, res) => {
+    pool.query(queries.getAllOrdersQuery, (error:any, results:any) => {
+        if(error) throw error;
+        res.status(200).json(results.rows);
+    });
+});
+
 export default router;

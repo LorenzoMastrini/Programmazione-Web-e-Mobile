@@ -39,18 +39,18 @@ router.post("/create", (req, res) => {
 router.post("/newOrderForCurrentUser", (req, res) => {
     const currentUser = req.body;
     
-    pool.query(queries.getNewOrderQuery, [currentUser["id"]], (error:any, results:any) => {
+    pool.query(queries.getNewOrderQuery, [currentUser["id"], 'NEW'], (error:any, results:any) => {
         if(error) throw error;
         
         const newOrder: Order = {
             id: results.rows[0]["id"],
-            orderItems: results.rows[0]["order_items"],
-            totalPrice: results.rows[0]["total_price"],
+            orderItems: results.rows[0]["orderItems"],
+            totalPrice: results.rows[0]["totalPrice"],
             name: results.rows[0]["name"],
             address: results.rows[0]["address"],
             status: results.rows[0]["status"],
             userId: results.rows[0]["userId"],
-            createdAt: results.rows[0]["created_at"],
+            createdAt: results.rows[0]["createdAt"],
         }
 
         res.status(200).send(newOrder);
@@ -71,13 +71,13 @@ router.get("/:userToken", (req, res) => {
             results.rows.forEach((orderDB: any) => {
                 const newOrder: Order = {
                     id: orderDB["id"],
-                    orderItems: orderDB["order_items"],
-                    totalPrice: orderDB["total_price"],
+                    orderItems: orderDB["orderItems"],
+                    totalPrice: orderDB["totalPrice"],
                     name: orderDB["name"],
                     address: orderDB["address"],
                     status: orderDB["status"],
                     userId: orderDB["userId"],
-                    createdAt: orderDB["created_at"],
+                    createdAt: orderDB["createdAt"],
                 }
 
                 orders.push(newOrder);

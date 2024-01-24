@@ -17,6 +17,7 @@ import { Order } from 'src/app/shared/models/Order';
 export class CheckoutPageComponent implements OnInit {
   order: Order = new Order();
   checkoutForm!: FormGroup;
+  isSubmitted: boolean = false;
 
   constructor(private cartService:CartService,
               private formBuilder:FormBuilder,
@@ -35,7 +36,10 @@ export class CheckoutPageComponent implements OnInit {
     //campi iniziali del form con valori di default in base all'utente
     this.checkoutForm = this.formBuilder.group({
       name: [name, Validators.required],
-      address: [address, Validators.required]
+      address: [address, Validators.required],
+      cardNumber: ['', Validators.required],
+      expireDate: ['', Validators.required],
+      cvv: ['', Validators.required]
     });
   }
 
@@ -45,6 +49,8 @@ export class CheckoutPageComponent implements OnInit {
   }
 
   createOrder() {
+    this.isSubmitted = true;
+    
     if(this.checkoutForm.invalid) {
       //form non valido, in base ai controlli dei vari campi
       this.toastrService.warning("Per favore riempi i campi", "Input non validi");

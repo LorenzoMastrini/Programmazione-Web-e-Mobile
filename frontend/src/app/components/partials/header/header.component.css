@@ -1,5 +1,8 @@
 header {
-    position: relative;
+    display: flex;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
     background: black;
     padding: 0;
     border: 0 none black;
@@ -9,12 +12,18 @@ a {
     color: white;
 }
 
+.username {
+    margin-right: 1rem;
+}
+
 a:hover {
     color: grey;
     cursor: pointer;
 }
 
 .container {
+    position: relative;
+    width: 100%;
     margin: 0 auto;
     display: flex;
     justify-content: space-between; /*il logo rimane a sinistra mentre gli altri elementi in fondo a destra*/
@@ -49,7 +58,8 @@ a span{
     position: relative;
 }
 
-.menu{
+.menu {
+    width: 90%;
     position: absolute;
     z-index: 1;
     background: #322f2f;

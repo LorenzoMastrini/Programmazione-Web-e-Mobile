@@ -1,9 +1,11 @@
-<app-title title="Carrello" margin="1.5rem 0 0 2.5rem"></app-title>
+&nbsp;
+<app-title title="Carrello" margin="3rem 0 0 2.5rem"></app-title>
 <app-not-found [visible]="!cart || !cart.items.length"
                 notFoundMessage="Il carrello è vuoto!"
                 resetLinkText="Torna alla Homepage">
 </app-not-found>
 
+&nbsp;
 <div *ngIf="cart && cart.items.length" class="container">
     <ul>
         <li *ngFor="let cartItem of cart.items">

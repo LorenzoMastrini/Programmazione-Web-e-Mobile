@@ -31,7 +31,8 @@ const routes: Routes = [
   { path:"admin", component: AdminHomeComponent}, //homepage dell'app per un utente admin
   { path:"admin/add-film", component: AdminAddFilmComponent},
   { path:"admin/orders", component: AdminOrdersComponent},
-  { path:"admin/films/modify/:id", component: AdminModifyFilmComponent}
+  { path:"admin/films/modify/:id", component: AdminModifyFilmComponent},
+  { path:"admin/orders", component: AdminOrdersComponent}
 ];
 
 @NgModule({

@@ -1,19 +1,21 @@
 import { Router } from "express";
 import { pool } from "../db";
-import jwt from "jsonwebtoken"; //per generare token
+import jwt from "jsonwebtoken"; //per generare il token
 import { HTTP_BAD_REQUEST } from "../constants/http_status";
-import bcrypt from "bcryptjs"; //per cifrare la password e salvarla hashata nel database
 import { User } from "../models/user.model";
 
 const router = Router();
 const queries = require('../queries');
+const Crypto = require("crypto-js"); //per cifrare la password e salvarla hashata nel database
 
 //tramite post l'utente invia email e password nel corpo della richiesta per fare il login
-router.post("/login", (req, res) => {
+router.post("/login", async (req, res) => {
     const {email, password} = req.body; //destructuring assignment: destruttura il corpo e mette il contenuto in variabili separate
-    
+    //const encryptedPassword = await bcrypt.hash(password, 0); //critta la password (il secondo parametro è il salt)
+    const encryptedPassword = Crypto.SHA256(password).toString();
+
     //controlla se l'account esiste
-    pool.query(queries.loginQuery, [email, password], (error:any, results:any) => {
+    pool.query(queries.loginQuery, [email, encryptedPassword], (error:any, results:any) => {
         const user = results.rows[0]; //rows[0] perché altrimenti torna un array con solo user all'interno (l'email è unica nel db, quindi è inutile tornare un array)
         if(user) { //login andato a buon fine
             user["isAdmin"] = user["is_admin"]; //modifico il campo in camel case così che lo riesca a leggere anche il client
@@ -36,8 +38,8 @@ router.post("/register", (req, res) => {
             return; //NON esegue le istruzioni successive
         }
 
-        //fase di registrazione del nuovo utente (arrivo qua solo se la mail non esiste già nel db)
-        const encryptedPassword = await bcrypt.hash(password, 10); //critta la password (il secondo parametro è il salt)
+        //fase di registrazione del nuovo utente (arrivo qua solo se la mail non esiste già nel database)
+        const encryptedPassword = Crypto.SHA256(password).toString(); //cifra la password per non salvarla in chiaro nel database
         const newUser: User = {
             id: '', //inizializzato dal database in automatico
             name, //se nome della variabile e del campo dell'oggetto sono uguali basta scrivere così
@@ -45,10 +47,11 @@ router.post("/register", (req, res) => {
             password: encryptedPassword,
             address,
             isAdmin: false,
-            token: generateTokenResponse(email)
+            token: ''
         }
+        generateTokenResponse(newUser); //genera e assegna il token del nuovo utente
         
-        pool.query(queries.createUserQuery, [newUser.name, newUser.email, newUser.password, newUser.address, newUser.isAdmin], (error:any, results:any) => {
+        pool.query(queries.createUserQuery, [newUser.name, newUser.email, newUser.password, newUser.address, newUser.isAdmin, newUser.token], (error:any, results:any) => {
             if(error) throw error;
             res.status(201).send(generateTokenResponse(newUser));
         });
