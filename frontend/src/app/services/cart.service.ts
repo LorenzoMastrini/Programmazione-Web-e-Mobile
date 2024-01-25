@@ -25,7 +25,7 @@ export class CartService {
     this.setCartToLocalStorage();
   }
 
-  removeFromCart(filmId:string): void {
+  removeFromCart(filmId:number): void {
     this.cart.items = this.cart.items.filter(item => item.film.id != filmId);
   
     this.setCartToLocalStorage();
@@ -40,7 +40,7 @@ export class CartService {
     if(cartItem.purchaseMethod === 'Acquisto') {
       this.cart.items.find(item => item === cartItem)!.totalArticlePrice = cartItem.film.price;
     } else { //noleggia
-      this.cart.items.find(item => item === cartItem)!.totalArticlePrice = cartItem.film.priceRent * cartItem.rentDays; //prezzo del noleggio moltiplicato per i giorni richiesti
+      this.cart.items.find(item => item === cartItem)!.totalArticlePrice = cartItem.film.priceRent; //prezzo del noleggio moltiplicato per i giorni richiesti
     }
   
     this.setCartToLocalStorage();

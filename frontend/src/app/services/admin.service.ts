@@ -21,8 +21,8 @@ export class AdminService {
     return this.http.put<Film>(ADMIN_MODIFY_FILM + updatedFilm.id, updatedFilm);
   }
 
-  deleteFilm(filmName:string): Observable<string>{
-    return this.http.delete<string>(ADMIN_DELETE_FILM + filmName);
+  deleteFilm(filmName:number): Observable<string>{
+    return this.http.delete<string>(ADMIN_DELETE_FILM + filmName.toString());
   }
 
   getAllOrders(): Observable<Order[]> {

@@ -6,15 +6,16 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  width: 100%;
 }
 
 ul {
-  width: 100%;
+  width: 98%;
   display: flex;
   flex-direction: column;
   flex: 3 0;
   justify-content: space-between;
-  border: 1px solid #ffbbbb;
+  border: 1px solid grey;
   border-radius: 1rem;
   list-style: none;
   margin: 0.5rem;
@@ -26,7 +27,7 @@ ul li {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
-  border-bottom: 1px solid #ffbbbb;
+  border-bottom: 1px solid grey;
 }
 
 ul li:last-child {
@@ -55,6 +56,20 @@ li .remove-button:hover {
   cursor: pointer;
 }
 
+.film {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+img {
+  width: 3.5rem;
+  height: 5rem;
+  margin: 0.5rem;
+  object-fit: cover;
+  border-radius: 0.4rem;
+}
+
 .checkout {
   display: flex;
   width: 70%;
@@ -63,7 +78,7 @@ li .remove-button:hover {
   align-items: center;
   flex:1 3;
   height: 20rem;
-  border: 1px solid #ffbbbb;
+  border: 1px solid grey;
   border-radius: 1rem;
   padding: 0.5rem;
   margin-top: 1.5rem;

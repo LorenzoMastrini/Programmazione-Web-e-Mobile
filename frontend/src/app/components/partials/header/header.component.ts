@@ -15,8 +15,7 @@ export class HeaderComponent {
   user!: User;
 
   constructor(cartService:CartService,
-              private userService:UserService,
-              private router:Router) {
+              private userService:UserService) {
     cartService.getCartObservable().subscribe((newCart) => {
       this.cartQuantity = newCart.totalCount;
     });

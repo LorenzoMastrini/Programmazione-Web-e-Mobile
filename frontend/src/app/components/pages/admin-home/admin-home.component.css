@@ -1,13 +1,6 @@
 .container {
-    margin-top: 3rem;
+    margin-top: 0;
     width: 100%;
-}
-
-h3 {
-    font-size: 1.6rem;
-    margin-top: 0.5rem;
-    margin-left: 0.3rem;
-    color: grey;
 }
 
 button {
@@ -52,6 +45,10 @@ button:hover {
     margin: 0.7rem;
     justify-content: center;
     align-items: center;
+}
+
+.film:hover {
+    opacity: 0.8;
 }
 
 img {

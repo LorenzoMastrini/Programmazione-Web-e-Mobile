@@ -2,7 +2,7 @@
 <app-not-found [visible]="!films || !films.length"
                 resetLinkText="Cerca altro">
 </app-not-found>
-<div>
+
 <ul>
     <li *ngFor="let film of films">
         <a routerLink="/film/{{film.id}}"
@@ -39,4 +39,3 @@
         </a>
     </li>
 </ul>
-</div>

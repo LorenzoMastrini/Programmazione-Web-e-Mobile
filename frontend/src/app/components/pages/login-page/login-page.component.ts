@@ -44,6 +44,7 @@ export class LoginPageComponent implements OnInit {
     }
   
     this.userService.login({email: this.fc.email.value, password: this.fc.password.value}).subscribe(() => {      
+      console.log(this.userService.currentUser);
       if(this.userService.currentUser.isAdmin) {
         //va alla home dell'admin
         this.router.navigateByUrl('/admin');

@@ -1,5 +1,5 @@
 ul {
-    position: absolute;
+    position: relative;
     left: 15rem; /*ampiezza della barra laterale*/
     display: flex;
     justify-content: center;

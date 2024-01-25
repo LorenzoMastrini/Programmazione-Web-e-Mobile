@@ -1,14 +1,20 @@
 &nbsp;
-<app-title title="Carrello" margin="3rem 0 0 2.5rem"></app-title>
+<app-title title="Carrello" margin="3rem 1rem"></app-title>
 <app-not-found [visible]="!cart || !cart.items.length"
                 notFoundMessage="Il carrello è vuoto!"
                 resetLinkText="Torna alla Homepage">
 </app-not-found>
 
-&nbsp;
 <div *ngIf="cart && cart.items.length" class="container">
     <ul>
         <li *ngFor="let cartItem of cart.items">
+            <div class="film">
+                <img [src]="cartItem.film.imageUrl" [alt]="cartItem.film.name">
+                <a routerLink="/film/{{cartItem.film.id}}">
+                    {{ cartItem.film.name }}
+                </a>
+            </div>
+            
             <app-purchase-menu [cartItem]="cartItem" [cart]="cart"></app-purchase-menu>
             <div>
                 <button class="remove-button" (click)="removeFromCart(cartItem)">

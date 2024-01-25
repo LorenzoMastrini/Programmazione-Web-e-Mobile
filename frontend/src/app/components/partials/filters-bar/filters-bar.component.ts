@@ -3,7 +3,7 @@ import { FilmService } from 'src/app/services/film.service';
 import { Genre } from 'src/app/shared/models/Genre';
 
 @Component({
-  selector: 'app-filters-bar',
+  selector: 'filters-bar',
   templateUrl: './filters-bar.component.html',
   styleUrls: ['./filters-bar.component.css']
 })

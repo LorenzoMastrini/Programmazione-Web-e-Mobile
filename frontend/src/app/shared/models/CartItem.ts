@@ -5,6 +5,5 @@ export class CartItem {
     constructor(public film:Film)  { }
 
     purchaseMethod: 'Acquisto' | 'Noleggio' = 'Acquisto'; //default impostato su acquisto
-    rentDays: number = 0; //default a zero perché l'opzione iniziale è l'acquisto del film
     totalArticlePrice: number = this.film.price; //quindi il prezzo è quello intero
 }

@@ -6,7 +6,6 @@ export class Order {
     totalPrice!: number;
     name!: string;
     address!: string;
-    paymentId!: string;
     createdAt!: string;
     status!: string;
     userId!: number;

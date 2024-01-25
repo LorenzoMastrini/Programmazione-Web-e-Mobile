@@ -3,7 +3,7 @@
                 resetLinkText="Reset Search">
 </app-not-found>
 
-<!--questo componente è identico all'home-component, se non che visualizza solo i film preferiti (attributo favorite uguale a true)-->
+<!--questo componente è identico all'home-component, se non che visualizza solo i film preferiti (attributo favorite = true)-->
 <ul>
     <li *ngFor="let film of films">
         <a *ngIf="film.favorite" routerLink="/film/{{film.id}}"
@@ -11,31 +11,14 @@
                 'background-image': 'url(' + film.imageUrl + ')',
                 'background-size': 'cover'  }">
             
-            <!--uso [] per dati dinamici-->
             <div class="content" >
                 <p class="name">
                     {{film.name}}
                 </p>
-                <!--
-                <span class="favorite {{film.favorite?'':'not'}}">
-                    ♥
-                </span>
-                -->
+
                 <button>
                     OTTIENI
                 </button>
-                <!--
-                <div class="stars">
-                    <star-rating
-                        [value]="film.stars"
-                        [totalstars]="5"
-                        checkedColor="red"
-                        uncheckedcolor="black"
-                        size="22px"
-                        [readonly]="true"
-                    </starrating>
-                </div>
-                -->
             </div>
         </a>
     </li>

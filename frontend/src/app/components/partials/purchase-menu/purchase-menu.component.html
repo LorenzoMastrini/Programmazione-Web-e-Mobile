@@ -1,14 +1,6 @@
 <div class="container">
-    <div>
-        <img [src]="cartItem.film.imageUrl" [alt]="cartItem.film.name">
-    </div>
-    <div>
-        <a routerLink="/film/{{cartItem.film.id}}">
-            {{ cartItem.film.name }}
-        </a>
-    </div>
-    <!--In base al bottone scelto mostriamo informazioni specifiche-->
-    <div>
+    <!--In base al bottone scelto mostra il prezzo corrispondente-->
+    <div class="radio-buttons">
         <label class="radio-label">
             <input  class="radio" id="buy" type="radio" name="buyRent{{cartItem.film.id}}" checked value="0" (change)="changeIdentificationType()">
             Compra
@@ -18,33 +10,14 @@
             Noleggia
         </label>
     </div>
-    <div class="purchase-menu">
+
+    <div>
         <!--Noleggia-->
-        <div class="rent-menu" *ngIf="this.cartItem.purchaseMethod == 'Noleggio'; else buy">
-            <div>
-                {{ cartItem.film.priceRent | currency }} al giorno
-            </div>
-            <div class="select">
-                <select id="quantitySelectId" #quantitySelect (change)="changeRentDays(quantitySelect.value)">
-                    <!--Film noleggiabili per una settimana al massimo-->
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                    <option>5</option>
-                    <option>6</option>
-                    <option>7</option>
-                </select>
-            </div>
-            <div class="price">
-                {{ cartItem.film.priceRent * getQuantityInt(quantitySelect.value) | currency }}
-            </div>
+        <div class="price" *ngIf="this.cartItem.purchaseMethod == 'Noleggio'">
+            {{ cartItem.film.priceRent | currency }}
         </div>
-        <!--Compra-->
-        <ng-template #buy class="buy">
-            <div class="price">
-                {{ cartItem.film.price | currency }}
-            </div>
-        </ng-template>
+        <div class="price" *ngIf="this.cartItem.purchaseMethod == 'Acquisto'">
+            {{ cartItem.film.price | currency }}
+        </div>
     </div>
 </div>

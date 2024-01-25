@@ -6,12 +6,12 @@ const getAllFilmsByGenreQuery = "SELECT * FROM films WHERE $1=ANY(films.genres);
 
 const loginQuery = "SELECT * FROM users WHERE email = $1 AND password = $2;"; //$1 e $2 sono i parametri passati (in ordine) alla funzione un user.router.ts
 const checkEmailExistsQuery = "SELECT * FROM users WHERE email = $1;";
-const createUserQuery = "INSERT INTO users (name, email, password, address, is_admin, token) VALUES ($1, $2, $3, $4, $5, $6);";
+const createUserQuery = "INSERT INTO users (name, email, password, address, isAdmin, token) VALUES ($1, $2, $3, $4, $5, $6);";
 const getUserQuery = "SELECT * FROM users WHERE token = $1;";
 
 const createOrderQuery = 'INSERT INTO orders ("orderItems", "totalPrice", name, address, status, "userId", "createdAt") VALUES ($1, $2, $3, $4, $5, $6, $7);';
 const getNewOrderQuery = 'SELECT * FROM orders WHERE "userId" = $1 AND status = $2;'; //torna il nuovo ordine effettuato da un utente (ce n'è solo uno per volta con stato "NEW")
-const confirmOrder = 'UPDATE orders SET status = "CONFIRMED" WHERE "userId" = $1;'; //NON FUNZIONA: aggiorna lo status dell'ordine a 'confermato'
+const confirmOrderQuery = 'UPDATE orders SET status = $2 WHERE id = $1;'; //NON FUNZIONA: aggiorna lo status dell'ordine a 'confermato'
 const getUserOrdersQuery = 'SELECT * FROM orders WHERE "userId" = $1;';
 
 const deleteFilmQuery = "DELETE FROM films WHERE id = $1;";
@@ -30,6 +30,7 @@ module.exports = {
     createUserQuery,
     createOrderQuery,
     getNewOrderQuery,
+    confirmOrderQuery,
     getUserQuery,
     getUserOrdersQuery,
     deleteFilmQuery,

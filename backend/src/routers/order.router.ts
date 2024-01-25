@@ -53,7 +53,10 @@ router.post("/newOrderForCurrentUser", (req, res) => {
             createdAt: results.rows[0]["createdAt"],
         }
 
-        res.status(200).send(newOrder);
+        pool.query(queries.confirmOrderQuery, [newOrder.id, "CONFIRMED"], (error:any, results:any) => {
+            if(error) throw error;
+            res.status(200).send(newOrder);
+        });
     });
 });
 

@@ -60,12 +60,12 @@ export class CheckoutPageComponent implements OnInit {
     //form valido, quindi imposto i valori dell'oggetto ordine
     this.order.name = this.fc.name.value;
     this.order.address = this.fc.address.value;
-    this.order.userId = parseInt(this.userService.currentUser.id);
+    this.order.userId = this.userService.currentUser.id;
 
     this.orderService.create({
       orderItems: this.order.orderItems,
       totalPrice: this.cartService.getCart().totalPrice,
-      userId: parseInt(this.userService.currentUser.id),
+      userId: this.userService.currentUser.id,
       name: this.fc.name.value,
       address: this.fc.address.value
     }).subscribe({

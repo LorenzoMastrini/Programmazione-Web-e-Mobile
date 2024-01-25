@@ -7,6 +7,7 @@ import { USER_LOGIN_URL, USER_REGISTER_URL } from '../shared/constants/urls';
 import { ToastrService } from 'ngx-toastr';
 import { IUserRegister } from '../shared/interfaces/IUserRegister';
 import { Router } from '@angular/router';
+import { CartService } from './cart.service';
 
 
 const USER_KEY = 'User'; //chiave per modificare l'utente salvato nel localStorage
@@ -22,7 +23,8 @@ export class UserService {
 
   constructor(private http:HttpClient,
               private toastrService:ToastrService,
-              private router:Router) {
+              private router:Router,
+              private cartService:CartService) {
     this.userObservable = this.userSubject.asObservable(); //versione read only di userSubject, da esporre fuori dallo UserService
   }
 
@@ -70,6 +72,7 @@ export class UserService {
   async logout() {
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY);
+    this.cartService.clearCart();
     this.router.navigateByUrl("/"); //torna alla homepage del sito
   }
 

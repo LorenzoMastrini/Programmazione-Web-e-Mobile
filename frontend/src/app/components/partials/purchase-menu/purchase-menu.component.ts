@@ -42,13 +42,6 @@ export class PurchaseMenuComponent implements AfterViewInit {
     this.cartService.changeItemPrice(this.cartItem); //se si compra il film, la quantità di giorni del noleggio (secondo parametro) è 0
   }
 
-  changeRentDays(rentDaysInString:string) {
-    localStorage.setItem(this.selectedItemKey, (document.getElementById("quantitySelectId") as HTMLSelectElement).value);
-
-    this.cartItem.rentDays = parseInt(rentDaysInString); //assegna il valore all'elemento nel carrello
-    this.cartService.changeItemPrice(this.cartItem);
-  }
-
   //metodo chiamato nell'html per calcolare e mostrare il costo totale del noleggio in base ai giorni
   getQuantityInt(quantityInString:string): number {
     return parseInt(quantityInString);

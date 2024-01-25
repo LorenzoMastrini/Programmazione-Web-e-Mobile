@@ -18,9 +18,6 @@
                 <h4>Acquisto/Noleggio</h4>
             </td>
             <td>
-                <h4>Giorni noleggio</h4>
-            </td>
-            <td>
                 <h4>Prezzo dell'articolo</h4>
             </td>
         </tr>
@@ -33,16 +30,12 @@
                 {{ item.purchaseMethod }}
             </td>
             <td>
-                {{ item.rentDays }} giorni
-            </td>
-
-            <td>
                 {{ item.totalArticlePrice | currency }}
             </td>
         </tr>
 
         <tr>
-            <td colspan="3"></td>
+            <td colspan="2"></td>
             <span>Prezzo totale: {{ order.totalPrice | currency }}</span>
         </tr>
     </table>

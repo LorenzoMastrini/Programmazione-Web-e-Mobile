@@ -18,7 +18,6 @@ router.post("/login", async (req, res) => {
     pool.query(queries.loginQuery, [email, encryptedPassword], (error:any, results:any) => {
         const user = results.rows[0]; //rows[0] perché altrimenti torna un array con solo user all'interno (l'email è unica nel db, quindi è inutile tornare un array)
         if(user) { //login andato a buon fine
-            user["isAdmin"] = user["is_admin"]; //modifico il campo in camel case così che lo riesca a leggere anche il client
             return res.status(200).send(user);
         } else {
             res.status(HTTP_BAD_REQUEST).send("Email o password non validi");
@@ -62,10 +61,8 @@ router.post("/register", (req, res) => {
 const generateTokenResponse = (user:any) => {
     //il primo parametro è il payload, cioè ciò che voglio codificare
     //il secondo è una chiave privata (per semplicità è la stringa "SomeRandomText")
-    //il terzo sono opzioni
     const token = jwt.sign({email: user.email},
-        "SomeRandomText",
-        {expiresIn: "30d"} //il token dura 30 giorni
+        "SomeRandomText"
     );
 
     user.token = token; //aggiunge il campo token all'oggetto user da tornare

@@ -30,7 +30,7 @@ export class AdminHomeComponent {
     });
   }
 
-  deleteFilm(filmId:string) {
+  deleteFilm(filmId:number) {
     this.adminService.deleteFilm(filmId).subscribe(() => {
       window.location.reload(); //refresh della pagina per mostrare le informazioni aggiornate
     });

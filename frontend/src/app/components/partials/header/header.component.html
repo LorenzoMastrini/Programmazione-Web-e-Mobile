@@ -19,7 +19,6 @@
                 <li *ngIf="isAuth" class="menu-container">
                     <a class="username">{{ user.name }}</a>
                     <div class="menu">
-                        <a *ngIf="!user.isAdmin" routerLink="/profile">Profilo</a>
                         <a *ngIf="!user.isAdmin" routerLink="/orders/{{user.token}}">Ordini</a>
                         <a *ngIf="user.isAdmin" routerLink="/admin/orders">Ordini</a>
                         <a (click)="logout()">Logout</a>

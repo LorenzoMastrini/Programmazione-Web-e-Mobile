@@ -1,4 +1,5 @@
 ul {
+    margin-top: 3rem;
     position: absolute;
     left: 15rem; /*ampiezza della barra laterale*/
     display: flex;
@@ -10,7 +11,7 @@ ul {
 }
 
 li a {
-    height: 22rem;
+    height: 23rem;
     width: 15rem;
     border: 0;
     border-radius: 1rem;
@@ -23,7 +24,7 @@ li a {
 }
 
 li a:hover {
-    opacity: 0.9;
+    opacity: 0.8;
     cursor: pointer;
 }
 

@@ -1,5 +1,5 @@
 export class Film {
-    id!: string;
+    id!: number;
     name!: string;
     price!: number;
     priceRent!: number;
@@ -9,9 +9,9 @@ export class Film {
     imageUrl!: string;
     plot!: string;
     director!: string;
-    country!: string[];
+    country!: string;
     year!: number;
-    duration!: string;
-    rentable!: number; //*ngIf con i booleani non funziona quindi: true=1 e false=0
+    duration!: number;
+    rentable!: boolean; //*ngIf con i booleani non funziona quindi: true=1 e false=0
     //fruitionMethod!: string;
 }

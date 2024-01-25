@@ -4,7 +4,6 @@ export interface OrderItem {
     id: string;
     filmId: number;
     purchaseMethod: boolean;
-    rentDays: number;
 }
 
 export interface Order {
