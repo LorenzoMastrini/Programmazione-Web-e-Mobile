@@ -13,11 +13,14 @@ import { Film } from 'src/app/shared/models/Film';
 export class FilmPageComponent {
   film!: Film;
 
-  constructor(activatedRoute:ActivatedRoute, filmService:FilmService, private cartService:CartService, private router:Router) {
+  constructor(activatedRoute:ActivatedRoute,
+              filmService:FilmService,
+              private cartService:CartService) {
     activatedRoute.params.subscribe((params) => {
       if(params.id) {
         filmService.getFilmById(params.id).subscribe(serverFilm => {
           this.film = serverFilm;
+          console.log(this.film.genres);
         });
       }
     });

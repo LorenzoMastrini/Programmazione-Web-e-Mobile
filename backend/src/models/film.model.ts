@@ -9,7 +9,7 @@ export interface Film {
     imageUrl: string;
     plot: string;
     director: string;
-    origins: string[];
+    country: string;
     year: number;
     duration: string;
     rentable: number; //*ngIf con i booleani non funziona quindi: true=1 e false=0

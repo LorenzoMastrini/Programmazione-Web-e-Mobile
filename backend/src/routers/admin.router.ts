@@ -30,7 +30,7 @@ router.post("/films/add", (req, res) => {
         priceRent: 0,
         favorite: false,
         score: 0,
-        origins: [],
+        country: requestFilm.country,
         year: 0,
         rentable: 0
     }
@@ -58,7 +58,7 @@ router.put("/films/modify/:id", (req, res) => {
         priceRent: requestFilm.priceRent,
         favorite: requestFilm.favorite,
         score: requestFilm.score,
-        origins: requestFilm.origins,
+        country: requestFilm.country,
         year: requestFilm.year,
         rentable: requestFilm.rentable
     }
@@ -74,7 +74,7 @@ router.put("/films/modify/:id", (req, res) => {
                                         updatedFilm.priceRent,
                                         updatedFilm.favorite,
                                         updatedFilm.score,
-                                        updatedFilm.origins,
+                                        updatedFilm.country,
                                         updatedFilm.year,
                                         updatedFilm.rentable], (error:any, results:any) => {
         if(error) throw error;

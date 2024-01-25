@@ -8,23 +8,9 @@
     <img [src]="film.imageUrl" [alt]="film.name"/>
 
     <div class="info">
-        <div class="header">
-            <span class="name">
-                {{ film.name }}
-            </span>
-        </div>
-        <!--
-        <div class="rating">
-            <star-rating 
-                [value]="film.stars"
-                [totalStars]="5"
-                checkedcolor="red"
-                uncheckedcolor="black"
-                size="25px"
-                [readonly]="true">
-            </star-rating>
-        </div>
-        -->
+        <span class="name">
+            {{ film.name }}
+        </span>
 
         <div class="general">
             <span class="duration">
@@ -35,43 +21,38 @@
                     {{ tag }}
                 </a>
             </div>
+            <span class="score">
+                {{ film.score }}/5 &#9733;
+            </span>
         </div>
         
-        <div class="description">
-            <span>
+        <div class="details">
+            <span class="director">
+                <strong>Regista:&nbsp;</strong>{{ film.director }}
+            </span>
+
+            <span class="year">
+                <strong>Anno:&nbsp;</strong> {{ film.year }}
+            </span>
+
+            <span class="country">
+                <strong>Paese di produzione:&nbsp;</strong> {{ film.country }}
+            </span>
+
+            <span class="plot">
                 {{ film.plot }}
             </span>
         </div>
 
-        <div class="details">
-            <div class="director">
-                <span>
-                    <strong>Regista: </strong>{{ film.director }}
-                </span>
-            </div>
-
-            <div class="year">
-                <span>
-                    <strong>Anno: </strong> {{ film.year }}
-                </span>
-            </div>
-
-            <div class="origins">
-                <span *ngFor="let origin of film.origins">
-                    <strong>Paese di produzione: </strong> {{ origin }}
-                </span>
-            </div>
-        </div>
-        
-        <div class="price">
-            <span>
-                {{ film.price | currency }}
+        <div class="purchase-info">
+            <span class="price">
+                {{ film.price | currency:'EUR' }}
+            </span>
+            <span class="price-rent">
+                {{ film.priceRent | currency:'EUR' }} al giorno
             </span>
         </div>
         
-        <div class="footer">
-            <button (click)="addToCart()">Aggiungi al carrello</button>
-            <span class="list">♥</span>
-        </div>
+        <default-button text="Aggiungi al carrello" (click)="addToCart()"></default-button>
     </div>
 </div>

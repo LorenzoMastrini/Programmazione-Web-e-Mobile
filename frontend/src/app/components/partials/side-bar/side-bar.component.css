@@ -3,17 +3,30 @@
     height: 100%;
     background-color: rgb(24, 24, 24);
     position: fixed;
+    display: flex;
     z-index: 2;
-    top: 0;
-    left: 0;
-    align-items: left;
+    align-items: center;
+    flex-direction: column;
 }
 
 .logo {
     display: flex;
-    padding: 10px 35px;
-    margin-bottom: 90px;
-    font-size: 25px;
+    margin-top: 0.7rem;
+    margin-bottom: 5rem;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.logo:hover {
+    color: grey;
+}
+
+
+ul {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding-right: 4rem;
 }
 
 li {
@@ -21,10 +34,10 @@ li {
 }
 
 li a {
-    font-size: 18px;
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
     display: inline-block;
     color: white;
-    line-height: 50px;
 }
 
 li a:hover {

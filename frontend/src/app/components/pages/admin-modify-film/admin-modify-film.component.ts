@@ -22,14 +22,12 @@ export class AdminModifyFilmComponent implements OnInit {
               private router:Router,
               private adminService:AdminService) { }
 
-//INIZIALIZZAZIONE NEL CONSTRUTTORE MA UNDEFINED NELL'NGONINIT()
-
   ngOnInit(): void {
     this.activatedRoute.params.subscribe((params) => {
       if(params.id) {
         this.filmService.getFilmById(params.id).subscribe(serverFilm => {
           this.film = serverFilm;
-          let {name, duration, genres, director, plot, imageUrl, year, origins, score, favorite, price, rentable, priceRent} = this.film;
+          let {name, duration, genres, director, plot, imageUrl, year, country, score, favorite, price, rentable, priceRent} = this.film;
 
           //tramite formBuilder creo il form group per i vari campi che l'utente dovrà compilare
           this.modifyFilmForm = this.formBuilder.group({
@@ -42,7 +40,7 @@ export class AdminModifyFilmComponent implements OnInit {
             plot: [plot, Validators.required],
             imageUrl: [imageUrl, Validators.required],
             year: [year, Validators.required],
-            origins: [origins, Validators.required],
+            country: [country, Validators.required],
             score: [score, Validators.required],
             favorite: [favorite, Validators.required],
             price: [price, Validators.required],
@@ -67,24 +65,21 @@ export class AdminModifyFilmComponent implements OnInit {
       return; //torna se il form non è valido
     }
 
-    this.adminService.modifyFilm({
-                                id: this.film.id, //non viene mai aggiornato dall'amministratore perché viene gestito dal database
-                                name: this.fc.name.value,
-                                duration: this.fc.duration.value,
-                                genres: this.stringToArrayOfStrings(this.fc.genres.value),
-                                director: this.fc.director.value,
-                                plot: this.fc.plot.value,
-                                imageUrl: this.fc.imageUrl.value,
-                                year: this.fc.year.value,
-                                origins: this.stringToArrayOfStrings(this.fc.origins.value),
-                                score: this.fc.score.value,
-                                favorite: this.fc.favorite.value,
-                                price: this.fc.price.value,
-                                rentable: this.fc.rentable.value,
-                                priceRent: this.fc.priceRent.value
-    }).subscribe((serverNewFilm: Film) => {
-      console.log(serverNewFilm);
-    });
+    this.adminService.modifyFilm({id: this.film.id, //non viene mai aggiornato dall'amministratore perché viene gestito dal database
+                                  name: this.fc.name.value,
+                                  duration: this.fc.duration.value,
+                                  genres: this.stringToArrayOfStrings(this.fc.genres.value),
+                                  director: this.fc.director.value,
+                                  plot: this.fc.plot.value,
+                                  imageUrl: this.fc.imageUrl.value,
+                                  year: this.fc.year.value,
+                                  country: this.fc.country.value,
+                                  score: this.fc.score.value,
+                                  favorite: this.fc.favorite.value,
+                                  price: this.fc.price.value,
+                                  rentable: this.fc.rentable.value,
+                                  priceRent: this.fc.priceRent.value
+    }).subscribe();
 
     this.router.navigateByUrl("/admin"); //torna alla home dell'admin
   }
@@ -93,7 +88,7 @@ export class AdminModifyFilmComponent implements OnInit {
   stringToArrayOfStrings(string: string): string[] {
     let stringArray: string[] = [];
     if(string.includes(",")) {
-      stringArray = string.split(", ");
+      stringArray = string.split(",");
     } else {
       stringArray.push(string);
     }

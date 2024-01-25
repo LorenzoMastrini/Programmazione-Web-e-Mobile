@@ -24,7 +24,7 @@ li a {
 }
 
 li a:hover {
-    opacity: 0.9;
+    opacity: 0.8;
     cursor: pointer;
 }
 
@@ -44,25 +44,14 @@ li a:hover {
 
 .name {
     /*padding-bottom: 1rem; per spostarlo verso l'alto*/
-    font-size: 15px;
+    font-size: 1rem;
 }
 
 .content button {
     color: black;
-    font-size: 13px;
+    font-size: 0.8rem;
     background-color: white;
     border-radius: 1rem;
     height: 1.5rem;
     border: none;
-}
-
-.favorite{
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
-    font-size: 1.2rem;
-}
-
-.favorite.not{
-    color: gray;
 }
