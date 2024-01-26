@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  margin: 2rem 0 0 13rem;
+  margin-top: 2.5rem;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly start;
@@ -9,6 +9,9 @@
 a {
   color: white;
   opacity: 0.8;
+  font-size: large;
+  padding: 0.7rem;
+  display: inline-block;
 }
 
 a:hover {
@@ -33,28 +36,65 @@ ul li:hover {
   cursor: pointer;
 }
 
-ul a {
-  font-size: medium;
-  padding: 1rem;
-  display: inline-block;
-}
-
-.menu-container {
+.genres-menu-container, .menu-container {
   position: relative;
 }
 
-.menu {
+.genres-menu, .menu {
   background-color: black;
   position: absolute;
   z-index: 1;
   display: none; /*visualizza il menu solo se ci passo sopra con il mouse (.menu-container:hover)*/
 }
 
-.menu-container:hover .menu {
+.genres-menu-container:hover .genres-menu {
   display: block;
+  columns: 2;
+  height: auto;
+}
+
+.menu-container:hover .menu {
+  display: flex;
+  flex-direction: column;
+  min-width: 8rem;
+  height: auto;
 }
 
 .menu a {
   width: 100%;
   min-width: 8rem;
+}
+
+.radio-label {
+  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0.4rem 0;
+}
+
+input[type="radio"] {
+  appearance: none;
+  margin-left: 0.5rem;
+  margin-right: 0.2rem;
+  background-color: black;
+  width: 1.10rem;
+  height: 1.10rem;
+  border: 0.10rem solid white;
+  border-radius: 50%;
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  width: 0.60rem;
+  height: 0.60rem;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  background-color: white;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
 }

@@ -19,8 +19,12 @@ export class DiscoverPageComponent {
     activatedRoute.params.subscribe((params) => {
       if(params.searchTerm) {
         filmsObservable = this.filmService.getAllFilmsBySearchTerm(params.searchTerm);
-      } else if(params.tag) {
-        filmsObservable = this.filmService.getAllFilmsByGenre(params.tag);
+      } else if(params.genre) {
+        filmsObservable = this.filmService.getAllFilmsByGenre(params.genre);
+      } else if(params.priceFilter) {
+        filmsObservable = this.filmService.getAllFilmsByPrice(params.priceFilter);
+      } else if(params.purchaseMethodFilter) {
+        filmsObservable = this.filmService.getAllFilmsByPurchaseMethod(params.purchaseMethodFilter);
       } else {
         filmsObservable = filmService.getAll(); //se non è stato cercato nulla mostra tutto per default
       }
@@ -29,5 +33,75 @@ export class DiscoverPageComponent {
         this.films = serverFilms;
       });
     });
+  }
+
+
+  orderBy(parameter: string) {
+    switch(parameter) {
+      case 'name': {
+        this.films.sort(function (a, b) {
+          if (a.name < b.name) {
+            return -1;
+          }
+          if (a.name > b.name) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      }
+
+      case 'priceBuy': {
+        this.films.sort(function (a, b) {
+          if (a.price < b.price) {
+            return -1;
+          }
+          if (a.price > b.price) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      }
+
+      case 'priceRent': {
+        this.films.sort(function (a, b) {
+          if (a.priceRent < b.priceRent) {
+            return -1;
+          }
+          if (a.priceRent > b.priceRent) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      }
+
+      case 'duration': {
+        this.films.sort(function (a, b) {
+          if (a.duration < b.duration) {
+            return -1;
+          }
+          if (a.duration > b.duration) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      }
+
+      case 'rating': {
+        this.films.sort(function (a, b) {
+          if (a.score < b.score) {
+            return -1;
+          }
+          if (a.score > b.score) {
+            return 1;
+          }
+          return 0;
+        });
+        break;
+      }
+    }
   }
 }

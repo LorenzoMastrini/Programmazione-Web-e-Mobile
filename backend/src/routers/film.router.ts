@@ -38,6 +38,29 @@ router.get("/genre/:genreName", (req, res) => {
     });
 });
 
+//torna i film in base alla fascia di prezzo
+router.get("/price/:priceFilter", (req, res) => {
+    //la stringa è nella forma 'n1-n2'
+    const minPrice = parseInt(req.params.priceFilter.split('-')[0]); //divide la stringa rispetto a '-' e prende separatamente le due sottostringhe rimanenti (i due numeri)
+    const maxPrice = parseInt(req.params.priceFilter.split('-')[1]);
+    
+    pool.query(queries.getAllFilmsByPriceQuery, [minPrice, maxPrice], (error:any, results:any) => {
+        if(error) throw error;
+        res.status(200).json(results.rows);
+    });
+});
+
+//torna i film in base ai metodi d'acquisto disponibili
+router.get("/purchaseMethod/:purchaseMethodFilter", (req, res) => {
+    //la stringa è nella forma 'n1-n2'
+    const purchaseMethod = req.params.purchaseMethodFilter;
+    
+    pool.query(queries.getAllFilmsByPurchaseMethodQuery, [purchaseMethod], (error:any, results:any) => {
+        if(error) throw error;
+        res.status(200).json(results.rows);
+    });
+});
+
 //torna i film in base all'id, per visualizzare la pagina del singolo film
 router.get("/:filmId", (req, res) => {
     const filmId = parseInt(req.params.filmId);

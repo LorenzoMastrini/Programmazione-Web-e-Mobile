@@ -47,23 +47,13 @@ img {
     margin-right: 5rem;
 }
 
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.tags a {
+.genres a {
     padding-right: 0.5rem;
     margin: none;
-    color: white;
-}
-
-.tags a:hover {
-    opacity: 0.7;
 }
 
 .score {
-    margin-left: 5rem;
+    margin-left: 4.5rem;
 }
 
 .details {
@@ -104,5 +94,10 @@ span strong {
 
 .price-rent::before {
     content: "Noleggio: ";
+    color: grey;
+}
+
+.rent-not-available {
+    font-size: 1.8rem;
     color: grey;
 }

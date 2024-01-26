@@ -1,9 +1,9 @@
 ul {
     margin-top: 3rem;
     position: absolute;
-    left: 15rem; /*ampiezza della barra laterale*/
+    left: 15.4rem; /*ampiezza della barra laterale*/
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: wrap;
     flex-wrap: wrap;
     list-style-type: none;

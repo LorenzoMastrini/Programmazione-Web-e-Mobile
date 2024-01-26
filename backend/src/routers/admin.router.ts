@@ -32,7 +32,7 @@ router.post("/films/add", (req, res) => {
         score: 0,
         country: requestFilm.country,
         year: 0,
-        rentable: 0
+        purchaseMethodsAvailable: requestFilm.purchaseMethodsAvailable
     }
 
     pool.query(queries.addFilmQuery, [newFilm.name, newFilm.duration, newFilm.genres, newFilm.director, newFilm.plot, newFilm.imageUrl], (error:any, results:any) => {
@@ -60,7 +60,7 @@ router.put("/films/modify/:id", (req, res) => {
         score: requestFilm.score,
         country: requestFilm.country,
         year: requestFilm.year,
-        rentable: requestFilm.rentable
+        purchaseMethodsAvailable: requestFilm.purchaseMethodsAvailable
     }
 
     pool.query(queries.modifyFilmQuery, [updatedFilm.id,
@@ -76,7 +76,7 @@ router.put("/films/modify/:id", (req, res) => {
                                         updatedFilm.score,
                                         updatedFilm.country,
                                         updatedFilm.year,
-                                        updatedFilm.rentable], (error:any, results:any) => {
+                                        updatedFilm.purchaseMethodsAvailable], (error:any, results:any) => {
         if(error) throw error;
         res.status(200).json(results.rows[0]);
     });

@@ -16,9 +16,9 @@
             <span class="duration">
               {{ film.duration }} min
             </span>
-            <div class="tags">
-                <a *ngFor="let tag of film.genres" routerLink="/tag/{{tag}}">
-                    {{ tag }}
+            <div class="genres">
+                <a *ngFor="let genre of film.genres">
+                    {{ genre }}
                 </a>
             </div>
             <span class="score">
@@ -45,11 +45,14 @@
         </div>
 
         <div class="purchase-info">
-            <span class="price">
+            <span *ngIf="film.purchaseMethodsAvailable === 'buyOnly' || film.purchaseMethodsAvailable === 'both'" class="price">
                 {{ film.price | currency:'EUR' }}
             </span>
-            <span class="price-rent">
+            <span *ngIf="film.purchaseMethodsAvailable === 'rentOnly' || film.purchaseMethodsAvailable === 'both'" class="price-rent">
                 {{ film.priceRent | currency:'EUR' }}
+            </span>
+            <span class="rent-not-available" *ngIf="film.purchaseMethodsAvailable === 'buyOnly'">
+                Noleggio non disponibile
             </span>
         </div>
         

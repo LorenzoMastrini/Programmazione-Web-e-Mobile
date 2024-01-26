@@ -1,8 +1,10 @@
 const getAllQuery = "SELECT * FROM films;";
 const getFilmByIdQuery = "SELECT * FROM films WHERE id = $1;"; //$1 è il parametro che viene passato alla query
-const getFilmBySearchTermQuery = "SELECT * FROM films WHERE name LIKE '%' || $1 || '%';";
+const getFilmBySearchTermQuery = "SELECT * FROM films WHERE LOWER(name) LIKE  LOWER('%' || $1 || '%');";
 const getAllGenresQuery = "SELECT * FROM genres;";
 const getAllFilmsByGenreQuery = "SELECT * FROM films WHERE $1=ANY(films.genres);";
+const getAllFilmsByPriceQuery = "SELECT * FROM films WHERE price >= $1 AND price < $2;";
+const getAllFilmsByPurchaseMethodQuery = 'SELECT * FROM films WHERE "purchaseMethodsAvailable" = $1;';
 
 const loginQuery = "SELECT * FROM users WHERE email = $1 AND password = $2;"; //$1 e $2 sono i parametri passati (in ordine) alla funzione un user.router.ts
 const checkEmailExistsQuery = "SELECT * FROM users WHERE email = $1;";
@@ -16,7 +18,7 @@ const getUserOrdersQuery = 'SELECT * FROM orders WHERE "userId" = $1;';
 
 const deleteFilmQuery = "DELETE FROM films WHERE id = $1;";
 const addFilmQuery = 'INSERT INTO films (name, duration, genres, director, plot, "imageUrl") VALUES ($1, $2, $3, $4, $5, $6);';
-const modifyFilmQuery = 'UPDATE films SET name = $2, duration = $3, genres = $4, director = $5, plot = $6, "imageUrl" = $7, price = $8, "priceRent" = $9, favorite = $10, score = $11, country = $12, year = $13, rentable = $14 WHERE id = $1;';
+const modifyFilmQuery = 'UPDATE films SET name = $2, duration = $3, genres = $4, director = $5, plot = $6, "imageUrl" = $7, price = $8, "priceRent" = $9, favorite = $10, score = $11, country = $12, year = $13, purchaseMethodsAvailable = $14 WHERE id = $1;';
 const getAllOrdersQuery = "SELECT * FROM orders;";
 
 module.exports = {
@@ -25,6 +27,8 @@ module.exports = {
     getFilmBySearchTermQuery,
     getAllGenresQuery,
     getAllFilmsByGenreQuery,
+    getAllFilmsByPriceQuery,
+    getAllFilmsByPurchaseMethodQuery,
     loginQuery,
     checkEmailExistsQuery,
     createUserQuery,

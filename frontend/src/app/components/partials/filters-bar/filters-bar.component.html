@@ -2,39 +2,70 @@
 <div class="container">
    <nav>
        <ul>
-           <li class="menu-container">
+           <li class="genres-menu-container">
                Genere
-               <div class="menu" *ngIf="genres">
-                   <a *ngFor="let genre of genres" routerLink="/tag/{{genre.name}}">
+               <div class="genres-menu" *ngIf="genres">
+                   <a *ngFor="let genre of genres" routerLink="/discover-page/genres/{{genre.name}}">
                        {{ genre.name }}({{ genre.count }})
                    </a>
                </div>
            </li>
 
            <li class="menu-container">
-               Prezzo
+               Prezzo (acquisto)
                <div class="menu">
-                   <mat-slider class="slider" discrete min="0" max="50" [displayWith]="formatLabel">
-                       <input matSliderThumb>
-                   </mat-slider>
+                    <label class="radio-label">
+                        <input class="radio-button" id="0-5" type="radio" name="radio-price" value="0-5" (change)="changePriceFilter($event)">
+                        0€ - 5€
+                    </label>
+
+                    <label class="radio-label">
+                        <input class="radio-button" id="5-10" type="radio" name="radio-price" value="5-10" (change)="changePriceFilter($event)">
+                        5€ - 10€
+                    </label>
+
+                    <label class="radio-label">
+                        <input class="radio-button" id="10-15" type="radio" name="radio-price" value="10-15" (change)="changePriceFilter($event)">
+                        10€ - 15€
+                    </label>
+
+                    <label class="radio-label">
+                        <input class="radio-button" id="15-20" type="radio" name="radio-price" value="15-20" (change)="changePriceFilter($event)">
+                        15€ - 20€
+                    </label>
                </div>
            </li>
 
            <li class="menu-container">
                Compra/Noleggia
                <div class="menu">
-                   <input type="checkbox" id="buyOnly">
-                   <label for="buyOnly">Solo acquisto</label>
-                   <input type="checkbox" id="rentOnly">
-                   <label for="rentOnly">Solo noleggio</label>
-                   <input type="checkbox" id="both">
-                   <label for="both">Entrambi</label>
+                    <label class="radio-label">
+                        <input class="radio-button" id="buyOnly" type="radio" name="radio-purchase-method" value="buyOnly" (change)="changePurchaseMethodFilter($event)">
+                        Solo acquisto
+                    </label>
+                    <label class="radio-label">
+                        <input class="radio-button" id="rentOnly" type="radio" name="radio-purchase-method" value="rentOnly" (change)="changePurchaseMethodFilter($event)">
+                        Solo noleggio
+                    </label>
+                    <label class="radio-label">
+                        <input class="radio-button" id="both" type="radio" name="radio-purchase-method" value="both" (change)="changePurchaseMethodFilter($event)">
+                        Entrambi
+                    </label>
                </div>
            </li>
 
-           <li>Ordina per</li>
+           <li class="menu-container">
+                Ordina per
+                <div class="menu">
+                    <a (click)="sendOrderByParameterToParent('name')">Nome</a>
+                    <a (click)="sendOrderByParameterToParent('priceBuy')">Prezzo acquisto</a>
+                    <a (click)="sendOrderByParameterToParent('priceRent')">Prezzo noleggio</a>
+                    <a (click)="sendOrderByParameterToParent('duration')">Durata</a>
+                    <a (click)="sendOrderByParameterToParent('rating')">Rating</a>
+                </div>
+            </li>
 
-           <li>Resetta filtri</li>
+           <li routerLink="/discover-page">Resetta filtri</li>
        </ul>
    </nav>
 </div>

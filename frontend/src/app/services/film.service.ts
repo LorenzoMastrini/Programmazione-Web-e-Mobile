@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Film } from '../shared/models/Film';
 import { Genre } from '../shared/models/Genre';
 import { HttpClient } from '@angular/common/http';
-import { FILMS_BY_GENRE_URL, FILMS_BY_ID_URL, FILMS_BY_SEARCH_URL, FILMS_GENRES_URL, FILMS_URL } from '../shared/constants/urls';
+import { FILMS_BY_GENRE_URL, FILMS_BY_ID_URL, FILMS_BY_PRICE_URL, FILMS_BY_PURCHASE_METHOD_URL, FILMS_BY_SEARCH_URL, FILMS_GENRES_URL, FILMS_URL } from '../shared/constants/urls';
 import { Observable, catchError, of, tap } from 'rxjs';
 
 @Injectable({
@@ -21,6 +21,7 @@ export class FilmService {
   getAllFilmsBySearchTerm(searchTerm:string) {
     return this.http.get<Film[]>(FILMS_BY_SEARCH_URL + searchTerm);
   }
+  
 
   getAllGenres(): Observable<Genre[]> {
     return this.http.get<Genre[]>(FILMS_GENRES_URL);
@@ -30,6 +31,14 @@ export class FilmService {
     return genre === "Tutti" ?
       this.getAll() :
       this.http.get<Film[]>(FILMS_BY_GENRE_URL + genre);
+  }
+
+  getAllFilmsByPrice(priceFilter: string): Observable<Film[]> {
+    return this.http.get<Film[]>(FILMS_BY_PRICE_URL + priceFilter);
+  }
+
+  getAllFilmsByPurchaseMethod(purchaseMethodFilter: string): Observable<Film[]> {
+    return this.http.get<Film[]>(FILMS_BY_PURCHASE_METHOD_URL + purchaseMethodFilter);
   }
 
   getFilmById(filmId: string): Observable<Film> {
@@ -54,8 +63,9 @@ export class FilmService {
   }
   
 /*
-  getFilmsByFilters(genre:string, price:number,
-                    purchaseMethod:string, fruitionMethod:string): Film[] {
+  getFilmsByFilters(genre:string,
+                    price:number,
+                    purchaseMethod:string): Film[] {
     let films_list: Film[] = []; //lista dei film che rispettano tutti i filtri applicati
     
     //filtra rispetto al genere
@@ -75,13 +85,6 @@ export class FilmService {
     //filtra in base al metodo di acquisizione del prodotto (acquisto o noleggio)
     if(purchaseMethod == 'buy only') { //solo acquisto
       films_list = this.getAll().filter(film => film.rent == 0);
-    }
-
-    //filtra in base al metodo di fruizione (streaming o tramite supporto fisico)
-    if(fruitionMethod == 'streaming only') { //solo streaming
-      films_list = this.getAll().filter(film => film.fruitionMethod == 'streaming only');
-    } else if(purchaseMethod == 'physical only') { //solo fisico
-      films_list = this.getAll().filter(film => film.fruitionMethod == 'physical only');
     }
 
     return films_list;

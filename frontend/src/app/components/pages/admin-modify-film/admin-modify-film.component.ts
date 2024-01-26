@@ -27,7 +27,7 @@ export class AdminModifyFilmComponent implements OnInit {
       if(params.id) {
         this.filmService.getFilmById(params.id).subscribe(serverFilm => {
           this.film = serverFilm;
-          let {name, duration, genres, director, plot, imageUrl, year, country, score, favorite, price, rentable, priceRent} = this.film;
+          let {name, duration, genres, director, plot, imageUrl, year, country, score, favorite, price, purchaseMethodsAvailable, priceRent} = this.film;
 
           //tramite formBuilder creo il form group per i vari campi che l'utente dovrà compilare
           this.modifyFilmForm = this.formBuilder.group({
@@ -44,7 +44,7 @@ export class AdminModifyFilmComponent implements OnInit {
             score: [score, Validators.required],
             favorite: [favorite, Validators.required],
             price: [price, Validators.required],
-            rentable: [rentable, Validators.required],
+            purchaseMethodsAvailable: [purchaseMethodsAvailable, Validators.required],
             priceRent: [priceRent, Validators.required]
           });
         });
@@ -77,7 +77,7 @@ export class AdminModifyFilmComponent implements OnInit {
                                   score: this.fc.score.value,
                                   favorite: this.fc.favorite.value,
                                   price: this.fc.price.value,
-                                  rentable: this.fc.rentable.value,
+                                  purchaseMethodsAvailable: this.fc.purchaseMethodsAvailable.value,
                                   priceRent: this.fc.priceRent.value
     }).subscribe();
 

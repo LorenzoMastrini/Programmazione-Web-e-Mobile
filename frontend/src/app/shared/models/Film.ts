@@ -12,6 +12,5 @@ export class Film {
     country!: string;
     year!: number;
     duration!: number;
-    rentable!: boolean; //*ngIf con i booleani non funziona quindi: true=1 e false=0
-    //fruitionMethod!: string;
+    purchaseMethodsAvailable!: "buyOnly" | "rentOnly" | "both";
 }
