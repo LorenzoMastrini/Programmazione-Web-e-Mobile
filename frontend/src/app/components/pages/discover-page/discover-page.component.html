@@ -10,22 +10,24 @@
 
     <ul>
         <li *ngFor="let film of films">
-            <a routerLink="/film/{{film.id}}"
-                [ngStyle]="{
-                    'background-image': 'url(' + film.imageUrl + ')',
-                    'background-size': 'cover'  }">
-                
-                <!--uso [] per dati dinamici-->
-                <div class="content" >
-                    <p class="name">
-                        {{film.name}}
-                    </p>
+            <ng-template [ngIf]="!film.comingSoon">
+                <a routerLink="/film/{{film.id}}"
+                    [ngStyle]="{
+                        'background-image': 'url(' + film.imageUrl + ')',
+                        'background-size': 'cover'  }">
+                    
+                    <!--uso [] per dati dinamici-->
+                    <div class="content" >
+                        <p class="name">
+                            {{film.name}}
+                        </p>
 
-                    <button>
-                        OTTIENI
-                    </button>
-                </div>
-            </a>
+                        <button>
+                            OTTIENI
+                        </button>
+                    </div>
+                </a>
+            </ng-template>
         </li>
     </ul>
 </div>

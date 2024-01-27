@@ -20,7 +20,13 @@ export class PurchaseMenuComponent {
   constructor(private cartService:CartService) {}
 
   ngAfterViewInit() {
-    this.cartService.changeItemPrice(this.cartItem, 'Acquisto');
+    //se l'acquisto è disponibile
+    if(this.cartItem.film.purchaseMethodsAvailable === 'buyOnly' || this.cartItem.film.purchaseMethodsAvailable === 'both') {
+      this.cartService.changeItemPrice(this.cartItem, 'Acquisto'); //default impostato su "Acquisto"
+    } else if(this.cartItem.film.purchaseMethodsAvailable === 'rentOnly') { //altrimenti imposta a "Noleggio"
+      this.cartService.changeItemPrice(this.cartItem, 'Noleggio');
+      (document.getElementById("rent") as HTMLInputElement).checked = true; //aggiorna di conseguenza anche il radio button dell'HTML
+    }
   }
 /*
   ngAfterViewInit() {
@@ -35,6 +41,7 @@ export class PurchaseMenuComponent {
     (document.getElementById("quantitySelectId") as HTMLSelectElement).options[index - 1].selected = true;
   }
 */
+
   //metodo chiamato ogni volta che l'utente cambia la scelta dei radio button ("compra" o "noleggia")
   changePurchaseMethod() {
     //in base al bottone precedentemente selezionato, inverte la selezione

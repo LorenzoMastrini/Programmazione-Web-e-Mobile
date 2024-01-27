@@ -5,7 +5,6 @@ import { ToastrService } from 'ngx-toastr';
 import { CartService } from 'src/app/services/cart.service';
 import { OrderService } from 'src/app/services/order.service';
 import { UserService } from 'src/app/services/user.service';
-import { CartItem } from 'src/app/shared/models/CartItem';
 import { Order } from 'src/app/shared/models/Order';
 
 @Component({
@@ -25,6 +24,10 @@ export class CheckoutPageComponent implements OnInit {
               private toastrService:ToastrService,
               private orderService:OrderService,
               private router:Router) {
+    if(userService.currentUser.token == undefined) {
+      router.navigateByUrl("/login");
+    }
+    
     const cart = cartService.getCart(); //ottengo l'ultimo valore dell'observable
 
     this.order.orderItems = cart.items;

@@ -4,7 +4,7 @@
     display: flex;
     align-items: top;
     flex-wrap: wrap;
-    margin: 5rem;
+    margin: 5rem 0 0 2rem;
 }
   
 /*.container > * {
@@ -97,7 +97,7 @@ span strong {
     color: grey;
 }
 
-.rent-not-available {
+.not-available {
     font-size: 1.8rem;
     color: grey;
 }

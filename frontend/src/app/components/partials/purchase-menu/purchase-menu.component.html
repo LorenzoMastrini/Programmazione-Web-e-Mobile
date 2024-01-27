@@ -1,10 +1,14 @@
 <div class="container">
     <!--In base al bottone scelto mostra il prezzo corrispondente-->
-    <div class="radio-buttons">
-        <label class="radio-label">
-            <input *ngIf="cartItem.film.purchaseMethodsAvailable === 'buyOnly' || cartItem.film.purchaseMethodsAvailable === 'both'" class="radio" id="buy" type="radio" name="buyRent{{cartItem.film.id}}" checked value="0" (change)="changePurchaseMethod()">
+    <div class="radio-buttons-menu">
+        <label *ngIf="cartItem.film.purchaseMethodsAvailable === 'buyOnly' || cartItem.film.purchaseMethodsAvailable === 'both'" class="radio-label">
+            <input class="radio" id="buy" type="radio" name="buyRent{{cartItem.film.id}}" checked value="0" (change)="changePurchaseMethod()">
             Acquista
         </label>
+        <span class="radio" *ngIf="cartItem.film.purchaseMethodsAvailable === 'rentOnly'">
+            Acquisto non disponibile
+        </span>
+
         <label *ngIf="cartItem.film.purchaseMethodsAvailable === 'rentOnly' || cartItem.film.purchaseMethodsAvailable === 'both'" class="radio-label">
             <input class="radio" id="rent" type="radio" name="buyRent{{cartItem.film.id}}" value="1" (change)="changePurchaseMethod()">
             Noleggia
@@ -17,10 +21,10 @@
     <div>
         <!--Noleggia-->
         <div class="price" *ngIf="this.cartItem.purchaseMethod == 'Noleggio'">
-            {{ cartItem.film.priceRent | currency }}
+            {{ cartItem.film.priceRent | currency:'EUR' }}
         </div>
         <div class="price" *ngIf="this.cartItem.purchaseMethod == 'Acquisto'">
-            {{ cartItem.film.price | currency }}
+            {{ cartItem.film.price | currency:'EUR' }}
         </div>
     </div>
 </div>

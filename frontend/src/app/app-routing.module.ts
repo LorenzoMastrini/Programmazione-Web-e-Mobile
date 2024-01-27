@@ -14,6 +14,7 @@ import { AdminHomeComponent } from './components/pages/admin-home/admin-home.com
 import { AdminAddFilmComponent } from './components/pages/admin-add-film/admin-add-film.component';
 import { AdminOrdersComponent } from './components/pages/admin-orders/admin-orders.component';
 import { AdminModifyFilmComponent } from './components/pages/admin-modify-film/admin-modify-film.component';
+import { ComingSoonPageComponent } from './components/pages/coming-soon-page/coming-soon-page.component';
 
 const routes: Routes = [
   { path:"", component: HomeComponent }, //homepage dell'app
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path:"discover-page/genres/:genre", component: DiscoverPageComponent },
   { path:"discover-page/price/:priceFilter", component: DiscoverPageComponent },
   { path:"discover-page/purchaseMethod/:purchaseMethodFilter", component: DiscoverPageComponent },
+  { path:"coming-soon", component:ComingSoonPageComponent},
   { path:"login", component: LoginPageComponent },
   { path:"register", component: RegisterPageComponent },
   { path:"checkout", component: CheckoutPageComponent },

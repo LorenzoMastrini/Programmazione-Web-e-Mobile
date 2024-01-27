@@ -1,46 +1,31 @@
 .container {
     margin-top: 1rem;
     display: flex;
-    margin: 0 2rem 6rem 2rem;
+    width: 100%;
+    flex-direction: column;
+    margin: 1rem 2rem 6rem 1rem;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
-.content {
-    width: 35rem;
-    margin-right: 3rem;
-}
-
-.content, form {
-    display: flex;
-    flex-direction: column;
-}
-
-form {
-    width: 100%;
-}
-
-.buttons-container {
-    flex-basis: 100%;
-    display: flex;
-    justify-content: center;
-}
-
-.buttons {
-    margin: 2rem;
+order-items-list {
     width: 35rem;
 }
 
 button {
+    justify-content: center;
+    align-items: center;
     color: black;
     background-color: white;
-    width: 100%;
-    height: 3rem;
     opacity: 0.8;
     font-size: 1.3rem;
     border: none;
     border-radius: 0.5rem;
     box-shadow: 2px 2px 2px 2px lightgray;
+    margin: 2rem;
+    width: 35rem;
+    height: 3rem;
 }
 
 button:hover {

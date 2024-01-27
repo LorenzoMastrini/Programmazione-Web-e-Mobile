@@ -11,6 +11,7 @@ export interface Film {
     director: string;
     country: string;
     year: number;
-    duration: string;
+    duration: number;
     purchaseMethodsAvailable: "buyOnly" | "rentOnly" | "both";
+    comingSoon: boolean;
 }

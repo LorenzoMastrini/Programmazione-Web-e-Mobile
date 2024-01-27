@@ -35,6 +35,7 @@ import { AdminAddFilmComponent } from './components/pages/admin-add-film/admin-a
 import { AdminHomeComponent } from './components/pages/admin-home/admin-home.component';
 import { AdminOrdersComponent } from './components/pages/admin-orders/admin-orders.component';
 import { AdminModifyFilmComponent } from './components/pages/admin-modify-film/admin-modify-film.component';
+import { ComingSoonPageComponent } from './components/pages/coming-soon-page/coming-soon-page.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { AdminModifyFilmComponent } from './components/pages/admin-modify-film/a
     AdminAddFilmComponent,
     AdminHomeComponent,
     AdminOrdersComponent,
-    AdminModifyFilmComponent
+    AdminModifyFilmComponent,
+    ComingSoonPageComponent
   ],
   imports: [
     BrowserModule,

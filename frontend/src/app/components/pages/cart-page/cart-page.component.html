@@ -28,7 +28,7 @@
     <div class="checkout">
         <div>
             <div class="films-count">{{ cart.totalCount }}</div>
-            <div class="total-price">{{ cart.totalPrice | currency }}</div>
+            <div class="total-price">{{ cart.totalPrice | currency:'EUR' }}</div>
         </div>
         <a routerLink="/checkout">Prosegui al checkout</a>
     </div>

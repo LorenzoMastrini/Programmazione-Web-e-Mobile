@@ -1,11 +1,9 @@
 &nbsp;
-<app-side-bar></app-side-bar>
+<app-title title="Modifica film" margin="3rem 0 0 0"></app-title>
 <app-not-found [visible]="!film"
                 notFoundMessage="Film non trovato!"
                 resetLinkText="Torna alla Homepage">
 </app-not-found>
-
-<app-title title="Modifica film"></app-title>
 
 <div *ngIf="film" class="container">
     <form class="form" [formGroup]="modifyFilmForm" (ngSubmit)="submit()">
@@ -29,35 +27,32 @@
                 <text-input
                     [control]="fc.name"
                     [showErrorsWhen]="isSubmitted"
-                    type="text"
                     label="Nome">
                 </text-input>
 
                 <text-input
                     [control]="fc.duration"
                     [showErrorsWhen]="isSubmitted"
-                    type="text"
+                    [maxlength]="3"
                     label="Durata">
                 </text-input>
 
                 <text-input
                     [control]="fc.genres"
                     [showErrorsWhen]="isSubmitted"
-                    type="text"
                     label="Genere">
                 </text-input>
 
                 <text-input
                     [control]="fc.director"
                     [showErrorsWhen]="isSubmitted"
-                    type="text"
                     label="Regista">
                 </text-input>
 
                 <text-input
                     [control]="fc.year"
                     [showErrorsWhen]="isSubmitted"
-                    type="text"
+                    [maxlength]="4"
                     label="Anno">
                 </text-input>
 
@@ -78,7 +73,6 @@
                 <text-input
                     [control]="fc.score"
                     [showErrorsWhen]="isSubmitted"
-                    type="text"
                     label="Valutazione">
                 </text-input>
 
@@ -100,7 +94,7 @@
                 </text-input>
 
                 <text-input
-                    [control]="fc.rentable"
+                    [control]="fc.purchaseMethodsAvailable"
                     [showErrorsWhen]="isSubmitted"
                     type="text"
                     label="Noleggiabile">

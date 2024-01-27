@@ -1,0 +1,23 @@
+<app-side-bar></app-side-bar>
+<app-not-found [visible]="!films || !films.length"
+                resetLinkText="Cerca altro">
+</app-not-found>
+
+<div class="container">
+    <ul>
+        <li *ngFor="let film of films">
+            <ng-template [ngIf]="film.comingSoon">
+                <a [ngStyle]="{
+                    'background-image': 'url(' + film.imageUrl + ')',
+                    'background-size': 'cover'  }">
+                    
+                    <div class="content" >
+                        <p class="name">
+                            {{ film.name }}
+                        </p>
+                    </div>
+                </a>
+            </ng-template>
+        </li>
+    </ul>
+</div>

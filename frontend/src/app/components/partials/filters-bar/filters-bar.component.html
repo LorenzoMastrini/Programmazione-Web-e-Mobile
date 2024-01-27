@@ -6,7 +6,7 @@
                Genere
                <div class="genres-menu" *ngIf="genres">
                    <a *ngFor="let genre of genres" routerLink="/discover-page/genres/{{genre.name}}">
-                       {{ genre.name }}({{ genre.count }})
+                       {{ genre.name }}
                    </a>
                </div>
            </li>

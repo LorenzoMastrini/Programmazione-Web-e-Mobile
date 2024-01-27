@@ -13,4 +13,5 @@ export class Film {
     year!: number;
     duration!: number;
     purchaseMethodsAvailable!: "buyOnly" | "rentOnly" | "both";
+    comingSoon!: boolean;
 }

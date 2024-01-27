@@ -78,7 +78,8 @@ export class AdminModifyFilmComponent implements OnInit {
                                   favorite: this.fc.favorite.value,
                                   price: this.fc.price.value,
                                   purchaseMethodsAvailable: this.fc.purchaseMethodsAvailable.value,
-                                  priceRent: this.fc.priceRent.value
+                                  priceRent: this.fc.priceRent.value,
+                                  comingSoon: false
     }).subscribe();
 
     this.router.navigateByUrl("/admin"); //torna alla home dell'admin

@@ -5,10 +5,10 @@
     justify-content: space-evenly;
 }
 
-.purchase-menu {
+.radio-buttons-menu {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .radio-label {

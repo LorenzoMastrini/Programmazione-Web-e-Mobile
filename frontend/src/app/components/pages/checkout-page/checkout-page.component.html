@@ -1,42 +1,38 @@
+&nbsp;
+<app-title title="Ordine" fontSize="1.6rem" margin="3rem 0 0 1rem"></app-title>
+
 <div class="container">
-    <div class="content">
-        <app-title title="Ordine" fontSize="1.6rem"></app-title>
-        <form [formGroup]="checkoutForm">
-            <text-input
-                [control]="fc.name"
-                [showErrorsWhen]="isSubmitted"
-                label="Nome">
-            </text-input>
-            <text-input
-                [control]="fc.address"
-                [showErrorsWhen]="isSubmitted"
-                label="Indirizzo">
-            </text-input>
-            <text-input
-                [control]="fc.cardNumber"
-                [showErrorsWhen]="isSubmitted"
-                [maxlength]="16"
-                label="Numero Carta">
-            </text-input>
-            <text-input
-                [control]="fc.expireDate"
-                [showErrorsWhen]="isSubmitted"
-                label="Data di Scadenza">
-            </text-input>
-            <text-input
-                [control]="fc.cvv"
-                [showErrorsWhen]="isSubmitted"
-                [maxlength]="3"
-                label="CVV">
-            </text-input>
-        </form>
+    <form [formGroup]="checkoutForm">
+        <text-input
+            [control]="fc.name"
+            [showErrorsWhen]="isSubmitted"
+            label="Nome">
+        </text-input>
+        <text-input
+            [control]="fc.address"
+            [showErrorsWhen]="isSubmitted"
+            label="Indirizzo">
+        </text-input>
+        <text-input
+            [control]="fc.cardNumber"
+            [showErrorsWhen]="isSubmitted"
+            [maxlength]="16"
+            label="Numero Carta">
+        </text-input>
+        <text-input
+            [control]="fc.expireDate"
+            [showErrorsWhen]="isSubmitted"
+            label="Data di Scadenza">
+        </text-input>
+        <text-input
+            [control]="fc.cvv"
+            [showErrorsWhen]="isSubmitted"
+            [maxlength]="3"
+            label="CVV">
+        </text-input>
+    </form>
 
-        <order-items-list [order]="order"></order-items-list>
-    </div>
+    <order-items-list [order]="order"></order-items-list>
 
-    <div class="buttons-container">
-        <div class="buttons">
-            <button (click)="createOrder()">Acquista</button>
-        </div>
-    </div>
+    <button (click)="createOrder()">Acquista</button>
 </div>

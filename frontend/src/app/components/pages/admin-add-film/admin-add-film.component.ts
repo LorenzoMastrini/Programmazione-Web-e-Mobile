@@ -24,11 +24,7 @@ export class AdminAddFilmComponent {
       //qui definisco tutti gli input e i loro validators 
       //il primo valore di entrambi è il valore di default, e il secondo sono i validators
       name: ['', Validators.required],
-      duration: ['', Validators.required],
-      genres: ['', Validators.required],
-      director: ['', Validators.required],
-      plot: ['', Validators.required],
-      imgUrl: ['', Validators.required]
+      imageUrl: ['assets/', Validators.required]
     });
   }
 
@@ -46,11 +42,7 @@ export class AdminAddFilmComponent {
 
     this.adminService.addFilm({
                                 name: this.fc.name.value,
-                                duration: parseInt(this.fc.duration.value),
-                                genres: this.fc.genres.value.split(", "),
-                                director: this.fc.director.value,
-                                plot: this.fc.plot.value,
-                                imageUrl: this.fc.imgUrl.value
+                                imageUrl: this.fc.imageUrl.value
     }).subscribe((serverNewFilm) => {
       let prova: Film = serverNewFilm;
       console.log(prova);

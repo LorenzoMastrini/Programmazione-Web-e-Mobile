@@ -17,8 +17,8 @@ const confirmOrderQuery = 'UPDATE orders SET status = $2 WHERE id = $1;'; //NON 
 const getUserOrdersQuery = 'SELECT * FROM orders WHERE "userId" = $1;';
 
 const deleteFilmQuery = "DELETE FROM films WHERE id = $1;";
-const addFilmQuery = 'INSERT INTO films (name, duration, genres, director, plot, "imageUrl") VALUES ($1, $2, $3, $4, $5, $6);';
-const modifyFilmQuery = 'UPDATE films SET name = $2, duration = $3, genres = $4, director = $5, plot = $6, "imageUrl" = $7, price = $8, "priceRent" = $9, favorite = $10, score = $11, country = $12, year = $13, purchaseMethodsAvailable = $14 WHERE id = $1;';
+const addFilmQuery = 'INSERT INTO films (name, "imageUrl", "comingSoon") VALUES ($1, $2, $3);';
+const modifyFilmQuery = 'UPDATE films SET name = $2, duration = $3, genres = $4, director = $5, plot = $6, "imageUrl" = $7, price = $8, "priceRent" = $9, favorite = $10, score = $11, country = $12, year = $13, "purchaseMethodsAvailable" = $14, "comingSoon" = $15 WHERE id = $1;';
 const getAllOrdersQuery = "SELECT * FROM orders;";
 
 module.exports = {

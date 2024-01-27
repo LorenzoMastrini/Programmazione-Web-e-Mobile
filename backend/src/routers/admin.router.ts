@@ -21,27 +21,28 @@ router.post("/films/add", (req, res) => {
     const newFilm: Film = {
         id: '', //inizializzato dal database in automatico
         name: requestFilm.name,
-        duration: requestFilm.duration,
-        genres: requestFilm.genres,
-        director: requestFilm.director,
-        plot: requestFilm.plot,
+        duration: 0,
+        genres: [],
+        director: '',
+        plot: '',
         imageUrl: requestFilm.imageUrl,
         price: 0,
         priceRent: 0,
         favorite: false,
         score: 0,
-        country: requestFilm.country,
+        country: '',
         year: 0,
-        purchaseMethodsAvailable: requestFilm.purchaseMethodsAvailable
+        purchaseMethodsAvailable: 'both',
+        comingSoon: true //nuovi film vengono automaticamente etichettati come 'in arrivo' (hanno solo le informazioni del nome e dell'immagine)
     }
 
-    pool.query(queries.addFilmQuery, [newFilm.name, newFilm.duration, newFilm.genres, newFilm.director, newFilm.plot, newFilm.imageUrl], (error:any, results:any) => {
+    pool.query(queries.addFilmQuery, [newFilm.name, newFilm.imageUrl, newFilm.comingSoon], (error:any, results:any) => {
         if(error) throw error;
         res.status(200).json(results.rows[0]);
     });
 });
 
-//aggiunge un nuovo film al database
+//aggiorna le informazioni di un film già esistente nel database
 router.put("/films/modify/:id", (req, res) => {
     const id = req.params.id;
     const requestFilm = req.body;
@@ -60,7 +61,8 @@ router.put("/films/modify/:id", (req, res) => {
         score: requestFilm.score,
         country: requestFilm.country,
         year: requestFilm.year,
-        purchaseMethodsAvailable: requestFilm.purchaseMethodsAvailable
+        purchaseMethodsAvailable: requestFilm.purchaseMethodsAvailable,
+        comingSoon: false //al momento dell'inserimento delle informazioni complete vengono visualizzati come disponibili all'acquisto
     }
 
     pool.query(queries.modifyFilmQuery, [updatedFilm.id,
@@ -76,7 +78,8 @@ router.put("/films/modify/:id", (req, res) => {
                                         updatedFilm.score,
                                         updatedFilm.country,
                                         updatedFilm.year,
-                                        updatedFilm.purchaseMethodsAvailable], (error:any, results:any) => {
+                                        updatedFilm.purchaseMethodsAvailable,
+                                        updatedFilm.comingSoon], (error:any, results:any) => {
         if(error) throw error;
         res.status(200).json(results.rows[0]);
     });
