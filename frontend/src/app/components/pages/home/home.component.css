@@ -1,7 +1,14 @@
+.container {
+    position: relative;
+    margin-left: clamp(12.2rem, 16.4%, 16.4%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
 ul {
     margin-top: 3rem;
-    position: absolute;
-    left: 15.4rem; /*ampiezza della barra laterale*/
+    position: relative;
     display: flex;
     justify-content: flex-start;
     align-items: wrap;
@@ -9,7 +16,6 @@ ul {
     list-style-type: none;
     padding: 0;
 }
-
 li a {
     height: 23rem;
     width: 15rem;
@@ -43,7 +49,6 @@ li a:hover {
 }
 
 .name {
-    /*padding-bottom: 1rem; per spostarlo verso l'alto*/
     font-size: 1rem;
 }
 

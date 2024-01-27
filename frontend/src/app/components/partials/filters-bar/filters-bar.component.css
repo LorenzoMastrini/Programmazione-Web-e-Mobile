@@ -64,37 +64,3 @@ ul li:hover {
   width: 100%;
   min-width: 8rem;
 }
-
-.radio-label {
-  justify-content: flex-start;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin: 0.4rem 0;
-}
-
-input[type="radio"] {
-  appearance: none;
-  margin-left: 0.5rem;
-  margin-right: 0.2rem;
-  background-color: black;
-  width: 1.10rem;
-  height: 1.10rem;
-  border: 0.10rem solid white;
-  border-radius: 50%;
-  display: grid;
-  place-content: center;
-}
-
-input[type="radio"]::before {
-  width: 0.60rem;
-  height: 0.60rem;
-  border-radius: 50%;
-  transform: scale(0);
-  transition: 120ms transform ease-in-out;
-  background-color: white;
-}
-
-input[type="radio"]:checked::before {
-  transform: scale(1);
-}

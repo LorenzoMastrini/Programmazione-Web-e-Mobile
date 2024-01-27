@@ -15,8 +15,16 @@ export class TextInputComponent {
   @Input()
   label!: string;
   @Input()
-  type: 'text' | 'password' | 'email' = 'text';
-
+  maxlength: number = 524; //valore standard dell'html
+  @Input()
+  type: 'text' | 'password' | 'email' | 'date' = 'text';
+  
+  constructor() {
+    if(this.type === 'date') {
+      document.getElementsByTagName('input')[0].setAttribute("min", "1-01-01");
+      document.getElementsByTagName('input')[0].setAttribute("max", "31-12-30");
+    }
+  }
   get formControl() {
     return this.control as FormControl;
   }

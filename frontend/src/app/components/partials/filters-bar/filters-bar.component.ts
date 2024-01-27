@@ -34,13 +34,11 @@ export class FiltersBarComponent {
     this.orderByParameter.emit(parameter);
   }
 
-  changePriceFilter(event: Event) {
-    let priceFilter = (event.target as HTMLInputElement).value;
+  changePriceFilter(priceFilter: string) {
     this.router.navigateByUrl("/discover-page/price/" + priceFilter);
   }
 
-  changePurchaseMethodFilter(event: Event) {
-    let purchaseMethodFilter = (event.target as HTMLInputElement).value;
+  changePurchaseMethodFilter(purchaseMethodFilter: string) {
     this.router.navigateByUrl("/discover-page/purchaseMethod/" + purchaseMethodFilter);
   }
 

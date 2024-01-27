@@ -15,6 +15,7 @@
             <text-input
                 [control]="fc.cardNumber"
                 [showErrorsWhen]="isSubmitted"
+                [maxlength]="16"
                 label="Numero Carta">
             </text-input>
             <text-input
@@ -25,6 +26,7 @@
             <text-input
                 [control]="fc.cvv"
                 [showErrorsWhen]="isSubmitted"
+                [maxlength]="3"
                 label="CVV">
             </text-input>
         </form>

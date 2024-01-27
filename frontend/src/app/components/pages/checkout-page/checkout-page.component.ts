@@ -37,7 +37,7 @@ export class CheckoutPageComponent implements OnInit {
     this.checkoutForm = this.formBuilder.group({
       name: [name, Validators.required],
       address: [address, Validators.required],
-      cardNumber: ['', Validators.required],
+      cardNumber: ['', [Validators.required, Validators.maxLength(16)]],
       expireDate: ['', Validators.required],
       cvv: ['', Validators.required]
     });

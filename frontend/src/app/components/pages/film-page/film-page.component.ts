@@ -20,7 +20,6 @@ export class FilmPageComponent {
       if(params.id) {
         filmService.getFilmById(params.id).subscribe(serverFilm => {
           this.film = serverFilm;
-          console.log(this.film.genres);
         });
       }
     });

@@ -4,23 +4,24 @@
 </app-not-found>
 
 <!--questo componente è identico all'home-component, se non che visualizza solo i film preferiti (attributo favorite = true)-->
-<ul>
-    <li *ngFor="let film of films">
-        <a *ngIf="film.favorite" routerLink="/film/{{film.id}}"
-            [ngStyle]="{
-                'background-image': 'url(' + film.imageUrl + ')',
-                'background-size': 'cover'  }">
-            
-            <div class="content" >
-                <p class="name">
-                    {{film.name}}
-                </p>
+<div class="container">
+    <ul>
+        <li *ngFor="let film of films">
+            <a *ngIf="film.favorite" routerLink="/film/{{film.id}}"
+                [ngStyle]="{
+                    'background-image': 'url(' + film.imageUrl + ')',
+                    'background-size': 'cover'  }">
+                
+                <div class="content" >
+                    <p class="name">
+                        {{film.name}}
+                    </p>
 
-                <button>
-                    OTTIENI
-                </button>
-            </div>
-        </a>
-    </li>
-</ul>
-
+                    <button>
+                        OTTIENI
+                    </button>
+                </div>
+            </a>
+        </li>
+    </ul>
+</div>

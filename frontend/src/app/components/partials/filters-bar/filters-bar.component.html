@@ -14,43 +14,19 @@
            <li class="menu-container">
                Prezzo (acquisto)
                <div class="menu">
-                    <label class="radio-label">
-                        <input class="radio-button" id="0-5" type="radio" name="radio-price" value="0-5" (change)="changePriceFilter($event)">
-                        0€ - 5€
-                    </label>
-
-                    <label class="radio-label">
-                        <input class="radio-button" id="5-10" type="radio" name="radio-price" value="5-10" (change)="changePriceFilter($event)">
-                        5€ - 10€
-                    </label>
-
-                    <label class="radio-label">
-                        <input class="radio-button" id="10-15" type="radio" name="radio-price" value="10-15" (change)="changePriceFilter($event)">
-                        10€ - 15€
-                    </label>
-
-                    <label class="radio-label">
-                        <input class="radio-button" id="15-20" type="radio" name="radio-price" value="15-20" (change)="changePriceFilter($event)">
-                        15€ - 20€
-                    </label>
+                    <a (click)="changePriceFilter('0-5')">0€ - 5€</a>
+                    <a (click)="changePriceFilter('5-10')">5€ - 10€</a>
+                    <a (click)="changePriceFilter('10-15')">10€ - 15€</a>
+                    <a (click)="changePriceFilter('15-20')">15€ - 20€</a>
                </div>
            </li>
 
            <li class="menu-container">
                Compra/Noleggia
                <div class="menu">
-                    <label class="radio-label">
-                        <input class="radio-button" id="buyOnly" type="radio" name="radio-purchase-method" value="buyOnly" (change)="changePurchaseMethodFilter($event)">
-                        Solo acquisto
-                    </label>
-                    <label class="radio-label">
-                        <input class="radio-button" id="rentOnly" type="radio" name="radio-purchase-method" value="rentOnly" (change)="changePurchaseMethodFilter($event)">
-                        Solo noleggio
-                    </label>
-                    <label class="radio-label">
-                        <input class="radio-button" id="both" type="radio" name="radio-purchase-method" value="both" (change)="changePurchaseMethodFilter($event)">
-                        Entrambi
-                    </label>
+                    <a (click)="changePurchaseMethodFilter('buyOnly')">Solo acquisto</a>
+                    <a (click)="changePurchaseMethodFilter('rentOnly')">Solo noleggio</a>
+                    <a (click)="changePurchaseMethodFilter('both')">Entrambi</a>
                </div>
            </li>
 
