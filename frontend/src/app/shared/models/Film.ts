@@ -4,7 +4,7 @@ export class Film {
     price!: number;
     priceRent!: number;
     genres?: string[];
-    favorite!: boolean;
+    trending!: boolean;
     score!: number;
     imageUrl!: string;
     plot!: string;

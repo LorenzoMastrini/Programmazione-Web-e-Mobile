@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AdminService } from 'src/app/services/admin.service';
 import { FilmService } from 'src/app/services/film.service';
@@ -15,6 +15,7 @@ export class AdminModifyFilmComponent implements OnInit {
   film!: Film;
   modifyFilmForm!: FormGroup;
   isSubmitted = false; //per indicare se l'utente ha premuto o meno il pulsante per il submit, per non mostrare subito gli errori di validazione dei dati
+  purchaseMethodsAvailable!: string;
 
   constructor(private activatedRoute:ActivatedRoute,
               private filmService:FilmService,
@@ -27,7 +28,7 @@ export class AdminModifyFilmComponent implements OnInit {
       if(params.id) {
         this.filmService.getFilmById(params.id).subscribe(serverFilm => {
           this.film = serverFilm;
-          let {name, duration, genres, director, plot, imageUrl, year, country, score, favorite, price, purchaseMethodsAvailable, priceRent} = this.film;
+          let {name, duration, genres, director, plot, imageUrl, year, country, score, trending, price, purchaseMethodsAvailable, priceRent} = this.film;
 
           //tramite formBuilder creo il form group per i vari campi che l'utente dovrà compilare
           this.modifyFilmForm = this.formBuilder.group({
@@ -42,7 +43,7 @@ export class AdminModifyFilmComponent implements OnInit {
             year: [year, Validators.required],
             country: [country, Validators.required],
             score: [score, Validators.required],
-            favorite: [favorite, Validators.required],
+            trending: [trending, Validators.required],
             price: [price, Validators.required],
             purchaseMethodsAvailable: [purchaseMethodsAvailable, Validators.required],
             priceRent: [priceRent, Validators.required]
@@ -56,8 +57,21 @@ export class AdminModifyFilmComponent implements OnInit {
   get fc() {
     return this.modifyFilmForm.controls;
   }
+
+  get fcTrending() {
+    return this.modifyFilmForm.controls.trending as FormControl;
+  }
+
+  get fcPurchaseMethodsAvailable() {
+    return this.modifyFilmForm.controls.purchaseMethodsAvailable as FormControl;
+  }
   
   
+  changeMethods(methods:string) {
+    console.log("ciao");
+    this.purchaseMethodsAvailable = methods;
+  }
+
   submit() {
     this.isSubmitted = true;
 
@@ -75,7 +89,7 @@ export class AdminModifyFilmComponent implements OnInit {
                                   year: this.fc.year.value,
                                   country: this.fc.country.value,
                                   score: this.fc.score.value,
-                                  favorite: this.fc.favorite.value,
+                                  trending: this.fc.trending.value,
                                   price: this.fc.price.value,
                                   purchaseMethodsAvailable: this.fc.purchaseMethodsAvailable.value,
                                   priceRent: this.fc.priceRent.value,

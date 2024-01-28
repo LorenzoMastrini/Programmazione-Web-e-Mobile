@@ -17,7 +17,11 @@ export class TextInputComponent {
   @Input()
   maxlength: number = 524; //valore standard dell'html
   @Input()
-  type: 'text' | 'password' | 'email' = 'text';
+  height: string = "5rem";
+  @Input()
+  width: string = "30rem";
+  @Input()
+  type: 'text' | 'password' | 'email' | 'textarea' = 'text';
   
   
   get formControl() {

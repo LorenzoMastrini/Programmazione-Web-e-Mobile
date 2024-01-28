@@ -28,7 +28,7 @@ router.post("/films/add", (req, res) => {
         imageUrl: requestFilm.imageUrl,
         price: 0,
         priceRent: 0,
-        favorite: false,
+        trending: false,
         score: 0,
         country: '',
         year: 0,
@@ -57,12 +57,18 @@ router.put("/films/modify/:id", (req, res) => {
         imageUrl: requestFilm.imageUrl,
         price: requestFilm.price,
         priceRent: requestFilm.priceRent,
-        favorite: requestFilm.favorite,
+        trending: requestFilm.trending,
         score: requestFilm.score,
         country: requestFilm.country,
         year: requestFilm.year,
         purchaseMethodsAvailable: requestFilm.purchaseMethodsAvailable,
         comingSoon: false //al momento dell'inserimento delle informazioni complete vengono visualizzati come disponibili all'acquisto
+    }
+
+    if(updatedFilm.purchaseMethodsAvailable === 'buyOnly') {
+        updatedFilm.priceRent = -1;
+    } else if(updatedFilm.purchaseMethodsAvailable === 'rentOnly') {
+        updatedFilm.price = -1;
     }
 
     pool.query(queries.modifyFilmQuery, [updatedFilm.id,
@@ -74,7 +80,7 @@ router.put("/films/modify/:id", (req, res) => {
                                         updatedFilm.imageUrl,
                                         updatedFilm.price,
                                         updatedFilm.priceRent,
-                                        updatedFilm.favorite,
+                                        updatedFilm.trending,
                                         updatedFilm.score,
                                         updatedFilm.country,
                                         updatedFilm.year,

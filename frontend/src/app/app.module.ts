@@ -26,7 +26,6 @@ import { TextInputComponent } from './components/partials/text-input/text-input.
 import { DefaultButtonComponent } from './components/partials/default-button/default-button.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
 import { LoadingComponent } from './components/partials/loading/loading.component';
-import { LoadingInterceptor } from './shared/interceptor/loading.interceptor';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { ConfirmPageComponent } from './components/pages/confirm-page/confirm-page.component';
@@ -83,9 +82,7 @@ import { ComingSoonPageComponent } from './components/pages/coming-soon-page/com
       newestOnTop:false //i nuovi messaggi compaiono dal basso e spingono verso l'alto i precedenti
     })
   ],
-  providers: [
-    {provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 

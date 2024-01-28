@@ -6,7 +6,7 @@
 </app-not-found>
 
 <div *ngIf="film" class="container">
-    <form class="form" [formGroup]="modifyFilmForm" (ngSubmit)="submit()">
+    <form [formGroup]="modifyFilmForm" (ngSubmit)="submit()">
         <div class="name-and-image">
             <span class="name">
                 {{ film.name }}
@@ -16,7 +16,6 @@
             <text-input
                 [control]="fc.imageUrl"
                 [showErrorsWhen]="isSubmitted"
-                type="text"
                 label="URL della copertina">
             </text-input>
         </div>
@@ -30,12 +29,16 @@
                     label="Nome">
                 </text-input>
 
-                <text-input
-                    [control]="fc.duration"
-                    [showErrorsWhen]="isSubmitted"
-                    [maxlength]="3"
-                    label="Durata">
-                </text-input>
+                <div class="menu-with-unit">
+                    <text-input
+                        [control]="fc.duration"
+                        [showErrorsWhen]="isSubmitted"
+                        [maxlength]="3"
+                        label="Durata"
+                        width="26rem">
+                    </text-input>
+                    <span class="min">min</span>
+                </div>
 
                 <text-input
                     [control]="fc.genres"
@@ -59,53 +62,71 @@
                 <text-input
                     [control]="fc.country"
                     [showErrorsWhen]="isSubmitted"
-                    type="text"
                     label="Paese di produzione">
                 </text-input>
 
                 <text-input
                     [control]="fc.plot"
                     [showErrorsWhen]="isSubmitted"
-                    type="text"
+                    type="textarea"
+                    height="15rem"
                     label="Trama">
                 </text-input>
 
-                <text-input
-                    [control]="fc.score"
-                    [showErrorsWhen]="isSubmitted"
-                    label="Valutazione">
-                </text-input>
+                <div class="menu-with-unit">
+                    <text-input
+                        [control]="fc.score"
+                        [showErrorsWhen]="isSubmitted"
+                        label="Valutazione"
+                        width="27rem">
+                    </text-input>
+                    <span>/5</span>
+                </div>
 
-                <text-input
-                    [control]="fc.favorite"
-                    [showErrorsWhen]="isSubmitted"
-                    type="text"
-                    label="Preferiti">
-                </text-input>
+                <label class="checkbox-label">
+                    <input [formControl]="fcTrending" class="checkbox" id="trending" type="checkbox" name="trending" value="checked" [checked]="film.trending">
+                    In tendenza
+                </label>
             </div>
 
             <div class="purchase-info">
                 <span>Informazioni sull'acquisto:</span>
-                <text-input
-                    [control]="fc.price"
-                    [showErrorsWhen]="isSubmitted"
-                    type="text"
-                    label="Prezzo per l'acquisto">
-                </text-input>
+                <input-container height="7.5rem" label="Metodi d'acquisto disponibili">
+                    <div class="radio-menu">
+                        <label class="radio-label">
+                            <input [formControl]="fcPurchaseMethodsAvailable" class="radio-button" id="purchaseMethodsAvailable" type="radio" name="purchaseMethodsAvailable" value="buyOnly">
+                            Solo acquisto
+                        </label>
+                        <label class="radio-label">
+                            <input [formControl]="fcPurchaseMethodsAvailable" class="radio-button" id="purchaseMethodsAvailable" type="radio" name="purchaseMethodsAvailable" value="rentOnly">
+                            Solo noleggio
+                        </label>
+                        <label class="radio-label">
+                            <input [formControl]="fcPurchaseMethodsAvailable" class="radio-button" id="purchaseMethodsAvailable" type="radio" name="purchaseMethodsAvailable" value="both">
+                            Acquisto e noleggio
+                        </label>
+                    </div>
+                </input-container>
 
-                <text-input
-                    [control]="fc.purchaseMethodsAvailable"
-                    [showErrorsWhen]="isSubmitted"
-                    type="text"
-                    label="Noleggiabile">
-                </text-input>
+                <div class="menu-with-unit" *ngIf="!(fcPurchaseMethodsAvailable.value === 'rentOnly')">
+                    <text-input
+                        [control]="fc.price"
+                        [showErrorsWhen]="isSubmitted"
+                        label="Prezzo per l'acquisto"
+                        width="27rem">
+                    </text-input>
+                    <span>€</span>
+                </div>
 
-                <text-input
-                    [control]="fc.priceRent"
-                    [showErrorsWhen]="isSubmitted"
-                    type="text"
-                    label="Prezzo per il noleggio">
-                </text-input>
+                <div class="menu-with-unit" *ngIf="!(fcPurchaseMethodsAvailable.value === 'buyOnly')">
+                    <text-input
+                        [control]="fc.priceRent"
+                        [showErrorsWhen]="isSubmitted"
+                        label="Prezzo per il noleggio"
+                        width="27rem">
+                    </text-input>
+                    <span>€</span>
+                </div>
 
                 <default-button text="Conferma modifiche"></default-button>
             </div>

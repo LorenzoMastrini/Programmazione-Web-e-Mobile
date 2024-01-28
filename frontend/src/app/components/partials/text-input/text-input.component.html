@@ -1,5 +1,7 @@
-<input-container [label]="label">
-    <input [type]="type" [placeholder]="label" [formControl]="formControl" [maxlength]="maxlength"/>
+<input-container [label]="label" [height]="height" [width] = "width">
+    <input *ngIf="type != 'textarea'" [type]="type" [placeholder]="label" [formControl]="formControl" [maxlength]="maxlength"/>
+    <textarea *ngIf="type === 'textarea'" [placeholder]="label" [formControl]="formControl" [maxlength]="maxlength"></textarea>
+    
     <input-validation
         [control]="control"
         [showErrorsWhen]="showErrorsWhen">

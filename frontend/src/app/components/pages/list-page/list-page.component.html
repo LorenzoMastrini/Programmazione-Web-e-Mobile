@@ -7,7 +7,7 @@
 <div class="container">
     <ul>
         <li *ngFor="let film of films">
-            <a *ngIf="film.favorite" routerLink="/film/{{film.id}}"
+            <a *ngIf="film.trending" routerLink="/film/{{film.id}}"
                 [ngStyle]="{
                     'background-image': 'url(' + film.imageUrl + ')',
                     'background-size': 'cover'  }">
