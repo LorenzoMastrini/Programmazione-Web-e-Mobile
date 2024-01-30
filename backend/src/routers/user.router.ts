@@ -52,13 +52,14 @@ router.post("/register", (req, res) => {
         
         pool.query(queries.createUserQuery, [newUser.name, newUser.email, newUser.password, newUser.address, newUser.isAdmin, newUser.token], (error:any, results:any) => {
             if(error) throw error;
+            newUser.id = results.rows[0]['id'];
             res.status(201).send(generateTokenResponse(newUser));
         });
     });
 });
 
 //genera un token di sessione in base all'utente
-const generateTokenResponse = (user:any) => {
+const generateTokenResponse = (user:User) => {
     //il primo parametro è il payload, cioè ciò che voglio codificare
     //il secondo è una chiave privata (per semplicità è la stringa "SomeRandomText")
     const token = jwt.sign({email: user.email},

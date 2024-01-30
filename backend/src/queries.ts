@@ -8,7 +8,7 @@ const getAllFilmsByPurchaseMethodQuery = 'SELECT * FROM films WHERE "purchaseMet
 
 const loginQuery = 'SELECT * FROM users WHERE email = $1 AND password = $2;'; //$1 e $2 sono i parametri passati (in ordine) alla funzione un user.router.ts
 const checkEmailExistsQuery = 'SELECT * FROM users WHERE email = $1;';
-const createUserQuery = 'INSERT INTO users (name, email, password, address, "isAdmin", token) VALUES ($1, $2, $3, $4, $5, $6);';
+const createUserQuery = 'INSERT INTO users (name, email, password, address, "isAdmin", token) VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;'; //torna anche l'id creato dal database tramite 'RETURNING id'
 const getUserQuery = 'SELECT * FROM users WHERE token = $1;';
 
 const createOrderQuery = 'INSERT INTO orders ("orderItems", "totalPrice", name, address, status, "userId", "createdAt") VALUES ($1, $2, $3, $4, $5, $6, $7);';

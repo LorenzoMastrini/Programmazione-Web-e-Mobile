@@ -7,7 +7,7 @@
     <h3>I tuoi ordini:</h3>
     <table class="orders-list" *ngFor="let order of orders">
         <tr>
-            <span>Ordine del {{ order.createdAt.substring(0, 10) }}</span>
+            <h1>Ordine del {{ order.createdAt.substring(0, 10) }}</h1>
         </tr>
 
         <tr>
@@ -23,20 +23,21 @@
         </tr>
 
         <tr *ngFor="let item of order.orderItems">
-            <td>
+            <td class="name-and-image">
+                <img [src]="item.film.imageUrl" [alt]="item.film.name">
                 {{ item.film.name }}
             </td>
             <td>
                 {{ item.purchaseMethod }}
             </td>
             <td>
-                {{ item.totalArticlePrice | currency }}
+                {{ item.totalArticlePrice | currency:'EUR' }}
             </td>
         </tr>
 
         <tr>
             <td colspan="2"></td>
-            <span>Prezzo totale: {{ order.totalPrice | currency }}</span>
+            <span><strong>Prezzo totale:</strong> {{ order.totalPrice | currency:'EUR' }}</span>
         </tr>
     </table>
 </div>

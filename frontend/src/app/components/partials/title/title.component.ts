@@ -11,8 +11,8 @@ export class TitleComponent {
   title!: string;
 
   @Input()
-  margin? =  '3rem 1rem 0 1rem"';
+  margin? = '3rem 1rem 0 1rem';
 
   @Input()
-  fontSize? =  '1.7rem';
+  fontSize? = '1.7rem';
 }

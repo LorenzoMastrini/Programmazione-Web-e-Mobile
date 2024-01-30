@@ -9,17 +9,17 @@
 <div *ngIf="orders" class="container">
     <table class="orders-list" *ngFor="let order of orders">
         <tr>
-            <span>Ordine n. {{ order.id }}</span>
+            <h1>Ordine n. {{ order.id }}</h1>
         </tr>
 
         <tr>
-            <span>Nome: {{ order.name }}</span>
+            <span><strong>Nome:</strong> {{ order.name }}</span>
         </tr>
         <tr>
-            <span>Indirizzo: {{ order.address }}</span>
+            <span><strong>Indirizzo:</strong> {{ order.address }}</span>
         </tr>
         <tr>
-            <span>Data: {{ order.createdAt }}</span>
+            <span><strong>Data:</strong> {{ order.createdAt }}</span>
         </tr>
 
         <tr>
@@ -35,7 +35,8 @@
         </tr>
 
         <tr *ngFor="let item of order.orderItems">
-            <td>
+            <td class="name-and-image">
+                <img [src]="item.film.imageUrl" [alt]="item.film.name">
                 {{ item.film.name }}
             </td>
             <td>
@@ -48,7 +49,7 @@
 
         <tr>
             <td colspan="3"></td>
-            <span>Prezzo totale: {{ order.totalPrice | currency:'EUR' }}</span>
+            <span><strong>Prezzo totale:</strong> {{ order.totalPrice | currency:'EUR' }}</span>
         </tr>
     </table>
 </div>

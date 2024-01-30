@@ -10,12 +10,26 @@ table {
     padding: 0.5rem 1rem;
 }
 
-h3 {
+h1 {
+    font-size: 1.5rem;
     margin-top: 0.5rem;
-    margin-left: 0.3rem;
     color: grey;
 }
 
 td {
-    height: 3rem;
+    height: 4.5rem;
+}
+
+.name-and-image {
+    display: flex;
+    align-items: center;
+}
+
+img {
+    margin-right: 1rem;
+    width: 3rem;
+    height: 4rem;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    align-items: center;
 }
