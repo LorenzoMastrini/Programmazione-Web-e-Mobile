@@ -40,11 +40,14 @@
                     <span class="min">min</span>
                 </div>
 
-                <text-input
-                    [control]="fc.genres"
-                    [showErrorsWhen]="isSubmitted"
-                    label="Genere">
-                </text-input>
+                <input-container class="genres-container" height="15rem" label="Genere">
+                    <div>
+                        <label formArrayName="genres" class="checkbox-label" *ngFor="let genre of genresFormArray.controls; let i = index">
+                            <input type="checkbox" class="checkbox" [formControlName]="i">
+                            {{ genres[i].name }}
+                        </label>
+                    </div>
+                </input-container>
 
                 <text-input
                     [control]="fc.director"

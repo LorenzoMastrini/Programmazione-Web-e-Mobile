@@ -27,7 +27,6 @@ export class CheckoutPageComponent implements OnInit {
     if(userService.currentUser.token == undefined) {
       router.navigateByUrl("/login");
     }
-    
     const cart = cartService.getCart(); //ottengo l'ultimo valore dell'observable
 
     this.order.orderItems = cart.items;

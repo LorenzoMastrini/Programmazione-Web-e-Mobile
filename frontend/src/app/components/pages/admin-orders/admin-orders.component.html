@@ -1,11 +1,12 @@
+&nbsp;
+<app-title title="Ordini" margin="3rem 0 0 1rem"></app-title>
+
 <app-not-found [visible]="!orders"
                 notFoundMessage="Non ci sono ordini presenti nel database!"
                 resetLinkText="Torna alla Homepage">
 </app-not-found>
 
-&nbsp;
 <div *ngIf="orders" class="container">
-    <h3>Ordini:</h3>
     <table class="orders-list" *ngFor="let order of orders">
         <tr>
             <span>Ordine n. {{ order.id }}</span>
@@ -41,13 +42,13 @@
                 {{ item.purchaseMethod }}
             </td>
             <td>
-                {{ item.totalArticlePrice | currency }}
+                {{ item.totalArticlePrice | currency:'EUR' }}
             </td>
         </tr>
 
         <tr>
             <td colspan="3"></td>
-            <span>Prezzo totale: {{ order.totalPrice | currency }}</span>
+            <span>Prezzo totale: {{ order.totalPrice | currency:'EUR' }}</span>
         </tr>
     </table>
 </div>

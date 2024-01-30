@@ -1,29 +1,6 @@
 .container {
-    margin-top: 0;
+    margin-top: 1rem;
     width: 100%;
-}
-
-button {
-    color: black;
-    font-size: 17px;
-    background-color: white;
-    border-radius: 1rem;
-    width: 6rem;
-    height: 2rem;
-    border: none;
-    opacity: 0.8;
-    margin: 0.3rem 0.2rem;
-}
-
-button:hover {
-    cursor: pointer;
-    opacity: 1;
-}
-
-.movies-container {
-    max-width: 100%;
-    margin-top: 3rem;
-    border-bottom: 1px solid #eeeeee;
 }
 
 .films-grid-container {
@@ -61,4 +38,21 @@ img {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+button {
+    color: black;
+    font-size: 17px;
+    background-color: white;
+    border-radius: 1rem;
+    width: 6rem;
+    height: 2rem;
+    border: none;
+    opacity: 0.8;
+    margin: 0.3rem 0.2rem;
+}
+
+button:hover {
+    cursor: pointer;
+    opacity: 1;
 }
