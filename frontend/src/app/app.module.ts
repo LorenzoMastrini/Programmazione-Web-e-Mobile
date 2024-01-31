@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'; //per la connessione al backend (l'interceptor è per intercettare le richieste al server)
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/partials/header/header.component';
@@ -25,7 +25,6 @@ import { InputValidationComponent } from './components/partials/input-validation
 import { TextInputComponent } from './components/partials/text-input/text-input.component';
 import { DefaultButtonComponent } from './components/partials/default-button/default-button.component';
 import { RegisterPageComponent } from './components/pages/register-page/register-page.component';
-import { LoadingComponent } from './components/partials/loading/loading.component';
 import { CheckoutPageComponent } from './components/pages/checkout-page/checkout-page.component';
 import { OrderItemsListComponent } from './components/partials/order-items-list/order-items-list.component';
 import { ConfirmPageComponent } from './components/pages/confirm-page/confirm-page.component';
@@ -57,7 +56,6 @@ import { ComingSoonPageComponent } from './components/pages/coming-soon-page/com
     TextInputComponent,
     DefaultButtonComponent,
     RegisterPageComponent,
-    LoadingComponent,
     CheckoutPageComponent,
     OrderItemsListComponent,
     ConfirmPageComponent,
@@ -73,7 +71,6 @@ import { ComingSoonPageComponent } from './components/pages/coming-soon-page/com
     BrowserAnimationsModule,
     AppRoutingModule,
     MatSliderModule,
-    //RatingModule
     HttpClientModule,
     ReactiveFormsModule, //per usare loginForm dentro l'html
     ToastrModule.forRoot({ //configurazione parametri globali per questo progetto

@@ -1,6 +1,6 @@
 const getAllQuery = 'SELECT * FROM films;';
 const getFilmByIdQuery = 'SELECT * FROM films WHERE id = $1;'; //$1 è il parametro che viene passato alla query
-const getFilmBySearchTermQuery = 'SELECT * FROM films WHERE LOWER(name) LIKE  LOWER("%" || $1 || "%");';
+const getFilmBySearchTermQuery = "SELECT * FROM films WHERE LOWER(name) LIKE  LOWER('%' || $1 || '%');";
 const getAllGenresQuery = 'SELECT * FROM genres;';
 const getAllFilmsByGenreQuery = 'SELECT * FROM films WHERE $1=ANY(films.genres);';
 const getAllFilmsByPriceQuery = 'SELECT * FROM films WHERE price >= $1 AND price < $2;';
