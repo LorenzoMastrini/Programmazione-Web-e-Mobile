@@ -9,7 +9,6 @@ import { IUserRegister } from '../shared/interfaces/IUserRegister';
 import { Router } from '@angular/router';
 import { CartService } from './cart.service';
 
-
 const USER_KEY = 'User'; //chiave per modificare l'utente salvato nel localStorage
 
 @Injectable({
@@ -34,7 +33,7 @@ export class UserService {
 
   login(userLogin:IUserLogin): Observable<User> {
     //non posso usare subscribe perché il tipo di ritorno sarebbe Subscription, non Observable
-    //se non voglio cambiare il valore del risulato posso usare pipe(tap())
+    //se non voglio cambiare il valore del risultato posso usare pipe(tap())
     return this.http.post<User>(USER_LOGIN_URL, userLogin).pipe(tap({
         next: (user) => { //risultato positivo
           this.setUserToLocalStorage(user); //salva l'utente dopo il login avvenuto con successo
@@ -69,7 +68,7 @@ export class UserService {
     );
   }
 
-  async logout() {
+  logout() {
     this.userSubject.next(new User());
     localStorage.removeItem(USER_KEY);
     this.cartService.clearCart();

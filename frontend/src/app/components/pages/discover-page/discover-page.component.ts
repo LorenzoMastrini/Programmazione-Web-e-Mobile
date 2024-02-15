@@ -12,7 +12,8 @@ import { Film } from 'src/app/shared/models/Film';
 export class DiscoverPageComponent {
   films: Film[] = []; //mantiene i dati che otteniamo da FilmService
 
-  constructor(private filmService: FilmService, activatedRoute: ActivatedRoute) {
+  constructor(activatedRoute: ActivatedRoute,
+              private filmService: FilmService) {
     let filmsObservable: Observable<Film[]>;
     
     //ogni volta che 'params' cambia, chiama la funzione dentro 'subscribe()'

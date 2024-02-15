@@ -28,12 +28,4 @@ export class AdminService {
   getAllOrders(): Observable<Order[]> {
     return this.http.get<Order[]>(ADMIN_GET_ALL_ORDERS);
   }
-
-  /*getAllUsers(): Observable<User[]> {
-    return this.http.get<User[]>(ADMIN_GET_ALL_USERS);
-  }
-
-  changeAdminStatus(userId: string): Observable<User> {
-    return this.http.put<User>(ADMIN_CHANGE_ADMIN_STATUS + userId, []);
-  }*/
 }

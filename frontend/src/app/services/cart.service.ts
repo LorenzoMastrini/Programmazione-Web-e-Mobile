@@ -35,7 +35,7 @@ export class CartService {
   }
 
 
-  //modifica il prezzo del singolo film acquistato in base a se viene comprato o noleggiato (e in questo caso per quanti giorni)
+  //modifica il prezzo del singolo film acquistato in base a se viene comprato o noleggiato
   changeItemPrice(cartItem:CartItem, method:string) {
     if(!this.cart.items.find(item => item === cartItem)) {
       return;
@@ -75,7 +75,7 @@ export class CartService {
   //usiamo localStorage per impedire che le informazioni vadano perse ad ogni refresh della pagina
   private setCartToLocalStorage(): void {
     this.cart.totalPrice = this.cart.items.reduce((prevSum, currentItem) => {return prevSum + currentItem.totalArticlePrice}, 0); //0 è il valore di default di prevSum all'inizio
-    this.cart.totalCount = this.cart.items.reduce((prevSum, currentItem) => prevSum + 1, 0); //0 è il valore di default di prevSum all'inizio
+    this.cart.totalCount = this.cart.items.reduce((prevSum) => prevSum + 1, 0); //0 è il valore di default di prevSum all'inizio
     
     const cartJson = JSON.stringify(this.cart); //rappresentazione in stringa json del carrello
     localStorage.setItem('Cart', cartJson);

@@ -16,8 +16,7 @@ export class ComingSoonPageComponent {
 
   constructor(filmService: FilmService,
               activatedRoute: ActivatedRoute) {
-    let filmsObservable: Observable<Film[]>; //per ottere gli observable di tutti i metodi chiamati che si connettono al backend, poi facendo subscribe per ottere i film
-    //altrimenti dovrei fare subscribe per ognuno dei metodi chiamati separatamente
+    let filmsObservable: Observable<Film[]>; //per ottere gli observable di tutti i metodi chiamati che si connettono al backend; poi faccio un unico subscribe per ottere i film, invece che fare un subscribe per ogni metodo
     
     //ogni volta che 'params' cambia, chiama la funzione dentro 'subscribe()'
     activatedRoute.params.subscribe((params) => {
